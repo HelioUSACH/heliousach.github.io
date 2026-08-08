@@ -1,0 +1,62 @@
+---
+import css from '../styles/global.css?inline';
+const lang = Astro.currentLocale === 'en' ? 'en' : 'es';
+const { title, description } = Astro.props;
+const p = (path_route) => lang === 'es' ? path_route : `/en${path_route}`;
+const t = lang === 'en' ? {
+  home: 'Home', research: 'Research', team: 'Team', lab: 'Lab', contact: 'Contact',
+  footer: '\u00a9 2026 HelioF\u00edsica USACH. All rights reserved.',
+  nav: 'Navigation'
+} : {
+  home: 'Inicio', research: 'Investigaci\u00f3n', team: 'Equipo', lab: 'Laboratorio', contact: 'Contacto',
+  footer: '\u00a9 2026 HelioF\u00edsica USACH. Todos los derechos reservados.',
+  nav: 'Navegaci\u00f3n'
+};
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} | Heliof\u00edsica USACH</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a class="brand" href={p('/')}>
+          <span class="logo">&#8721;</span>
+          <span>Heliof&#237;sica USACH</span>
+        </a>
+        <div style="display:flex;gap:1.3rem;align-items:center;flex-wrap:wrap">
+          <a href={p('/')} >{t.home}</a>
+          <a href={p('/investigacion')} >{t.research}</a>
+          <a href={p('/equipo')} >{t.team}</a>
+          <a href={p('/laboratorio')} >{t.lab}</a>
+          <a href={p('/#contacto')} >{t.contact}</a>
+          <span style="margin-left:0.5rem">
+            {lang === 'es'
+              ? <a href="/en/" style="color:var(--aurora-green);font-weight:600">EN</a>
+              : <a href="/" style="color:var(--aurora-green);font-weight:600">ES</a>
+            }
+          </span>
+        </div>
+      </nav>
+    </header>
+    <main><slot /></main>
+    <footer>
+      <p style="color:var(--text-muted);font-size:0.85rem">{t.footer}</p>
+      <div style="margin-top:0.75rem">
+        <a href="mailto:victor.pinto@usach.cl">Email</a>
+        <a href="https://instagram.com/helio.usach" target="_blank">@helio.usach</a>
+        <a href="https://twitter.com/vpintoa" target="_blank">@vpintoa</a>
+        <a href="https://github.com/vpinto-space" target="_blank">GitHub</a>
+      </div>
+    </footer>
+  </body>
+</html>
