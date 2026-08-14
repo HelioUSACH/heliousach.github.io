@@ -2,73 +2,253 @@
 import Layout from '../../layouts/Layout.astro';
 ---
 
-<Layout title="Home" description="Heliophysics and Space Weather research group at Universidad de Santiago de Chile. Radiation belts, ULF waves, GIC and machine learning for space weather forecasting.">
+<Layout title="Home" description="Heliophysics and Space Weather research group at Universidad de Santiago de Chile. Radiation belts, ULF waves, GIC and machine learning for space weather forecasting." variant="home">
 
-<section class="hero-banner">
-  <h1>Heliophysics & Space Weather USACH</h1>
-  <p class="lead" style="max-width:650px;margin:0 auto">
-    We investigate the dynamics of Earth's radiation belts, ULF waves in the magnetosphere, and develop predictive models for space weather using artificial intelligence.
-  </p>
+<section class="hp-hero" id="inicio">
+  <img src="/images/eso1912u-la-silla-eclipse.jpg" alt="Polarised solar corona during the 2019 total eclipse observed from La Silla" />
+  <div class="hp-hero-scrim"></div>
+  <div class="hp-hero-content">
+    <p class="hp-eyebrow">Universidad de Santiago de Chile — Dept. of Physics</p>
+    <h1>Where the Sun ends,<br/>space weather begins.</h1>
+    <p class="hp-hero-sub">We study Earth's radiation belts, the waves that shake the magnetosphere, and build artificial intelligence models to forecast their effects on satellites and power grids.</p>
+  </div>
+  <p class="hp-hero-credit">Polarised solar corona, 2019 La Silla total eclipse — Credit: ESA/CESAR</p>
 </section>
 
-<div class="stats">
-  <div class="stat"><div class="stat-value">14+</div><div class="stat-label">Active projects</div></div>
-  <div class="stat"><div class="stat-value">29</div><div class="stat-label">Peer-reviewed papers</div></div>
-  <div class="stat"><div class="stat-value">10+</div><div class="stat-label">Students trained</div></div>
-  <div class="stat"><div class="stat-value">4</div><div class="stat-label">Collaborating countries</div></div>
-  <div class="stat"><div class="stat-value">700+</div><div class="stat-label">Citations</div></div>
-</div>
-
-<section class="section">
-  <span class="section-title">Research lines</span>
-  <div class="grid">
-    <div class="card">
-      <span class="badge badge-green">Space physics</span>
-      <h3>Radiation belts</h3>
-      <p>Relativistic electron energization and decay. Enhancement and dropout events in the outer belt. Formation and evolution of ultrarelativistic remnant belts.</p>
+<section class="hp-intro hp-reveal">
+  <div class="hp-wrap">
+    <div class="hp-intro-grid">
+      <figure class="hp-intro-figure">
+        <img src="/images/eso1703c-alma-solar-disc.jpg" alt="The full solar disc observed by ALMA at millimeter wavelengths" />
+        <figcaption>The Sun observed at millimeter wavelengths by ALMA — the same plasma that drives space weather. Credit: ALMA (ESO/NAOJ/NRAO).</figcaption>
+      </figure>
+      <div class="hp-intro-text">
+        <p class="hp-lede">Every second, the Sun hurls charged particles and magnetic fields into space that reach Earth minutes to hours later.</p>
+        <p>That flow —calm most of the time, violent during a geomagnetic storm— tests satellites, power grids and navigation systems. At USACH's Heliophysics and Space Weather Group we measure, model, and try to anticipate that impact.</p>
+      </div>
     </div>
-    <div class="card">
-      <span class="badge badge-green">Space physics</span>
-      <h3>ULF waves & turbulence</h3>
-      <p>Wave-particle interactions in the magnetosphere. Turbulence and total pressure balance. Solar wind — magnetosphere coupling and effects on satellites.</p>
-    </div>
-    <div class="card">
-      <span class="badge badge-orange">Data science</span>
-      <h3>ML for space weather</h3>
-      <p>Prediction of ground magnetic perturbations, geomagnetically induced currents (GIC), and near real-time forecasting models with deep learning.</p>
+    <div class="stats">
+      <div class="stat"><div class="stat-value">14+</div><div class="stat-label">Active projects</div></div>
+      <div class="stat"><div class="stat-value">29</div><div class="stat-label">Peer-reviewed papers</div></div>
+      <div class="stat"><div class="stat-value">10+</div><div class="stat-label">Students trained</div></div>
+      <div class="stat"><div class="stat-value">4</div><div class="stat-label">Collaborating countries</div></div>
+      <div class="stat"><div class="stat-value">700+</div><div class="stat-label">Citations</div></div>
     </div>
   </div>
 </section>
 
-<section class="section">
-  <span class="section-title">Research platforms</span>
-  <div class="card" style="border-color:var(--border-accent)">
-    <h3>🛰️ Chilean Space Weather Platform</h3>
-    <p>Chile's first national pilot platform for real-time space weather monitoring and early warnings. FONDEF IDEA I+D project funded by ANID.</p>
-    <div style="margin-top:1rem;display:flex;gap:0.5rem;flex-wrap:wrap">
-      <span class="badge">Real-time monitoring</span>
-      <span class="badge">DL predictive models</span>
-      <span class="badge">HPC platform</span>
+<section class="hp-research" id="investigacion">
+  <div class="hp-wrap">
+    <div class="hp-section-head hp-reveal">
+      <p class="hp-eyebrow">Research lines</p>
+      <h2>Three research lines</h2>
     </div>
-  </div>
-  <div class="card">
-    <h3>⚡ HPC Platform USACH</h3>
-    <p>High-performance computing platform for data science, simulations, and numerical modeling. FONDEQUIP EQM230160 project.</p>
+    <div class="hp-research-grid hp-reveal">
+      <article class="hp-research-card">
+        <img src="/images/eso1912aa-soho-sdo-lasilla.jpg" alt="Combined image of the Sun and its surroundings from SOHO, SDO and La Silla" />
+        <div class="hp-research-body">
+          <span class="hp-research-tag">Space physics</span>
+          <h3>Radiation belts</h3>
+          <p>Relativistic electron energization and decay. Enhancement and dropout events in the outer belt. Formation and evolution of ultrarelativistic remnant belts.</p>
+        </div>
+      </article>
+      <article class="hp-research-card">
+        <img src="/images/eso1912y-solar-corona.jpg" alt="Inner and outer solar corona" />
+        <div class="hp-research-body">
+          <span class="hp-research-tag">Space physics</span>
+          <h3>ULF waves & turbulence</h3>
+          <p>Wave-particle interactions in the magnetosphere. Turbulence and total pressure balance. Solar wind—magnetosphere coupling and effects on satellites.</p>
+        </div>
+      </article>
+      <article class="hp-research-card">
+        <img src="/images/eso1912u-la-silla-eclipse.jpg" alt="Polarised solar corona during the 2019 total eclipse" />
+        <div class="hp-research-body">
+          <span class="hp-research-tag">Data science</span>
+          <h3>ML for space weather</h3>
+          <p>Prediction of ground magnetic perturbations, geomagnetically induced currents (GIC), and near real-time forecasting models with deep learning.</p>
+        </div>
+      </article>
+    </div>
   </div>
 </section>
 
-<section class="section" id="contacto">
-  <span class="section-title">Contact</span>
-  <div class="card">
-    <p><strong>Dr. Victor A. Pinto</strong> — Principal Investigator</p>
-    <p>Department of Physics, Universidad de Santiago de Chile (USACH)</p>
-    <p>Email: <a href="mailto:victor.pinto@usach.cl">victor.pinto@usach.cl</a></p>
-    <p style="margin-top:0.5rem">
-      <a href="https://instagram.com/helio.usach" target="_blank">@helio.usach (IG)</a> ·
-      <a href="https://twitter.com/vpintoa" target="_blank">@vpintoa (X)</a> ·
-      <a href="https://github.com/vpinto-space" target="_blank">GitHub</a>
-    </p>
+<section class="hp-projects" id="proyectos">
+  <div class="hp-wrap">
+    <div class="hp-section-head hp-reveal">
+      <p class="hp-eyebrow">Projects</p>
+      <h2>From basic science to critical infrastructure</h2>
+    </div>
+    <div class="hp-project-list hp-reveal">
+      <article class="hp-project-card featured">
+        <div class="hp-project-media">
+          <img src="/images/eso1035a-hd10180-system.jpg" alt="Artist's impression of a planetary system, illustrating the group's data-platform work" />
+        </div>
+        <div class="hp-project-body">
+          <p class="hp-project-kicker">FONDEF IDEA I+D — ANID</p>
+          <h3>Chilean Space Weather Platform</h3>
+          <p>Chile's first national pilot platform for real-time space weather monitoring and early warnings.</p>
+          <div class="hp-project-tags">
+            <span>Real-time monitoring</span>
+            <span>DL predictive models</span>
+            <span>HPC platform</span>
+          </div>
+        </div>
+      </article>
+      <article class="hp-project-card">
+        <div class="hp-project-media">
+          <img src="/images/eso1333c-snow-line-alma.jpg" alt="Visualization of ALMA observational data" />
+        </div>
+        <div class="hp-project-body">
+          <p class="hp-project-kicker">FONDEQUIP EQM230160</p>
+          <h3>HPC Platform USACH</h3>
+          <p>High-performance computing platform for data science, simulations, and numerical modeling.</p>
+          <div class="hp-project-tags">
+            <span>High-performance computing</span>
+            <span>Numerical simulation</span>
+          </div>
+        </div>
+      </article>
+    </div>
   </div>
 </section>
+
+<section class="hp-team" id="equipo">
+  <div class="hp-wrap">
+    <div class="hp-section-head hp-reveal">
+      <p class="hp-eyebrow">Team</p>
+      <h2>A small, growing team</h2>
+    </div>
+    <div class="hp-team-grid hp-reveal">
+      <button class="hp-team-card" type="button" aria-expanded="false">
+        <span class="initials">VP</span>
+        <span class="overlay">
+          <span class="name">Victor A. Pinto</span>
+          <span class="role">Principal investigator</span>
+          <span class="bio">Assistant Professor, Dept. of Physics USACH. Ph.D. in Atmospheric and Oceanic Sciences (Space Physics), UCLA 2019. Radiation belts, ULF waves and machine learning for space weather.</span>
+        </span>
+      </button>
+      <button class="hp-team-card" type="button" aria-expanded="false">
+        <span class="initials">MS</span>
+        <span class="overlay">
+          <span class="name">Marina Stepanova</span>
+          <span class="role">Co-investigator</span>
+          <span class="bio">Associate Professor, Dept. of Physics USACH. Magnetospheric turbulence, relativistic electron dynamics and the space weather platform.</span>
+        </span>
+      </button>
+      <button class="hp-team-card" type="button" aria-expanded="false">
+        <span class="initials">AI</span>
+        <span class="overlay">
+          <span class="name">Ana María Inostroza</span>
+          <span class="role">Master of Science in Physics, USACH</span>
+          <span class="bio">Outer radiation belt dynamics and auroral phenomena.</span>
+        </span>
+      </button>
+      <button class="hp-team-card" type="button" aria-expanded="false">
+        <span class="initials">BZ</span>
+        <span class="overlay">
+          <span class="name">Bea Zenteno-Quinteros</span>
+          <span class="role">Master of Science in Physics, USACH</span>
+          <span class="bio">Relativistic electron loss processes by electromagnetic waves.</span>
+        </span>
+      </button>
+      <button class="hp-team-card" type="button" aria-expanded="false">
+        <span class="initials">DM</span>
+        <span class="overlay">
+          <span class="name">Dafhne Muñoz Reyes</span>
+          <span class="role">Astrophysics Engineering, USACH</span>
+          <span class="bio">ML model for plasmapause location (Van Allen Probes).</span>
+        </span>
+      </button>
+      <button class="hp-team-card" type="button" aria-expanded="false">
+        <span class="initials">CP</span>
+        <span class="overlay">
+          <span class="name">Camila Peña Cifuentes</span>
+          <span class="role">Physics Engineering, USACH</span>
+          <span class="bio">Deep Learning prediction of relativistic electron flux.</span>
+        </span>
+      </button>
+    </div>
+    <a class="hp-team-more" href="/en/team">See full team →</a>
+  </div>
+</section>
+
+<section class="hp-publications" id="publicaciones">
+  <div class="hp-wrap">
+    <div class="hp-section-head hp-reveal">
+      <p class="hp-eyebrow">Publications</p>
+      <h2>Recent publications</h2>
+    </div>
+    <ul class="hp-pub-list hp-reveal">
+      <li class="hp-pub-item">
+        <span class="hp-pub-year">2026</span>
+        <div>
+          <p class="hp-pub-title">The Role of auroral phenomena in the dynamics of the outer radiation belt</p>
+          <p class="hp-pub-meta">Inostroza, A.M., ..., Pinto, V.A., et al. — JGR: Space Physics · <a href="https://doi.org/10.1029/2026JA035123" target="_blank" rel="noopener">DOI</a></p>
+        </div>
+      </li>
+      <li class="hp-pub-item">
+        <span class="hp-pub-year">2026</span>
+        <div>
+          <p class="hp-pub-title">Role of the solar wind dynamic pressure in magnetospheric turbulence</p>
+          <p class="hp-pub-meta">Stepanova, M.V., Pinto, V.A., et al. — Physica Scripta · <a href="https://doi.org/10.1088/1402-4896/ae48b2" target="_blank" rel="noopener">DOI</a></p>
+        </div>
+      </li>
+      <li class="hp-pub-item">
+        <span class="hp-pub-year">2025</span>
+        <div>
+          <p class="hp-pub-title">Radial evolution of ultrarelativistic electrons during enhancement events</p>
+          <p class="hp-pub-meta">Pinto, V.A., Espitia, Y., et al. — Physica Scripta · <a href="https://doi.org/10.1088/1402-4896/ae1332" target="_blank" rel="noopener">DOI</a></p>
+        </div>
+      </li>
+      <li class="hp-pub-item">
+        <span class="hp-pub-year">2025</span>
+        <div>
+          <p class="hp-pub-title">Using ML explainability to examine drivers of ground magnetic field localization</p>
+          <p class="hp-pub-meta">Coughlan, M., ..., Pinto, V., et al. — Space Weather · <a href="https://doi.org/10.1029/2025SW004391" target="_blank" rel="noopener">DOI</a></p>
+        </div>
+      </li>
+      <li class="hp-pub-item">
+        <span class="hp-pub-year">2025</span>
+        <div>
+          <p class="hp-pub-title">On ULF Wave Power and Changes of Relativistic Electron Fluxes</p>
+          <p class="hp-pub-meta">Lara, C., Pinto, V.A., et al. — Universe · <a href="https://doi.org/10.3390/universe11050151" target="_blank" rel="noopener">DOI</a></p>
+        </div>
+      </li>
+    </ul>
+    <a class="hp-pub-more" href="/en/research#publicaciones">See all →</a>
+  </div>
+</section>
+
+<section class="hp-news" id="noticias">
+  <div class="hp-wrap">
+    <div class="hp-section-head hp-reveal">
+      <p class="hp-eyebrow">News</p>
+      <h2>Group updates</h2>
+    </div>
+    <div class="hp-news-placeholder hp-reveal">
+      <p class="hp-eyebrow">Coming soon</p>
+      <h3>No news posted yet</h3>
+      <p>We'll soon share results, talks, and team milestones here.</p>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  (function () {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.hp-reveal').forEach(function (el) { io.observe(el); });
+
+    document.querySelectorAll('.hp-team-card').forEach(function (card) {
+      card.addEventListener('click', function () {
+        var expanded = card.getAttribute('aria-expanded') === 'true';
+        card.setAttribute('aria-expanded', String(!expanded));
+      });
+    });
+  })();
+</script>
 
 </Layout>
