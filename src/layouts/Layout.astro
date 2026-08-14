@@ -66,7 +66,7 @@ const orgSchema = {
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
-    <!-- Open Graph / Twitter Card. TODO: add og:image / twitter:image once a shared preview image exists. -->
+    <!-- Open Graph / Twitter Card -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
@@ -82,16 +82,15 @@ const orgSchema = {
   <body class={variant === 'home' ? 'hp-theme' : ''}>
     <header>
       <nav>
-        <a class="brand" href={p('/')}>
-          <span class="logo">&#8721;</span>
+        <a class="brand" href={p('/')} >
           <span>Heliof&#237;sica USACH</span>
         </a>
         <div style="display:flex;gap:1.3rem;align-items:center;flex-wrap:wrap">
-          <a href={p('/')} >{t.home}</a>
-          <a href={p('/investigacion')} >{t.research}</a>
-          <a href={p('/equipo')} >{t.team}</a>
-          <a href={p('/laboratorio')} >{t.lab}</a>
-          <a href={p('/#contacto')} >{t.contact}</a>
+          <a href="#inicio">{t.home}</a>
+          <a href="#investigacion">{t.research}</a>
+          <a href="#equipo">{t.team}</a>
+          <a href="#laboratorio">{t.lab}</a>
+          <a href="#contacto">{t.contact}</a>
           <span style="margin-left:0.5rem">
             {lang === 'es'
               ? <a href="/en/" style="color:var(--aurora-green);font-weight:600">EN</a>
@@ -132,7 +131,6 @@ const orgSchema = {
           </div>
         </div>
         <div class="hp-footer-bottom">
-          <span class="brand" style="font-size:0.95rem">&#8721; Heliofísica USACH</span>
           <span class="fine">{t.footer}</span>
         </div>
       </div>

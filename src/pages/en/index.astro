@@ -5,39 +5,17 @@ import Layout from '../../layouts/Layout.astro';
 <Layout title="Home" description="Heliophysics and Space Weather research group at Universidad de Santiago de Chile. Radiation belts, ULF waves, GIC and machine learning for space weather forecasting." variant="home">
 
 <section class="hp-hero" id="inicio">
-  <img src="/images/eso1912u-la-silla-eclipse.jpg" alt="Polarised solar corona during the 2019 total eclipse observed from La Silla" />
+  <img src="https://svs.gsfc.nasa.gov/vis/a000000/v001950/apollo17_earthrise_4096.png" alt="Earth viewed from space, showing the magnetosphere that protects us from the solar wind" loading="eager" />
   <div class="hp-hero-scrim"></div>
   <div class="hp-hero-content">
     <p class="hp-eyebrow">Universidad de Santiago de Chile — Dept. of Physics</p>
-    <h1>Where the Sun ends,<br/>space weather begins.</h1>
+    <h1>Where the Sun ends, space weather begins.</h1>
     <p class="hp-hero-sub">We study Earth's radiation belts, the waves that shake the magnetosphere, and build artificial intelligence models to forecast their effects on satellites and power grids.</p>
   </div>
-  <p class="hp-hero-credit">Polarised solar corona, 2019 La Silla total eclipse — Credit: ESA/CESAR</p>
+  <p class="hp-hero-credit">Credit: NASA / Apollo 17. The magnetosphere protects us from the solar wind.</p>
 </section>
 
-<section class="hp-intro hp-reveal">
-  <div class="hp-wrap">
-    <div class="hp-intro-grid">
-      <figure class="hp-intro-figure">
-        <img src="/images/eso1703c-alma-solar-disc.jpg" alt="The full solar disc observed by ALMA at millimeter wavelengths" />
-        <figcaption>The Sun observed at millimeter wavelengths by ALMA — the same plasma that drives space weather. Credit: ALMA (ESO/NAOJ/NRAO).</figcaption>
-      </figure>
-      <div class="hp-intro-text">
-        <p class="hp-lede">Every second, the Sun hurls charged particles and magnetic fields into space that reach Earth minutes to hours later.</p>
-        <p>That flow —calm most of the time, violent during a geomagnetic storm— tests satellites, power grids and navigation systems. At USACH's Heliophysics and Space Weather Group we measure, model, and try to anticipate that impact.</p>
-      </div>
-    </div>
-    <div class="stats">
-      <div class="stat"><div class="stat-value">14+</div><div class="stat-label">Active projects</div></div>
-      <div class="stat"><div class="stat-value">29</div><div class="stat-label">Peer-reviewed papers</div></div>
-      <div class="stat"><div class="stat-value">10+</div><div class="stat-label">Students trained</div></div>
-      <div class="stat"><div class="stat-value">4</div><div class="stat-label">Collaborating countries</div></div>
-      <div class="stat"><div class="stat-value">700+</div><div class="stat-label">Citations</div></div>
-    </div>
-  </div>
-</section>
-
-<section class="hp-research" id="investigacion">
+<section id="investigacion">
   <div class="hp-wrap">
     <div class="hp-section-head hp-reveal">
       <p class="hp-eyebrow">Research lines</p>
@@ -45,7 +23,7 @@ import Layout from '../../layouts/Layout.astro';
     </div>
     <div class="hp-research-grid hp-reveal">
       <article class="hp-research-card">
-        <img src="/images/eso1912aa-soho-sdo-lasilla.jpg" alt="Combined image of the Sun and its surroundings from SOHO, SDO and La Silla" />
+        <img src="https://svs.gsfc.nasa.gov/vis/a000000/v05760/v05760_00002_1100.jpg" alt="Van Allen radiation belts around Earth" />
         <div class="hp-research-body">
           <span class="hp-research-tag">Space physics</span>
           <h3>Radiation belts</h3>
@@ -53,15 +31,15 @@ import Layout from '../../layouts/Layout.astro';
         </div>
       </article>
       <article class="hp-research-card">
-        <img src="/images/eso1912y-solar-corona.jpg" alt="Inner and outer solar corona" />
+        <img src="https://svs.gsfc.nasa.gov/vis/a000000/v05188/v05188_00001_2500.jpg" alt="ULF waves in the Earth's magnetosphere" />
         <div class="hp-research-body">
           <span class="hp-research-tag">Space physics</span>
-          <h3>ULF waves & turbulence</h3>
+          <h3>ULF waves &amp; turbulence</h3>
           <p>Wave-particle interactions in the magnetosphere. Turbulence and total pressure balance. Solar wind—magnetosphere coupling and effects on satellites.</p>
         </div>
       </article>
       <article class="hp-research-card">
-        <img src="/images/eso1912u-la-silla-eclipse.jpg" alt="Polarised solar corona during the 2019 total eclipse" />
+        <img src="https://svs.gsfc.nasa.gov/vis/a000000/v03142/v03142_00001_2500.jpg" alt="Space weather model with geomagnetic storm forecasting" />
         <div class="hp-research-body">
           <span class="hp-research-tag">Data science</span>
           <h3>ML for space weather</h3>
@@ -69,10 +47,11 @@ import Layout from '../../layouts/Layout.astro';
         </div>
       </article>
     </div>
+    <a class="hp-more" href="/en/research">See all research lines &rarr;</a>
   </div>
 </section>
 
-<section class="hp-projects" id="proyectos">
+<section id="proyectos">
   <div class="hp-wrap">
     <div class="hp-section-head hp-reveal">
       <p class="hp-eyebrow">Projects</p>
@@ -81,12 +60,12 @@ import Layout from '../../layouts/Layout.astro';
     <div class="hp-project-list hp-reveal">
       <article class="hp-project-card featured">
         <div class="hp-project-media">
-          <img src="/images/eso1035a-hd10180-system.jpg" alt="Artist's impression of a planetary system, illustrating the group's data-platform work" />
+          <img src="https://svs.gsfc.nasa.gov/vis/a000000/v05760/v05760_00002_1100.jpg" alt="Earth's magnetosphere interacting with the solar wind" />
         </div>
         <div class="hp-project-body">
           <p class="hp-project-kicker">FONDEF IDEA I+D — ANID</p>
           <h3>Chilean Space Weather Platform</h3>
-          <p>Chile's first national pilot platform for real-time space weather monitoring and early warnings.</p>
+          <p>Chile's first national pilot platform for real-time space weather monitoring and early warnings. In collaboration with Universidad Adventista de Chile.</p>
           <div class="hp-project-tags">
             <span>Real-time monitoring</span>
             <span>DL predictive models</span>
@@ -96,7 +75,22 @@ import Layout from '../../layouts/Layout.astro';
       </article>
       <article class="hp-project-card">
         <div class="hp-project-media">
-          <img src="/images/eso1333c-snow-line-alma.jpg" alt="Visualization of ALMA observational data" />
+          <img src="https://svs.gsfc.nasa.gov/vis/a000000/v05188/v05188_00001_2500.jpg" alt="Van Allen Probes satellite data" />
+        </div>
+        <div class="hp-project-body">
+          <p class="hp-project-kicker">FONDECYT Iniciación 2025 — ANID</p>
+          <h3>ULF waves and trapped particles</h3>
+          <p>The role of electromagnetic ULF waves in the dynamics of charged particles trapped in Earth's radiation belts.</p>
+          <div class="hp-project-tags">
+            <span>Van Allen Probes</span>
+            <span>THEMIS</span>
+            <span>GOES</span>
+          </div>
+        </div>
+      </article>
+      <article class="hp-project-card">
+        <div class="hp-project-media">
+          <img src="https://svs.gsfc.nasa.gov/vis/a000000/v03142/v03142_00001_2500.jpg" alt="High-performance computing for simulations" />
         </div>
         <div class="hp-project-body">
           <p class="hp-project-kicker">FONDEQUIP EQM230160</p>
@@ -109,70 +103,71 @@ import Layout from '../../layouts/Layout.astro';
         </div>
       </article>
     </div>
+    <a class="hp-more" href="/en/research">See all projects &rarr;</a>
   </div>
 </section>
 
-<section class="hp-team" id="equipo">
+<section id="equipo">
   <div class="hp-wrap">
     <div class="hp-section-head hp-reveal">
       <p class="hp-eyebrow">Team</p>
       <h2>A small, growing team</h2>
     </div>
     <div class="hp-team-grid hp-reveal">
-      <button class="hp-team-card" type="button" aria-expanded="false">
+      <a class="hp-team-card" href="https://victorapinto.com" target="_blank" rel="noopener">
         <span class="initials">VP</span>
         <span class="overlay">
           <span class="name">Victor A. Pinto</span>
           <span class="role">Principal investigator</span>
-          <span class="bio">Assistant Professor, Dept. of Physics USACH. Ph.D. in Atmospheric and Oceanic Sciences (Space Physics), UCLA 2019. Radiation belts, ULF waves and machine learning for space weather.</span>
+          <span class="bio">Assistant Professor, Dept. of Physics USACH. Ph.D. UCLA 2019. Radiation belts, ULF waves and machine learning for space weather.</span>
         </span>
-      </button>
-      <button class="hp-team-card" type="button" aria-expanded="false">
+      </a>
+      <a class="hp-team-card" href="#equipo">
         <span class="initials">MS</span>
         <span class="overlay">
           <span class="name">Marina Stepanova</span>
           <span class="role">Co-investigator</span>
           <span class="bio">Associate Professor, Dept. of Physics USACH. Magnetospheric turbulence, relativistic electron dynamics and the space weather platform.</span>
         </span>
-      </button>
-      <button class="hp-team-card" type="button" aria-expanded="false">
+      </a>
+      <a class="hp-team-card" href="#equipo">
         <span class="initials">AI</span>
         <span class="overlay">
           <span class="name">Ana María Inostroza</span>
-          <span class="role">Master of Science in Physics, USACH</span>
+          <span class="role">Master of Science in Physics</span>
           <span class="bio">Outer radiation belt dynamics and auroral phenomena.</span>
         </span>
-      </button>
-      <button class="hp-team-card" type="button" aria-expanded="false">
+      </a>
+      <a class="hp-team-card" href="#equipo">
         <span class="initials">BZ</span>
         <span class="overlay">
           <span class="name">Bea Zenteno-Quinteros</span>
-          <span class="role">Master of Science in Physics, USACH</span>
+          <span class="role">Master of Science in Physics</span>
           <span class="bio">Relativistic electron loss processes by electromagnetic waves.</span>
         </span>
-      </button>
-      <button class="hp-team-card" type="button" aria-expanded="false">
+      </a>
+      <a class="hp-team-card" href="#equipo">
         <span class="initials">DM</span>
         <span class="overlay">
           <span class="name">Dafhne Muñoz Reyes</span>
           <span class="role">Astrophysics Engineering, USACH</span>
           <span class="bio">ML model for plasmapause location (Van Allen Probes).</span>
         </span>
-      </button>
-      <button class="hp-team-card" type="button" aria-expanded="false">
+      </a>
+      <a class="hp-team-card" href="#equipo">
         <span class="initials">CP</span>
         <span class="overlay">
           <span class="name">Camila Peña Cifuentes</span>
           <span class="role">Physics Engineering, USACH</span>
           <span class="bio">Deep Learning prediction of relativistic electron flux.</span>
         </span>
-      </button>
+      </a>
     </div>
-    <a class="hp-team-more" href="/en/team">See full team →</a>
+    <a class="hp-more" href="/en/team">See full team &rarr;</a>
   </div>
 </section>
 
-<section class="hp-publications" id="publicaciones">
+<section id="publicaciones">
   <div class="hp-wrap">
     <div class="hp-section-head hp-reveal">
       <p class="hp-eyebrow">Publications</p>
@@ -215,20 +210,31 @@ import Layout from '../../layouts/Layout.astro';
         </div>
       </li>
     </ul>
-    <a class="hp-pub-more" href="/en/research#publicaciones">See all →</a>
+    <a class="hp-more" href="/en/research#publicaciones">See all publications &rarr;</a>
   </div>
 </section>
 
-<section class="hp-news" id="noticias">
+<section id="laboratorio">
   <div class="hp-wrap">
     <div class="hp-section-head hp-reveal">
-      <p class="hp-eyebrow">News</p>
-      <h2>Group updates</h2>
+      <p class="hp-eyebrow">Laboratory</p>
+      <h2>Computing infrastructure</h2>
     </div>
-    <div class="hp-news-placeholder hp-reveal">
-      <p class="hp-eyebrow">Coming soon</p>
-      <h3>No news posted yet</h3>
-      <p>We'll soon share results, talks, and team milestones here.</p>
+    <div class="hp-reveal">
+      <p class="hp-hero-sub" style="color:var(--text-secondary);max-width:65ch">
+        Our group operates on the USACH HPC Platform (FONDEQUIP EQM230160), equipped with high-performance computing clusters for numerical simulations and deep learning models. We process satellite data from Van Allen Probes, THEMIS, GOES and MMS with open source tools (Python, pandas, scikit-learn, PyTorch).
+      </p>
+    </div>
+    <a class="hp-more" href="/en/lab">See full infrastructure &rarr;</a>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="hp-wrap">
+    <div class="hp-section-head hp-reveal">
+      <p class="hp-eyebrow">Contact</p>
+      <h2>Interested in research with us?</h2>
+      <p>We are looking for students for master's and undergraduate projects on relativistic electron dynamics, geomagnetic storm forecasting, induced currents (GIC), and satellite data processing.</p>
     </div>
   </div>
 </section>
@@ -241,13 +247,6 @@ import Layout from '../../layouts/Layout.astro';
       });
     }, { threshold: 0.12 });
     document.querySelectorAll('.hp-reveal').forEach(function (el) { io.observe(el); });
-
-    document.querySelectorAll('.hp-team-card').forEach(function (card) {
-      card.addEventListener('click', function () {
-        var expanded = card.getAttribute('aria-expanded') === 'true';
-        card.setAttribute('aria-expanded', String(!expanded));
-      });
-    });
   })();
 </script>
 
