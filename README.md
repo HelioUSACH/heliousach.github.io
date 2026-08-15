@@ -6,15 +6,14 @@ Source for the [HelioFísica y Clima Espacial USACH](https://heliousach.github.i
 
 ```
 src/
-├── layouts/Layout.astro     # shared shell: nav, footer, meta tags
+├── layouts/Layout.astro     # shared shell: nav, footer, meta tags, scripts
 ├── pages/                    # Spanish routes (default locale)
 │   ├── index.astro
 │   ├── investigacion.astro
 │   ├── equipo.astro
 │   ├── laboratorio.astro
 │   └── en/                   # English routes
-├── styles/global.css         # design tokens + shared styles
-└── i18n/ui.ts                # nav/footer string translations
+└── styles/global.css         # design tokens + shared styles
 scripts/inline-css.py         # postbuild: inlines CSS into HTML (see below)
 ```
 

@@ -93,7 +93,7 @@ import Layout from '../layouts/Layout.astro';
           <img src="https://svs.gsfc.nasa.gov/vis/a000000/v03142/v03142_00001_2500.jpg" alt="Cómputo de alto rendimiento para simulaciones" />
         </div>
         <div class="hp-project-body">
-          <p class="hp-project-kicker">FONDEQUIP EQM230160</p>
+          <p class="hp-project-kicker">FONDEQUIP 2023</p>
           <h3>Plataforma HPC USACH</h3>
           <p>Plataforma de cómputo de alto rendimiento para ciencia de datos, simulaciones y modelamiento numérico.</p>
           <div class="hp-project-tags">
@@ -222,32 +222,21 @@ import Layout from '../layouts/Layout.astro';
     </div>
     <div class="hp-reveal">
       <p class="hp-hero-sub" style="color:var(--text-secondary);max-width:65ch">
-        Nuestro grupo opera en la Plataforma HPC de la USACH (FONDEQUIP EQM230160), equipada con cl&#250;steres de c&#243;mputo de alto rendimiento para simulaciones num&#233;ricas y modelos de deep learning. Procesamos datos satelitales de Van Allen Probes, THEMIS, GOES y MMS con herramientas open source (Python, pandas, scikit-learn, PyTorch).
+        Nuestro grupo opera en la Plataforma HPC de la USACH (FONDEQUIP 2023), equipada con cl&#250;steres de c&#243;mputo de alto rendimiento para simulaciones num&#233;ricas y modelos de deep learning. Procesamos datos satelitales de Van Allen Probes, THEMIS, GOES y MMS con herramientas open source (Python, pandas, scikit-learn, PyTorch).
       </p>
     </div>
     <a class="hp-more" href="/laboratorio">Ver infraestructura completa &rarr;</a>
   </div>
 </section>
 
-<section id="contacto">
+<section class="contact-section" aria-label="Contacto">
   <div class="hp-wrap">
     <div class="hp-section-head hp-reveal">
       <p class="hp-eyebrow">Contacto</p>
-      <h2>&iquest;Te interesa investigar con nosotros?</h2>
+      <h2>¿Te interesa investigar con nosotros?</h2>
       <p>Estamos buscando estudiantes para proyectos de mag&#237;ster y pregrado en din&#225;mica de electrones relativistas, predicci&#243;n de tormentas geomagn&#233;ticas, corrientes inducidas (GIC) y procesamiento de datos satelitales.</p>
     </div>
   </div>
 </section>
-
-<script is:inline>
-  (function () {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.hp-reveal').forEach(function (el) { io.observe(el); });
-  })();
-</script>
 
 </Layout>

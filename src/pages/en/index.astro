@@ -93,7 +93,7 @@ import Layout from '../../layouts/Layout.astro';
           <img src="https://svs.gsfc.nasa.gov/vis/a000000/v03142/v03142_00001_2500.jpg" alt="High-performance computing for simulations" />
         </div>
         <div class="hp-project-body">
-          <p class="hp-project-kicker">FONDEQUIP EQM230160</p>
+          <p class="hp-project-kicker">FONDEQUIP 2023</p>
           <h3>HPC Platform USACH</h3>
           <p>High-performance computing platform for data science, simulations, and numerical modeling.</p>
           <div class="hp-project-tags">
@@ -222,14 +222,14 @@ import Layout from '../../layouts/Layout.astro';
     </div>
     <div class="hp-reveal">
       <p class="hp-hero-sub" style="color:var(--text-secondary);max-width:65ch">
-        Our group operates on the USACH HPC Platform (FONDEQUIP EQM230160), equipped with high-performance computing clusters for numerical simulations and deep learning models. We process satellite data from Van Allen Probes, THEMIS, GOES and MMS with open source tools (Python, pandas, scikit-learn, PyTorch).
+        Our group operates on the USACH HPC Platform (FONDEQUIP 2023), equipped with high-performance computing clusters for numerical simulations and deep learning models. We process satellite data from Van Allen Probes, THEMIS, GOES and MMS with open source tools (Python, pandas, scikit-learn, PyTorch).
       </p>
     </div>
     <a class="hp-more" href="/en/lab">See full infrastructure &rarr;</a>
   </div>
 </section>
 
-<section id="contacto">
+<section class="contact-section" aria-label="Contact">
   <div class="hp-wrap">
     <div class="hp-section-head hp-reveal">
       <p class="hp-eyebrow">Contact</p>
@@ -238,16 +238,5 @@ import Layout from '../../layouts/Layout.astro';
     </div>
   </div>
 </section>
-
-<script is:inline>
-  (function () {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.hp-reveal').forEach(function (el) { io.observe(el); });
-  })();
-</script>
 
 </Layout>
