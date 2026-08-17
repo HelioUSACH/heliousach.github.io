@@ -363,7 +363,6 @@ nav a:hover { color: var(--ink); }
 }
 
 .hp-project-card.featured {
-  border-color: var(--accent-primary);
 }
 
 .hp-project-media { position: relative; width: 100%; height: 280px; }
