@@ -22,6 +22,7 @@
   --surface: #0b0f14;
   --surface-raised: #131a22;
   --surface-alt: #0d1520;
+  --section-alt: #0f1a2a;
   --ink: #eef1f4;
   --ink-soft: #b7c0c9;
   --ink-faint: #7c8794;
@@ -46,6 +47,7 @@
   --surface: #ffffff;
   --surface-raised: #ffffff;
   --surface-alt: #f0f2f4;
+  --section-alt: #e8edf1;
   --ink: #16181b;
   --ink-soft: #474e57;
   --ink-faint: #7c848d;
@@ -152,7 +154,9 @@ nav a:hover { color: var(--ink); }
 /* ========== hero ========== */
 .hp-hero {
   position: relative;
-  width: 100%;
+  left: 50%;
+  width: 100vw;
+  margin-left: -50vw;
   min-height: 80vh;
   display: flex;
   flex-direction: column;
@@ -248,9 +252,11 @@ nav a:hover { color: var(--ink); }
 
 /* ========== alternating section backgrounds (full-width) ========== */
 .hp-section-alt {
-  background: var(--surface-alt);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  position: relative;
+  left: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  background: var(--section-alt);
 }
 
 /* ========== stats ========== */
@@ -360,7 +366,7 @@ nav a:hover { color: var(--ink); }
   border-color: var(--accent-primary);
 }
 
-.hp-project-media { position: relative; min-height: 300px; }
+.hp-project-media { position: relative; width: 100%; height: 280px; }
 .hp-project-media img { width: 100%; height: 100%; object-fit: cover; }
 
 .hp-project-body {
