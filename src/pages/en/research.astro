@@ -2,12 +2,12 @@
 import Layout from '../../layouts/Layout.astro';
 ---
 
-<Layout title="Research" description="Research lines, active projects and publications of the HelioFísica y Clima Espacial USACH group.">
+<Layout title="Research" description="Research lines, active projects and publications of the HelioFísica and Space Weather USACH group.">
 
 <section>
   <span class="section-title">Research</span>
   <h1>Research</h1>
-  <p class="lead">Van Allen radiation belt physics, ULF waves, magnetospheric turbulence, and space weather prediction with machine learning.</p>
+  <p class="lead">Van Allen radiation belt physics, ULF waves, magnetospheric turbulence, solar wind—magnetosphere coupling, and space weather prediction with machine learning.</p>
 </section>
 
 <section class="section">
@@ -16,76 +16,77 @@ import Layout from '../../layouts/Layout.astro';
   <div class="card" style="margin-bottom:1rem">
     <span class="badge badge-green">Space physics</span>
     <h3>Radiation belt dynamics</h3>
-    <p>Mechanisms of energization, transport, and decay of relativistic electrons in the Van Allen belts. Enhancement and dropout events. Formation of ultrarelativistic remnant belts. Radial response to geomagnetic storms.</p>
+    <p>Mechanisms of energization, transport, and decay of relativistic electrons in the Van Allen belts. Enhancement and dropout events during geomagnetic storms. Formation, evolution, and decay of ultrarelativistic remnant belts. Adiabatic and non-adiabatic processes in the outer radiation belt. Auroral phenomena and their influence on radiation belt dynamics.</p>
     <p class="meta">Data: Van Allen Probes (MagEIS, REPT, EMFISIS, EFW), GOES, THEMIS</p>
   </div>
 
   <div class="card" style="margin-bottom:1rem">
     <span class="badge badge-green">Space physics</span>
-    <h3>ULF waves & magnetospheric turbulence</h3>
-    <p>Role of electromagnetic ULF waves in trapped charged particle dynamics. Magnetospheric turbulence, total pressure balance, and wave-particle interactions.</p>
+    <h3>ULF waves and magnetospheric turbulence</h3>
+    <p>Role of electromagnetic ULF waves in trapped charged particle dynamics. Magnetospheric turbulence and total pressure balance during storms and substorms. Eddy diffusion coefficients in the plasma sheet (THEMIS observations). Wave-particle interactions and relativistic electron loss processes.</p>
     <p class="meta">Data: Magnetometers (SAMBA, MACCS, THEMIS GBO, CARISMA), SuperDARN, THEMIS</p>
   </div>
 
   <div class="card" style="margin-bottom:1rem">
     <span class="badge badge-orange">Data science</span>
-    <h3>Machine Learning for space weather</h3>
-    <p>Prediction models for ground magnetic perturbations, geomagnetically induced currents (GIC), and empirical forecasting using deep learning (RNN, CNN, LSTM).</p>
+    <h3>Space weather prediction with Machine Learning</h3>
+    <p>Prediction of ground magnetic perturbations and geomagnetically induced currents (GIC). Probabilistic forecasting using deep learning (RNN, CNN, LSTM). ML model explainability for operational space weather (SHAP, LIME). Plasmapause location with machine learning.</p>
     <p class="meta">Tools: Python, TensorFlow-Keras, PyTorch, Scikit-learn. Real-time OMNI data</p>
+  </div>
+
+  <div class="card" style="margin-bottom:1rem">
+    <span class="badge badge-green">Space physics</span>
+    <h3>Solar wind — magnetosphere coupling</h3>
+    <p>Solar wind dynamic pressure effects on magnetospheric turbulence. Foreshock transients and magnetospheric perturbations (NASA LWS). Expanding plasma systems: solar and stellar winds. Adiabatic invariants and non-adiabatic mechanisms in solar wind expansion.</p>
+    <p class="meta">Data: OMNI, THEMIS, Van Allen Probes, GOES</p>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<section class="section">
+<section class="section" id="proyectos">
   <span class="section-title">Active projects</span>
   <div class="grid">
     <div class="card">
       <h3>FONDECYT Initiation 2025</h3>
       <p><strong>PI:</strong> Dr. Victor Pinto</p>
-      <p>Role of electromagnetic ULF waves on the dynamics of trapped charged particles</p>
+      <p>The role of electromagnetic ULF waves on the dynamics of trapped charged particles</p>
       <p class="meta">2025-2028 · ANID</p>
     </div>
     <div class="card">
       <h3>FONDECYT Regular 2025</h3>
-      <p><strong>Co-I:</strong> Dr. Victor Pinto (PI: M. Stepanova)</p>
+      <p><strong>PI:</strong> Prof. Marina Stepanova · <strong>Co-I:</strong> Dr. Victor Pinto</p>
       <p>Turbulence and total pressure balance in the interconnected dynamic magnetosphere</p>
       <p class="meta">2025-2029 · ANID</p>
     </div>
     <div class="card">
       <h3>FONDECYT Regular 2024</h3>
-      <p><strong>Co-I:</strong> Dr. Victor Pinto (PI: P.S. Moya)</p>
+      <p><strong>PI:</strong> P.S. Moya · <strong>Co-I:</strong> Dr. Victor Pinto</p>
       <p>Macro and micro physics of expanding plasma systems: solar and stellar winds</p>
       <p class="meta">2024-2028 · ANID</p>
     </div>
     <div class="card">
-      <h3>FONDEQUIP 2023</h3>
-      <p><strong>PI:</strong> Dr. Victor Pinto</p>
-      <p>HPC Platform for Data Science, Simulations, and Numerical Modeling</p>
-      <p class="meta">2024-2027 · ANID</p>
-    </div>
-    <div class="card">
       <h3>FONDEF IDEA I+D 2025</h3>
-      <p><strong>PI:</strong> Dr. Victor Pinto</p>
-      <p>National Space Weather Platform for Chile</p>
+      <p><strong>PI:</strong> Dr. Victor Pinto · <strong>Co-Director:</strong> Prof. Marina Stepanova</p>
+      <p>Chilean Space Weather Platform</p>
       <p class="meta">2025-2027 · FONDEF/ANID</p>
     </div>
     <div class="card">
       <h3>NASA LWS</h3>
-      <p><strong>Collaborator:</strong> Dr. Victor Pinto</p>
+      <p><strong>PI:</strong> A. Keesee (UNH) · <strong>Collaborator:</strong> Dr. Victor Pinto</p>
       <p>Foreshock Transients Impact on Magnetospheric Perturbations</p>
-      <p class="meta">2022-2027 · NASA (PI: A. Keesee, UNH)</p>
+      <p class="meta">2022-2027 · NASA</p>
     </div>
     <div class="card">
       <h3>CNPq Conhecimento Brasil</h3>
-      <p><strong>Co-I:</strong> Dr. Victor Pinto</p>
+      <p><strong>PI:</strong> J.P. Marchezi (INPE) · <strong>Co-I:</strong> Dr. Victor Pinto</p>
       <p>GICs in Brazil and particle precipitation in the South Atlantic Anomaly</p>
-      <p class="meta">2025-2029 · CNPq (PI: J.P. Marchezi, INPE)</p>
+      <p class="meta">2025-2029 · CNPq</p>
     </div>
     <div class="card">
-      <h3>USACH DICYT</h3>
+      <h3>DICYT USACH</h3>
       <p><strong>PI:</strong> Dr. Victor Pinto</p>
-      <p>Internal research: solar wind micro/macro physics, adiabatic and non-adiabatic mechanisms</p>
+      <p>ULF wave dynamics, solar wind adiabatic invariants, phase space density of relativistic electrons</p>
       <p class="meta">2024-2027 · USACH</p>
     </div>
   </div>
@@ -93,7 +94,7 @@ import Layout from '../../layouts/Layout.astro';
 
 <div class="divider"></div>
 
-<section class="section">
+<section class="section" id="publicaciones">
   <span class="section-title">Selected recent publications</span>
   <p class="meta">Full list: <a href="https://scholar.google.com/citations?user=nEqGWqoAAAAJ" target="_blank">Google Scholar</a> · <a href="https://orcid.org/0000-0003-1210-167X" target="_blank">ORCID</a></p>
 

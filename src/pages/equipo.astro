@@ -11,30 +11,31 @@ import Layout from '../layouts/Layout.astro';
 </section>
 
 <section class="section">
-  <span class="section-title">Investigador Principal</span>
-  <div class="card">
-    <h3>Dr. Victor A. Pinto Abarzúa</h3>
-    <p><strong>Profesor Asistente</strong> · Departamento de Física, USACH</p>
-    <p>Ph.D. en Ciencias Atmosféricas y Oceánicas (Física Espacial), UCLA 2019. Postdoctorado en UNH (2020-2022). Investigador en cinturones de radiación, ondas ULF, clima espacial y machine learning.</p>
-    <div style="margin-top:0.75rem">
-      <a href="https://victorapinto.com" target="_blank" rel="noopener">Sitio personal</a> ·
-      <a href="https://scholar.google.com/citations?user=nEqGWqoAAAAJ" target="_blank">Google Scholar</a> ·
-      <a href="https://orcid.org/0000-0003-1210-167X" target="_blank">ORCID</a>
+  <span class="section-title">Investigadores Principales</span>
+  <div class="grid">
+    <div class="card">
+      <h3>Dr. Victor A. Pinto Abarzúa</h3>
+      <p><strong>Profesor Asistente</strong> · Departamento de Física, USACH</p>
+      <p>Ph.D. en Ciencias Atmosféricas y Oceánicas (Física Espacial), UCLA 2019. Postdoctorado en UNH (2020-2022). Investigador en cinturones de radiación, ondas ULF, clima espacial y machine learning.</p>
+      <div style="margin-top:0.75rem">
+        <a href="https://victorapinto.com" target="_blank" rel="noopener">Sitio personal</a> ·
+        <a href="https://scholar.google.com/citations?user=nEqGWqoAAAAJ" target="_blank">Google Scholar</a> ·
+        <a href="https://orcid.org/0000-0003-1210-167X" target="_blank">ORCID</a>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Dra. Marina Stepanova</h3>
+      <p><strong>Profesora</strong> · Departamento de Física, USACH</p>
+      <p>Ph.D. en Astrofísica, Instituto Skobeltsyn, Universidad Estatal de Moscú. Investigadora en plasmas espaciales, dinámica magnetosférica, turbulencia, tormentas y subtormentas geomagnéticas. En USACH desde 1995. Jefa de la carrera de Astrofísica con mención en Ciencia de Datos.</p>
+      <div style="margin-top:0.75rem">
+        <a href="https://scholar.google.com/citations?user=Rb-PfE4AAAAJ" target="_blank">Google Scholar</a>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="section">
-  <span class="section-title">Co-Investigadora</span>
-  <div class="card">
-    <h3>Dra. Marina Stepanova</h3>
-    <p><strong>Profesora Asociada</strong> · Departamento de Física, USACH</p>
-    <p>Colaboradora en turbulencia magnetosférica, dinámica de electrones relativistas y plataforma de clima espacial.</p>
-  </div>
-</section>
-
-<section class="section">
-  <span class="section-title">Estudiantes de magíster</span>
+  <span class="section-title">Estudiantes actuales</span>
   <div class="grid">
     <div class="card">
       <h3>Ana María Inostroza</h3>
@@ -45,6 +46,11 @@ import Layout from '../layouts/Layout.astro';
       <h3>Bea Zenteno-Quinteros</h3>
       <p>Magíster en Ciencias Físicas, USACH</p>
       <p class="meta">Procesos de pérdida de electrones relativistas por ondas electromagnéticas</p>
+    </div>
+    <div class="card">
+      <h3>Paula Reyes</h3>
+      <p>Magíster en Ciencias Físicas, UdeChile</p>
+      <p class="meta">Tormentas geomagnéticas y su relación con las fases del ciclo solar</p>
     </div>
     <div class="card">
       <h3>Dafhne Muñoz Reyes</h3>
@@ -82,10 +88,41 @@ import Layout from '../layouts/Layout.astro';
       <p>Ingeniería en Astrofísica, USACH (2024)</p>
       <p class="meta">Modelos de predicción de índices aurorales usando Deep Learning</p>
     </div>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-title">Colaboradores internacionales</span>
+  <div class="grid">
     <div class="card">
-      <h3>Paula Reyes</h3>
-      <p>Magíster en Ciencias Físicas, UdeChile (en curso)</p>
-      <p class="meta">Tormentas geomagnéticas y su relación con las fases del ciclo solar</p>
+      <h3>Prof. Alan Keesee</h3>
+      <p>University of New Hampshire (UNH)</p>
+      <p class="meta">NASA LWS — perturbaciones del campo magnético, predicción de clima espacial</p>
+    </div>
+    <div class="card">
+      <h3>Prof. José Paulo Marchezi</h3>
+      <p>INPE, Brasil</p>
+      <p class="meta">CNPq — GICs en Brasil, Anomalía del Atlántico Sur</p>
+    </div>
+    <div class="card">
+      <h3>Dr. Eugenia E. Antonova</h3>
+      <p>Instituto de Geofísica, Academia de Ciencias de Rusia</p>
+      <p class="meta">Dinámica del cinturón externo, fenómenos aurorales</p>
+    </div>
+    <div class="card">
+      <h3>Prof. Pablo S. Moya</h3>
+      <p>Departamento de Física, USACH</p>
+      <p class="meta">Física de sistemas de plasma en expansión, viento solar</p>
+    </div>
+    <div class="card">
+      <h3>Prof. Daniel Mourenas</h3>
+      <p>IPAG, Université Grenoble Alpes, Francia</p>
+      <p class="meta">Cinturones remanentes ultrarelativistas, interacción onda-partícula</p>
+    </div>
+    <div class="card">
+      <h3>Prof. Byron Gallardo-Lacourt</h3>
+      <p>Northwest Territories, Canadá</p>
+      <p class="meta">STEVE, fenómenos aurorales</p>
     </div>
   </div>
 </section>
@@ -93,15 +130,16 @@ import Layout from '../layouts/Layout.astro';
 <section class="section">
   <span class="section-title">¿Te interesa investigar con nosotros?</span>
   <div class="card" style="border-color:var(--border-accent)">
-    <p>Estamos buscando estudiantes para proyectos de magíster y pregrado:</p>
+    <p>Estamos buscando estudiantes de magíster y pregrado para proyectos de investigación:</p>
     <ul style="margin:1rem 0 0 1.5rem">
       <li>Dinámica de electrones relativistas en el cinturón externo</li>
       <li>Predicción de tormentas geomagnéticas con Deep Learning</li>
       <li>Corrientes inducidas geomagnéticamente (GIC)</li>
       <li>Procesamiento de datos satelitales (Van Allen Probes, THEMIS, GOES)</li>
       <li>Turbulencia y balance de presión en la magnetosfera</li>
+      <li>Acoplamiento viento solar — magnetosfera</li>
     </ul>
-    <p style="margin-top:1rem">Si eres estudiante de ingeniería física, astrofísica o ciencias afines, escríbenos a <a href="mailto:victor.pinto@usach.cl">victor.pinto@usach.cl</a></p>
+    <p style="margin-top:1rem">Si eres estudiante de ingeniería física, astrofísica o carreras afines, escríbenos a <a href="mailto:victor.pinto@usach.cl">victor.pinto@usach.cl</a></p>
   </div>
 </section>
 

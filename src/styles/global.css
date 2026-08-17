@@ -301,7 +301,7 @@ nav a:hover { color: var(--ink); }
   margin-top: 2.6rem;
   padding-bottom: 2.5rem;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr 1fr;
   gap: 1.4rem;
 }
 

@@ -7,29 +7,30 @@ import Layout from '../../layouts/Layout.astro';
 <section>
   <span class="section-title">Team</span>
   <h1>Our team</h1>
-  <p class="lead">Researchers, master's and undergraduate students of the HelioFísica and Space Weather group at USACH.</p>
+  <p class="lead">Researchers, master's and undergraduate students of the Heliophysics and Space Weather group at USACH.</p>
 </section>
 
 <section class="section">
-  <span class="section-title">Principal Investigator</span>
-  <div class="card">
-    <h3>Dr. Victor A. Pinto Abarzúa</h3>
-    <p><strong>Assistant Professor</strong> · Department of Physics, USACH</p>
-    <p>Ph.D. in Atmospheric and Oceanic Sciences (Space Physics), UCLA 2019. Postdoc at UNH (2020-2022). Researcher in radiation belts, ULF waves, space weather and machine learning.</p>
-    <div style="margin-top:0.75rem">
-      <a href="https://victorapinto.com" target="_blank" rel="noopener">Personal site</a> ·
-      <a href="https://scholar.google.com/citations?user=nEqGWqoAAAAJ" target="_blank">Google Scholar</a> ·
-      <a href="https://orcid.org/0000-0003-1210-167X" target="_blank">ORCID</a>
+  <span class="section-title">Principal Investigators</span>
+  <div class="grid">
+    <div class="card">
+      <h3>Dr. Victor A. Pinto Abarzúa</h3>
+      <p><strong>Assistant Professor</strong> · Department of Physics, USACH</p>
+      <p>Ph.D. in Atmospheric and Oceanic Sciences (Space Physics), UCLA 2019. Postdoc at UNH (2020-2022). Researcher in radiation belts, ULF waves, space weather and machine learning.</p>
+      <div style="margin-top:0.75rem">
+        <a href="https://victorapinto.com" target="_blank" rel="noopener">Personal site</a> ·
+        <a href="https://scholar.google.com/citations?user=nEqGWqoAAAAJ" target="_blank">Google Scholar</a> ·
+        <a href="https://orcid.org/0000-0003-1210-167X" target="_blank">ORCID</a>
+      </div>
     </div>
-  </div>
-</section>
-
-<section class="section">
-  <span class="section-title">Co-Investigator</span>
-  <div class="card">
-    <h3>Dra. Marina Stepanova</h3>
-    <p><strong>Associate Professor</strong> · Department of Physics, USACH</p>
-    <p>Collaborator in magnetospheric turbulence, relativistic electron dynamics and the space weather platform.</p>
+    <div class="card">
+      <h3>Prof. Marina Stepanova</h3>
+      <p><strong>Professor</strong> · Department of Physics, USACH</p>
+      <p>Ph.D. in Astrophysics, Skobeltsyn Institute, Moscow State University. Researcher in space plasmas, magnetospheric dynamics, turbulence, geomagnetic storms and substorms. At USACH since 1995. Head of the B.S. Astrophysics + Data Science degree program.</p>
+      <div style="margin-top:0.75rem">
+        <a href="https://scholar.google.com/citations?user=Rb-PfE4AAAAJ" target="_blank">Google Scholar</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -45,6 +46,11 @@ import Layout from '../../layouts/Layout.astro';
       <h3>Bea Zenteno-Quinteros</h3>
       <p>Master of Science in Physics, USACH</p>
       <p class="meta">Relativistic electron loss processes by electromagnetic waves</p>
+    </div>
+    <div class="card">
+      <h3>Paula Reyes</h3>
+      <p>Master of Science in Physics, UdeChile</p>
+      <p class="meta">Geomagnetic storms and their relation with solar cycle phases</p>
     </div>
     <div class="card">
       <h3>Dafhne Muñoz Reyes</h3>
@@ -82,10 +88,41 @@ import Layout from '../../layouts/Layout.astro';
       <p>Astrophysics Engineering, USACH (2024)</p>
       <p class="meta">Deep Learning models for auroral index prediction</p>
     </div>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-title">International collaborators</span>
+  <div class="grid">
     <div class="card">
-      <h3>Paula Reyes</h3>
-      <p>Master of Science in Physics, UdeChile (current)</p>
-      <p class="meta">Geomagnetic storms and their relation with solar cycle phases</p>
+      <h3>Prof. Alan Keesee</h3>
+      <p>University of New Hampshire (UNH)</p>
+      <p class="meta">NASA LWS — ground magnetic perturbations, space weather prediction</p>
+    </div>
+    <div class="card">
+      <h3>Prof. José Paulo Marchezi</h3>
+      <p>INPE, Brazil</p>
+      <p class="meta">CNPq — GICs in Brazil, South Atlantic Anomaly</p>
+    </div>
+    <div class="card">
+      <h3>Dr. Eugenia E. Antonova</h3>
+      <p>Geophysical Institute, Russian Academy of Sciences</p>
+      <p class="meta">Outer radiation belt dynamics, auroral phenomena</p>
+    </div>
+    <div class="card">
+      <h3>Prof. Pablo S. Moya</h3>
+      <p>Department of Physics, USACH</p>
+      <p class="meta">Physics of expanding plasma systems, solar wind</p>
+    </div>
+    <div class="card">
+      <h3>Prof. Daniel Mourenas</h3>
+      <p>IPAG, Université Grenoble Alpes, France</p>
+      <p class="meta">Ultrarelativistic remnant belts, wave-particle interactions</p>
+    </div>
+    <div class="card">
+      <h3>Prof. Byron Gallardo-Lacourt</h3>
+      <p>Northwest Territories, Canada</p>
+      <p class="meta">STEVE, auroral phenomena</p>
     </div>
   </div>
 </section>
@@ -93,13 +130,14 @@ import Layout from '../../layouts/Layout.astro';
 <section class="section">
   <span class="section-title">Interested in working with us?</span>
   <div class="card" style="border-color:var(--border-accent)">
-    <p>We are looking for students for master's and undergraduate research projects:</p>
+    <p>We are looking for master's and undergraduate students for research projects:</p>
     <ul style="margin:1rem 0 0 1.5rem">
       <li>Relativistic electron dynamics in the outer radiation belt</li>
       <li>Geomagnetic storm prediction with Deep Learning</li>
       <li>Geomagnetically induced currents (GIC)</li>
       <li>Satellite data processing (Van Allen Probes, THEMIS, GOES)</li>
       <li>Turbulence and pressure balance in the magnetosphere</li>
+      <li>Solar wind — magnetosphere coupling</li>
     </ul>
     <p style="margin-top:1rem">If you are a physics, astrophysics, or related science student, email us at <a href="mailto:victor.pinto@usach.cl">victor.pinto@usach.cl</a></p>
   </div>

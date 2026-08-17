@@ -2,15 +2,15 @@
 import Layout from '../../layouts/Layout.astro';
 ---
 
-<Layout title="Home" description="Heliophysics and Space Weather research group at Universidad de Santiago de Chile. Radiation belts, ULF waves, GIC and machine learning for space weather forecasting." variant="home">
+<Layout title="Home" description="Heliophysics and Space Weather research group at Universidad de Santiago de Chile. Radiation belts, ULF waves, magnetospheric turbulence, and space weather prediction." variant="home">
 
 <section class="hp-hero" id="inicio">
   <img src="/images/earth-hero.jpg" alt="View of the solar system from the Parker Solar Probe mission" loading="eager" />
   <div class="hp-hero-scrim"></div>
   <div class="hp-hero-content">
-    <p class="hp-eyebrow">Universidad de Santiago de Chile — Dept. of Physics</p>
-    <h1>Where the Sun ends, space weather begins.</h1>
-    <p class="hp-hero-sub">We study Earth's radiation belts, the waves that shake the magnetosphere, and build artificial intelligence models to forecast their effects on satellites and power grids.</p>
+    <p class="hp-eyebrow">Universidad de Santiago de Chile — Department of Physics</p>
+    <h1>Heliophysics and Space Weather</h1>
+    <p class="hp-hero-sub">We study the Earth's magnetosphere, radiation belts, and solar wind coupling using satellite data and ground-based observations. Our group develops machine learning tools for space weather prediction and contributes to Chile's first national space weather monitoring platform.</p>
   </div>
   <p class="hp-hero-credit">Credit: NASA/PSPL/PIA23789</p>
 </section>
@@ -18,36 +18,44 @@ import Layout from '../../layouts/Layout.astro';
 <section id="investigacion">
   <div class="hp-wrap">
     <div class="hp-section-head hp-reveal">
-      <p class="hp-eyebrow">Research lines</p>
-      <h2>Three research lines</h2>
+      <p class="hp-eyebrow">Research</p>
+      <h2>Our research lines</h2>
     </div>
     <div class="hp-research-grid hp-reveal">
       <article class="hp-research-card">
         <img src="/images/radiation-belts.jpg" alt="Van Allen radiation belts around Earth" />
         <div class="hp-research-body">
           <span class="hp-research-tag">Space physics</span>
-          <h3>Radiation belts</h3>
-          <p>Relativistic electron energization and decay. Enhancement and dropout events in the outer belt. Formation and evolution of ultrarelativistic remnant belts.</p>
+          <h3>Radiation belt dynamics</h3>
+          <p>Energization, transport, and decay of relativistic electrons in the Van Allen belts. Enhancement and dropout events during geomagnetic storms. Formation and evolution of ultrarelativistic remnant belts. Adiabatic and non-adiabatic processes in the outer radiation belt.</p>
         </div>
       </article>
       <article class="hp-research-card">
         <img src="/images/ulf-waves.jpg" alt="ULF waves in the Earth's magnetosphere" />
         <div class="hp-research-body">
           <span class="hp-research-tag">Space physics</span>
-          <h3>ULF waves &amp; turbulence</h3>
-          <p>Wave-particle interactions in the magnetosphere. Turbulence and total pressure balance. Solar wind—magnetosphere coupling and effects on satellites.</p>
+          <h3>ULF waves and magnetospheric turbulence</h3>
+          <p>Role of electromagnetic ULF waves in trapped particle dynamics. Magnetospheric turbulence and total pressure balance during storms and substorms. Eddy diffusion in the plasma sheet. Wave-particle interactions.</p>
         </div>
       </article>
       <article class="hp-research-card">
-        <img src="/images/space-weather.jpg" alt="Space weather model with geomagnetic storm forecasting" />
+        <img src="/images/space-weather.jpg" alt="Space weather prediction model" />
         <div class="hp-research-body">
           <span class="hp-research-tag">Data science</span>
-          <h3>ML for space weather</h3>
-          <p>Prediction of ground magnetic perturbations, geomagnetically induced currents (GIC), and near real-time forecasting models with deep learning.</p>
+          <h3>Space weather prediction with ML</h3>
+          <p>Prediction of ground magnetic perturbations and geomagnetically induced currents (GIC). Probabilistic forecasting using deep learning (LSTM, CNN). ML model explainability for operational space weather. Plasmapause location with machine learning.</p>
+        </div>
+      </article>
+      <article class="hp-research-card">
+        <img src="/images/magnetosphere.jpg" alt="Solar wind interacting with Earth's magnetosphere" />
+        <div class="hp-research-body">
+          <span class="hp-research-tag">Space physics</span>
+          <h3>Solar wind — magnetosphere coupling</h3>
+          <p>Solar wind dynamic pressure effects on magnetospheric turbulence. Foreshock transients and magnetospheric perturbations. Expanding plasma systems: solar and stellar winds. Adiabatic invariants and non-adiabatic mechanisms in solar wind expansion.</p>
         </div>
       </article>
     </div>
-    <a class="hp-more" href="/en/research">See all research lines &rarr;</a>
+    <a class="hp-more" href="/en/research">See all research lines and projects →</a>
   </div>
 </section>
 
@@ -55,22 +63,22 @@ import Layout from '../../layouts/Layout.astro';
 <section id="proyectos">
   <div class="hp-wrap">
     <div class="hp-section-head hp-reveal">
-      <p class="hp-eyebrow">Projects</p>
-      <h2>From basic science to critical infrastructure</h2>
+      <p class="hp-eyebrow">Active grants</p>
+      <h2>Current projects</h2>
     </div>
     <div class="hp-project-list hp-reveal">
       <article class="hp-project-card">
         <div class="hp-project-media">
-          <img src="/images/magnetosphere.jpg" alt="Earth's magnetosphere interacting with the solar wind" />
+          <img src="/images/space-weather.jpg" alt="Space weather monitoring dashboard" />
         </div>
         <div class="hp-project-body">
           <p class="hp-project-kicker">FONDEF IDEA I+D — ANID</p>
           <h3>Chilean Space Weather Platform</h3>
-          <p>Chile's first national pilot platform for real-time space weather monitoring and early warnings. In collaboration with Universidad Adventista de Chile.</p>
+          <p>Chile's first national pilot platform for real-time space weather monitoring and early warnings, with ML-based predictive models. In collaboration with Universidad Adventista de Chile.</p>
           <div class="hp-project-tags">
             <span>Real-time monitoring</span>
-            <span>DL predictive models</span>
-            <span>HPC platform</span>
+            <span>DL forecasting</span>
+            <span>GIC prediction</span>
           </div>
         </div>
       </article>
@@ -79,7 +87,7 @@ import Layout from '../../layouts/Layout.astro';
           <img src="/images/ulf-waves.jpg" alt="Van Allen Probes satellite data" />
         </div>
         <div class="hp-project-body">
-          <p class="hp-project-kicker">FONDECYT Iniciación 2025 — ANID</p>
+          <p class="hp-project-kicker">FONDECYT Initiation 2025 — ANID</p>
           <h3>ULF waves and trapped particles</h3>
           <p>The role of electromagnetic ULF waves in the dynamics of charged particles trapped in Earth's radiation belts.</p>
           <div class="hp-project-tags">
@@ -91,20 +99,21 @@ import Layout from '../../layouts/Layout.astro';
       </article>
       <article class="hp-project-card">
         <div class="hp-project-media">
-          <img src="/images/space-weather.jpg" alt="High-performance computing for simulations" />
+          <img src="/images/radiation-belts.jpg" alt="Turbulence in the magnetosphere" />
         </div>
         <div class="hp-project-body">
-          <p class="hp-project-kicker">FONDEQUIP 2023</p>
-          <h3>HPC Platform USACH</h3>
-          <p>High-performance computing platform for data science, simulations, and numerical modeling.</p>
+          <p class="hp-project-kicker">FONDECYT Regular 2025 — ANID (PI: M. Stepanova)</p>
+          <h3>Turbulence and pressure balance in the magnetosphere</h3>
+          <p>Turbulence and total pressure balance in the interconnected dynamic magnetosphere during storms and substorms.</p>
           <div class="hp-project-tags">
-            <span>High-performance computing</span>
-            <span>Numerical simulation</span>
+            <span>Magnetospheric turbulence</span>
+            <span>Pressure balance</span>
+            <span>Storm dynamics</span>
           </div>
         </div>
       </article>
     </div>
-    <a class="hp-more" href="/en/research">See all projects &rarr;</a>
+    <a class="hp-more" href="/en/research#proyectos">See all active grants →</a>
   </div>
 </section>
 </div>
@@ -113,30 +122,30 @@ import Layout from '../../layouts/Layout.astro';
   <div class="hp-wrap">
     <div class="hp-section-head hp-reveal">
       <p class="hp-eyebrow">Team</p>
-      <h2>A small, growing team</h2>
+      <h2>Our team</h2>
     </div>
     <div class="hp-team-grid hp-reveal">
       <a class="hp-team-card" href="https://victorapinto.com" target="_blank" rel="noopener">
         <span class="initials">VP</span>
         <span class="overlay">
           <span class="name">Victor A. Pinto</span>
-          <span class="role">Principal investigator</span>
-          <span class="bio">Assistant Professor, Dept. of Physics USACH. Ph.D. UCLA 2019. Radiation belts, ULF waves and machine learning for space weather.</span>
+          <span class="role">Co-PI, Assistant Professor</span>
+          <span class="bio">Ph.D. UCLA 2019. Radiation belts, ULF waves, and machine learning for space weather.</span>
         </span>
       </a>
       <a class="hp-team-card" href="/en/team">
         <span class="initials">MS</span>
         <span class="overlay">
           <span class="name">Marina Stepanova</span>
-          <span class="role">Co-investigator</span>
-          <span class="bio">Associate Professor, Dept. of Physics USACH. Magnetospheric turbulence, relativistic electron dynamics and the space weather platform.</span>
+          <span class="role">Co-PI, Professor</span>
+          <span class="bio">Ph.D. Moscow State University. Magnetospheric dynamics, turbulence, and geomagnetic storms. At USACH since 1995.</span>
         </span>
       </a>
       <a class="hp-team-card" href="/en/team">
         <span class="initials">AI</span>
         <span class="overlay">
           <span class="name">Ana María Inostroza</span>
-          <span class="role">Master of Science in Physics</span>
+          <span class="role">M.Sc. Physics</span>
           <span class="bio">Outer radiation belt dynamics and auroral phenomena.</span>
         </span>
       </a>
@@ -144,7 +153,7 @@ import Layout from '../../layouts/Layout.astro';
         <span class="initials">BZ</span>
         <span class="overlay">
           <span class="name">Bea Zenteno-Quinteros</span>
-          <span class="role">Master of Science in Physics</span>
+          <span class="role">M.Sc. Physics</span>
           <span class="bio">Relativistic electron loss processes by electromagnetic waves.</span>
         </span>
       </a>
@@ -152,7 +161,7 @@ import Layout from '../../layouts/Layout.astro';
         <span class="initials">DM</span>
         <span class="overlay">
           <span class="name">Dafhne Muñoz Reyes</span>
-          <span class="role">Astrophysics Engineering, USACH</span>
+          <span class="role">Astrophysics Engineering</span>
           <span class="bio">ML model for plasmapause location (Van Allen Probes).</span>
         </span>
       </a>
@@ -160,12 +169,12 @@ import Layout from '../../layouts/Layout.astro';
         <span class="initials">CP</span>
         <span class="overlay">
           <span class="name">Camila Peña Cifuentes</span>
-          <span class="role">Physics Engineering, USACH</span>
+          <span class="role">Physics Engineering</span>
           <span class="bio">Deep Learning prediction of relativistic electron flux.</span>
         </span>
       </a>
     </div>
-    <a class="hp-more" href="/en/team">See full team &rarr;</a>
+    <a class="hp-more" href="/en/team">See full team →</a>
   </div>
 </section>
 
@@ -213,7 +222,7 @@ import Layout from '../../layouts/Layout.astro';
         </div>
       </li>
     </ul>
-    <a class="hp-more" href="/en/research#publicaciones">See all publications &rarr;</a>
+    <a class="hp-more" href="/en/research#publicaciones">See all publications →</a>
   </div>
 </section>
 </div>
@@ -221,15 +230,15 @@ import Layout from '../../layouts/Layout.astro';
 <section id="laboratorio">
   <div class="hp-wrap">
     <div class="hp-section-head hp-reveal">
-      <p class="hp-eyebrow">Laboratory</p>
-      <h2>Computing infrastructure</h2>
+      <p class="hp-eyebrow">Labs</p>
+      <h2>Our laboratories</h2>
     </div>
     <div class="hp-reveal">
       <p class="hp-hero-sub" style="color:var(--ink-soft);max-width:65ch">
-        Our group operates on the USACH HPC Platform (FONDEQUIP 2023), equipped with high-performance computing clusters for numerical simulations and deep learning models. We process satellite data from Van Allen Probes, THEMIS, GOES and MMS with open source tools (Python, pandas, scikit-learn, PyTorch).
+        The group operates two research labs. The <strong>Space Instrumentation Lab</strong> maintains ground-based magnetometer networks (SAMBA chain) and supports field campaigns. The <strong>Space Weather Lab</strong> develops real-time monitoring and ML-based prediction systems for geomagnetic disturbances and relativistic electron dynamics.
       </p>
     </div>
-    <a class="hp-more" href="/en/lab">See full infrastructure &rarr;</a>
+    <a class="hp-more" href="/en/lab">See our labs and data sources →</a>
   </div>
 </section>
 
@@ -237,8 +246,8 @@ import Layout from '../../layouts/Layout.astro';
   <div class="hp-wrap">
     <div class="hp-section-head hp-reveal">
       <p class="hp-eyebrow">Contact</p>
-      <h2>Interested in research with us?</h2>
-      <p>We are looking for students for master's and undergraduate projects on relativistic electron dynamics, geomagnetic storm forecasting, induced currents (GIC), and satellite data processing.</p>
+      <h2>Open positions</h2>
+      <p>We are looking for master's and undergraduate students to work on relativistic electron dynamics, geomagnetic storm prediction with deep learning, GIC modeling, satellite data processing (Van Allen Probes, THEMIS, GOES), and magnetospheric turbulence. If you are a physics, astrophysics, or related student, email us at <a href="mailto:victor.pinto@usach.cl">victor.pinto@usach.cl</a></p>
     </div>
   </div>
 </section>
