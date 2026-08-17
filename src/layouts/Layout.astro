@@ -5,8 +5,8 @@ const { title, description, variant, alternateUrl } = Astro.props;
 const p = (path_route) => lang === 'es' ? path_route : `/en${path_route}`;
 // Nav links: on home page use in-page anchors; on sub-pages link to home page sections
 const navLink = (hash) => variant === 'home' ? `#${hash}` : `${p('/')}#${hash}`;
-// Open Graph image (hero — local)
-const ogImage = 'https://heliousach.github.io/images/hero-bg.jpg';
+// Open Graph image (hero — local NASA image)
+const ogImage = 'https://heliousach.github.io/images/earth-hero.jpg';
 const t = lang === 'en' ? {
   home: 'Home', research: 'Research', team: 'Team', lab: 'Lab', contact: 'Contact',
   footer: '© 2026 HelioFísica USACH. All rights reserved.',
