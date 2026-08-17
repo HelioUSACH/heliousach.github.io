@@ -55,9 +55,10 @@ These are for your manual review — they affect both the website and your tenur
 ## Deployment
 
 - Source code pushed to `main` branch at `HelioUSACH/heliousach.github.io`
-- GitHub Actions CI build: **success** (38s)
+- GitHub Actions CI build: **success** (34s)
 - Site deployed to `https://heliousach.github.io`
-- Commit: `95ea575`
+- Latest commit: `37e479d` (2026-08-17)
+- `last-modified`: Mon, 17 Aug 2026 01:52:41 GMT
 
 ## Troubleshooting notes
 
