@@ -2,23 +2,39 @@
 import Layout from '../../layouts/Layout.astro';
 ---
 
-<Layout title="Labs" description="Research labs: Space Instrumentation and Space Weather, and data sources of the HelioFísica y Clima Espacial USACH group.">
+<Layout title="Labs" description="Research labs: Space Instrumentation and Space Weather at the HelioUSACH group.">
 
 <section>
   <span class="section-title">Labs</span>
-  <h1>Research laboratories</h1>
-  <p class="lead">Two research laboratories and the data sources we use for our science.</p>
+  <h1>Our laboratories</h1>
+  <p class="lead">Two research labs dedicated to observation, instrumentation, and prediction in heliophysics and space weather.</p>
 </section>
 
 <section class="section">
   <div class="card" style="margin-bottom:1.5rem">
     <h3>Space Instrumentation Lab</h3>
-    <p>Ground-based magnetometer network (SAMBA chain, Chile). Deployment, calibration, and maintenance of magnetometers for monitoring geomagnetic field variations. Antarctic field campaigns (Chilean Scientific Antarctic Expedition 47, 2011). Comparative magnetometer performance analysis (Universidad Adventista de Chile deployment, 2025). Collaboration with MACCS, THEMIS GBO, and CARISMA networks.</p>
+    <p>Ground-based magnetometer networks, field campaigns, and real-time geomagnetic data acquisition.</p>
+    <ul style="margin:0.75rem 0 0 1.5rem">
+      <li>SAMBA magnetometer network (meridional chain from Arica to Magallanes, Chile)</li>
+      <li>Magnetometer deployment and calibration in field campaigns</li>
+      <li>Antarctic base campaigns (Chilean Scientific Antarctic Expedition 47, 2011)</li>
+      <li>Comparative magnetometer performance analysis (Universidad Adventista de Chile, 2025)</li>
+      <li>Real-time data acquisition and processing</li>
+      <li>Collaboration with MACCS, THEMIS GBO, and CARISMA networks</li>
+    </ul>
   </div>
 
   <div class="card" style="margin-bottom:1.5rem">
     <h3>Space Weather Lab</h3>
-    <p>Real-time monitoring of solar activity and its influence on the Earth's magnetosphere. Development of deep learning predictive models for magnetic perturbations, geomagnetically induced currents (GIC), and relativistic electron dynamics. The national space weather platform (FONDEF IDEA I+D) integrates solar wind, magnetic field, and particle data for early warnings. Collaboration with Universidad Adventista de Chile.</p>
+    <p>Real-time space weather monitoring, machine learning-based prediction, and satellite data analysis.</p>
+    <ul style="margin:0.75rem 0 0 1.5rem">
+      <li>National Space Weather Platform (FONDEF IDEA I+D 2025)</li>
+      <li>Real-time solar wind data monitoring (OMNI)</li>
+      <li>Deep learning models (RNN, CNN, LSTM) for magnetic perturbations and GIC prediction</li>
+      <li>Relativistic electron flux prediction in the radiation belts</li>
+      <li>Plasmapause location with machine learning</li>
+      <li>Satellite data processing: Van Allen Probes, THEMIS, GOES, MMS</li>
+    </ul>
   </div>
 </section>
 
@@ -27,7 +43,7 @@ import Layout from '../../layouts/Layout.astro';
   <div class="grid">
     <div class="card">
       <h3>Satellites</h3>
-      <p>Van Allen Probes (MagEIS, REPT, EMFISIS, EFW) · THEMIS (SPEDAS) · GOES · OMNI</p>
+      <p>Van Allen Probes (MagEIS, REPT, EMFISIS, EFW) · THEMIS (SPEDAS) · GOES · MMS · OMNI</p>
     </div>
     <div class="card">
       <h3>Ground magnetometers</h3>

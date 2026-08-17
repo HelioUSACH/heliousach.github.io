@@ -2,23 +2,39 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Laboratorios" description="Laboratorios de investigación: Instrumentación Espacial y Clima Espacial, y fuentes de datos del grupo Heliofísica y Clima Espacial USACH.">
+<Layout title="Laboratorios" description="Laboratorios de investigación: Instrumentación Espacial y Clima Espacial del grupo HelioUSACH.">
 
 <section>
   <span class="section-title">Laboratorios</span>
-  <h1>Laboratorios de investigación</h1>
-  <p class="lead">Dos laboratorios de investigación y las fuentes de datos que utilizamos para nuestra ciencia.</p>
+  <h1>Nuestros laboratorios</h1>
+  <p class="lead">Dos laboratorios de investigación dedicados a la observación, instrumentación y predicción en heliofísica y clima espacial.</p>
 </section>
 
 <section class="section">
   <div class="card" style="margin-bottom:1.5rem">
     <h3>Laboratorio de Instrumentación Espacial</h3>
-    <p>Red de magnetómetros en tierra (cadena SAMBA, Chile). Despliegue, calibración y mantenimiento de magnetómetros para el monitoreo de variaciones del campo geomagnético. Campañas de campo en Antártica (Expedición Científica Antártica Chilena 47, 2011). Análisis comparativo de magnetómetros (despliegue en Universidad Adventista de Chile, 2025). Colaboración con redes MACCS, THEMIS GBO y CARISMA.</p>
+    <p>Red de magnetómetros en tierra, campañas de campo y adquisición de datos geomagnéticos en tiempo real.</p>
+    <ul style="margin:0.75rem 0 0 1.5rem">
+      <li>Red de magnetómetros SAMBA (red meridional de Arica a Magallanes)</li>
+      <li>Despliegue y calibración de magnetómetros en campañas de campo</li>
+      <li>Campañas en bases antárticas chilenas (Expedición Científica Antártica Chilena 47, 2011)</li>
+      <li>Análisis comparativo de rendimiento de magnetómetros (Universidad Adventista de Chile, 2025)</li>
+      <li>Adquisición y procesamiento de datos en tiempo real</li>
+      <li>Colaboración con redes MACCS, THEMIS GBO y CARISMA</li>
+    </ul>
   </div>
 
   <div class="card" style="margin-bottom:1.5rem">
     <h3>Laboratorio de Clima Espacial</h3>
-    <p>Monitoreo en tiempo real de actividad solar y su influencia en la magnetosfera terrestre. Desarrollo de modelos predictivos con deep learning para perturbaciones magnéticas, corrientes inducidas geomagnéticamente (GIC) y dinámica de electrones relativistas. La plataforma nacional de clima espacial (FONDEF IDEA I+D) integra datos de viento solar, campos magnéticos y partículas para alertas tempranas. Colaboración con la Universidad Adventista de Chile.</p>
+    <p>Monitoreo en tiempo real, predicción basada en machine learning y análisis de datos satelitales para clima espacial.</p>
+    <ul style="margin:0.75rem 0 0 1.5rem">
+      <li>Plataforma Nacional de Clima Espacial (FONDEF IDEA I+D 2025)</li>
+      <li>Monitoreo en tiempo real de datos de viento solar (OMNI)</li>
+      <li>Modelos predictivos con deep learning (RNN, CNN, LSTM) para perturbaciones magnéticas y GIC</li>
+      <li>Predicción de flujo de electrones relativistas en el cinturón de radiación</li>
+      <li>Ubicación de la plasmapausa con machine learning</li>
+      <li>Procesamiento de datos satelitales: Van Allen Probes, THEMIS, GOES, MMS</li>
+    </ul>
   </div>
 </section>
 
@@ -27,7 +43,7 @@ import Layout from '../layouts/Layout.astro';
   <div class="grid">
     <div class="card">
       <h3>Satélites</h3>
-      <p>Van Allen Probes (MagEIS, REPT, EMFISIS, EFW) · THEMIS (SPEDAS) · GOES · OMNI</p>
+      <p>Van Allen Probes (MagEIS, REPT, EMFISIS, EFW) · THEMIS (SPEDAS) · GOES · MMS · OMNI</p>
     </div>
     <div class="card">
       <h3>Magnetómetros en tierra</h3>
