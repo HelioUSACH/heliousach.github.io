@@ -49,3 +49,4 @@ work.
 Bio, project, and publication data live directly in the `.astro` page files
 (no CMS/content collections) — edit the relevant page under `src/pages/`,
 and its `en/` counterpart to keep translations in sync.
+
