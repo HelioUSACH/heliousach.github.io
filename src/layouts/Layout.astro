@@ -5,8 +5,8 @@ const { title, description, variant, alternateUrl } = Astro.props;
 const p = (path_route) => lang === 'es' ? path_route : `/en${path_route}`;
 // Nav links: on home page use in-page anchors; on sub-pages link to home page sections
 const navLink = (hash) => variant === 'home' ? `#${hash}` : `${p('/')}#${hash}`;
-// Open Graph image (hero from NASA SVS)
-const ogImage = 'https://svs.gsfc.nasa.gov/vis/a000000/v001950/apollo17_earthrise_4096.png';
+// Open Graph image (hero — local)
+const ogImage = 'https://heliousach.github.io/images/hero-bg.jpg';
 const t = lang === 'en' ? {
   home: 'Home', research: 'Research', team: 'Team', lab: 'Lab', contact: 'Contact',
   footer: '© 2026 HelioFísica USACH. All rights reserved.',
@@ -89,7 +89,7 @@ const orgSchema = {
 
     <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
   </head>
-  <body class={variant === 'home' ? 'hp-theme' : ''}>
+  <body>
     <header>
       <nav>
         <a class="brand" href={p('/')} >

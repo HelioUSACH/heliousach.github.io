@@ -5,14 +5,14 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Inicio" description="Grupo de investigación en Heliofísica y Clima Espacial de la Universidad de Santiago de Chile. Cinturones de radiación, ondas ULF, GIC y machine learning para clima espacial." variant="home">
 
 <section class="hp-hero" id="inicio">
-  <img src="https://svs.gsfc.nasa.gov/vis/a000000/v001950/apollo17_earthrise_4096.png" alt="La Tierra vista desde el espacio, mostrando la magnetosfera que nos protege del viento solar" loading="eager" />
+  <img src="/images/hero-bg.jpg" alt="Espacio profundo con estrellas, representando el entorno donde opera el clima espacial" loading="eager" />
   <div class="hp-hero-scrim"></div>
   <div class="hp-hero-content">
     <p class="hp-eyebrow">Universidad de Santiago de Chile — Depto. de Física</p>
     <h1>Donde termina el Sol, empieza el clima espacial.</h1>
     <p class="hp-hero-sub">Estudiamos los cinturones de radiación, las ondas que agitan la magnetosfera terrestre, y construimos modelos de inteligencia artificial para anticipar sus efectos en satélites y redes eléctricas.</p>
   </div>
-  <p class="hp-hero-credit">Crédito: NASA / Apollo 17. La magnetosfera nos protege del viento solar.</p>
+  <p class="hp-hero-credit">Crédito: Fondo espacial — Heliofísica USACH</p>
 </section>
 
 <section id="investigacion">
@@ -23,7 +23,7 @@ import Layout from '../layouts/Layout.astro';
     </div>
     <div class="hp-research-grid hp-reveal">
       <article class="hp-research-card">
-        <img src="https://svs.gsfc.nasa.gov/vis/a000000/v05760/v05760_00002_1100.jpg" alt="Cinturones de radiación de Van Allen alrededor de la Tierra" />
+        <img src="/images/radiation-belts.jpg" alt="Cinturones de radiación de Van Allen alrededor de la Tierra" />
         <div class="hp-research-body">
           <span class="hp-research-tag">Física espacial</span>
           <h3>Cinturones de radiación</h3>
@@ -31,7 +31,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </article>
       <article class="hp-research-card">
-        <img src="https://svs.gsfc.nasa.gov/vis/a000000/v05188/v05188_00001_2500.jpg" alt="Ondas ULF en la magnetosfera terrestre" />
+        <img src="/images/ulf-waves.jpg" alt="Ondas ULF en la magnetosfera terrestre" />
         <div class="hp-research-body">
           <span class="hp-research-tag">Física espacial</span>
           <h3>Ondas ULF y turbulencia</h3>
@@ -39,7 +39,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </article>
       <article class="hp-research-card">
-        <img src="https://svs.gsfc.nasa.gov/vis/a000000/v03142/v03142_00001_2500.jpg" alt="Modelo de clima espacial con predicción de tormentas geomagnéticas" />
+        <img src="/images/space-weather.jpg" alt="Modelo de clima espacial con predicción de tormentas geomagnéticas" />
         <div class="hp-research-body">
           <span class="hp-research-tag">Ciencia de datos</span>
           <h3>ML para clima espacial</h3>
@@ -51,6 +51,7 @@ import Layout from '../layouts/Layout.astro';
   </div>
 </section>
 
+<div class="hp-section-alt">
 <section id="proyectos">
   <div class="hp-wrap">
     <div class="hp-section-head hp-reveal">
@@ -60,7 +61,7 @@ import Layout from '../layouts/Layout.astro';
     <div class="hp-project-list hp-reveal">
       <article class="hp-project-card featured">
         <div class="hp-project-media">
-          <img src="https://svs.gsfc.nasa.gov/vis/a000000/v05760/v05760_00002_1100.jpg" alt="Magnetosfera terrestre interactuando con el viento solar" />
+          <img src="/images/magnetosphere.jpg" alt="Magnetosfera terrestre interactuando con el viento solar" />
         </div>
         <div class="hp-project-body">
           <p class="hp-project-kicker">FONDEF IDEA I+D &mdash; ANID</p>
@@ -75,7 +76,7 @@ import Layout from '../layouts/Layout.astro';
       </article>
       <article class="hp-project-card">
         <div class="hp-project-media">
-          <img src="https://svs.gsfc.nasa.gov/vis/a000000/v05188/v05188_00001_2500.jpg" alt="Datos satelitales de Van Allen Probes" />
+          <img src="/images/ulf-waves.jpg" alt="Datos satelitales de Van Allen Probes" />
         </div>
         <div class="hp-project-body">
           <p class="hp-project-kicker">FONDECYT Iniciación 2025 &mdash; ANID</p>
@@ -90,7 +91,7 @@ import Layout from '../layouts/Layout.astro';
       </article>
       <article class="hp-project-card">
         <div class="hp-project-media">
-          <img src="https://svs.gsfc.nasa.gov/vis/a000000/v03142/v03142_00001_2500.jpg" alt="Cómputo de alto rendimiento para simulaciones" />
+          <img src="/images/space-weather.jpg" alt="Cómputo de alto rendimiento para simulaciones" />
         </div>
         <div class="hp-project-body">
           <p class="hp-project-kicker">FONDEQUIP 2023</p>
@@ -106,6 +107,7 @@ import Layout from '../layouts/Layout.astro';
     <a class="hp-more" href="/investigacion">Ver todos los proyectos &rarr;</a>
   </div>
 </section>
+</div>
 
 <section id="equipo">
   <div class="hp-wrap">
@@ -122,7 +124,7 @@ import Layout from '../layouts/Layout.astro';
           <span class="bio">Profesor Asistente, Depto. de F&#237;sica USACH. Ph.D. UCLA 2019. Cinturones de radiaci&#243;n, ondas ULF y machine learning para clima espacial.</span>
         </span>
       </a>
-      <a class="hp-team-card" href="#equipo">
+      <a class="hp-team-card" href="/equipo">
         <span class="initials">MS</span>
         <span class="overlay">
           <span class="name">Marina Stepanova</span>
@@ -130,7 +132,7 @@ import Layout from '../layouts/Layout.astro';
           <span class="bio">Profesora Asociada, Depto. de F&#237;sica USACH. Turbulencia magnetosf&#233;rica, din&#225;mica de electrones relativistas y la plataforma de clima espacial.</span>
         </span>
       </a>
-      <a class="hp-team-card" href="#equipo">
+      <a class="hp-team-card" href="/equipo">
         <span class="initials">AI</span>
         <span class="overlay">
           <span class="name">Ana Mar&#237;a Inostroza</span>
@@ -138,7 +140,7 @@ import Layout from '../layouts/Layout.astro';
           <span class="bio">Din&#225;mica del cintur&#243;n de radiaci&#243;n externo y fen&#243;menos aurorales.</span>
         </span>
       </a>
-      <a class="hp-team-card" href="#equipo">
+      <a class="hp-team-card" href="/equipo">
         <span class="initials">BZ</span>
         <span class="overlay">
           <span class="name">Bea Zenteno-Quinteros</span>
@@ -146,7 +148,7 @@ import Layout from '../layouts/Layout.astro';
           <span class="bio">Procesos de p&#233;rdida de electrones relativistas por ondas electromagn&#233;ticas.</span>
         </span>
       </a>
-      <a class="hp-team-card" href="#equipo">
+      <a class="hp-team-card" href="/equipo">
         <span class="initials">DM</span>
         <span class="overlay">
           <span class="name">Dafhne Mu&#241;oz Reyes</span>
@@ -154,7 +156,7 @@ import Layout from '../layouts/Layout.astro';
           <span class="bio">Modelo de machine learning para la ubicaci&#243;n de la plasmapausa (Van Allen Probes).</span>
         </span>
       </a>
-      <a class="hp-team-card" href="#equipo">
+      <a class="hp-team-card" href="/equipo">
         <span class="initials">CP</span>
         <span class="overlay">
           <span class="name">Camila Pe&#241;a Cifuentes</span>
@@ -167,6 +169,7 @@ import Layout from '../layouts/Layout.astro';
   </div>
 </section>
 
+<div class="hp-section-alt">
 <section id="publicaciones">
   <div class="hp-wrap">
     <div class="hp-section-head hp-reveal">
@@ -213,6 +216,7 @@ import Layout from '../layouts/Layout.astro';
     <a class="hp-more" href="/investigacion#publicaciones">Ver todas las publicaciones &rarr;</a>
   </div>
 </section>
+</div>
 
 <section id="laboratorio">
   <div class="hp-wrap">
@@ -221,7 +225,7 @@ import Layout from '../layouts/Layout.astro';
       <h2>Infraestructura de c&#243;mputo</h2>
     </div>
     <div class="hp-reveal">
-      <p class="hp-hero-sub" style="color:var(--text-secondary);max-width:65ch">
+      <p class="hp-hero-sub" style="color:var(--ink-soft);max-width:65ch">
         Nuestro grupo opera en la Plataforma HPC de la USACH (FONDEQUIP 2023), equipada con cl&#250;steres de c&#243;mputo de alto rendimiento para simulaciones num&#233;ricas y modelos de deep learning. Procesamos datos satelitales de Van Allen Probes, THEMIS, GOES y MMS con herramientas open source (Python, pandas, scikit-learn, PyTorch).
       </p>
     </div>
@@ -229,7 +233,7 @@ import Layout from '../layouts/Layout.astro';
   </div>
 </section>
 
-<section class="contact-section" aria-label="Contacto">
+<section class="contact-section" id="contacto" aria-label="Contacto">
   <div class="hp-wrap">
     <div class="hp-section-head hp-reveal">
       <p class="hp-eyebrow">Contacto</p>
