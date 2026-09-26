@@ -46,8 +46,8 @@
     es: "Profesora Titular"
     en: "Professor"
   department:
-    es: "Departamento de Física, USACH · Jefa de la carrera de Astrofísica"
-    en: "Department of Physics, USACH · Head, B.S. Astrophysics Program"
+    es: "Departamento de Física, USACH"
+    en: "Department of Physics, USACH"
   bio:
     es: "Ph.D. en Astrofísica, Instituto Skobeltsyn de Física Nuclear, Universidad Estatal Lomonósov de Moscú. En USACH desde 1995. Investigadora en plasmas espaciales, dinámica de la magnetosfera terrestre, turbulencia en plasmas, tormentas y subtormentas geomagnéticas, estabilidad de configuraciones de plasma y sistemas complejos. Colaboraciones activas con grupos de investigación en EE. UU. y Rusia. Ha supervisado más de 8 estudiantes de postgrado."
     en: "Ph.D. in Astrophysics, Skobeltsyn Institute of Nuclear Physics, Lomonosov Moscow State University. At USACH since 1995. Researcher in space plasmas, Earth's magnetospheric dynamics, turbulence in space plasmas, geomagnetic storms and substorms, plasma configuration stability, and complex systems. Active collaborations with research groups in the US and Russia. Has supervised 8+ graduate students."
@@ -66,8 +66,8 @@
   status: postdoc
   order: 5
   name:
-    es: "Dra. Bea Zenteno-Quinteros"
-    en: "Dr. Bea Zenteno-Quinteros"
+    es: "Dra. Bea Zenteno Quinteros"
+    en: "Dr. Bea Zenteno Quinteros"
   role:
     es: "Investigadora postdoctoral (FONDECYT de Postdoctorado), USACH"
     en: "Postdoctoral researcher (FONDECYT Postdoctoral grant), USACH"
@@ -76,14 +76,14 @@
     en: "Space plasma physics: waves, instabilities, and relativistic electron losses"
   initials: "BZ"
 
-- id: coello-guzman
+- id: matilde-coello
   status: postdoc
   order: 6
   name:
-    es: "Dr. M. Coello-Guzmán"
-    en: "Dr. M. Coello-Guzmán"
+    es: "Dra. Matilde Coello"
+    en: "Dr. Matilde Coello"
   role:
-    es: "Investigador postdoctoral (DICYT Postdoctorado), USACH"
+    es: "Investigadora postdoctoral (DICYT Postdoctorado), USACH"
     en: "Postdoctoral researcher (DICYT Postdoctoral grant), USACH"
   topic:
     es: "Expansión, inestabilidades y termodinámica del viento solar joven"
@@ -199,8 +199,8 @@
     es: "Ingeniería Física, USACH"
     en: "Physics Engineering, USACH"
   topic:
-    es: "Evaluación comparativa de magnetómetros para monitoreo geomagnético"
-    en: "Comparative evaluation of magnetometers for geomagnetic monitoring"
+    es: "Caracterización de la respuesta del sensor de campo magnético PNI RM3100 a cambios de temperatura"
+    en: "Characterization of the PNI RM3100 magnetic field sensor response to temperature changes"
 
 - id: javier-ruiz-pineda
   status: former-member
