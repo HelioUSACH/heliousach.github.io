@@ -1,5 +1,15 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+import TeamCard from '../components/TeamCard.astro';
+
+const lang = 'es';
+const team = (await getCollection('team')).sort((a, b) => a.data.order - b.data.order);
+const pis = team.filter((t) => t.data.status === 'pi');
+const postdocs = team.filter((t) => t.data.status === 'postdoc');
+const students = team.filter((t) => t.data.status === 'current-student');
+const formerMembers = team.filter((t) => t.data.status === 'former-member');
+const collaborators = team.filter((t) => t.data.status === 'collaborator');
 ---
 
 <Layout title="Equipo" description="Investigadores y estudiantes del grupo Heliofísica y Clima Espacial USACH.">
@@ -11,123 +21,45 @@ import Layout from '../layouts/Layout.astro';
 </section>
 
 <section class="section">
-  <span class="section-title">Investigadores principales</span>
-  <div class="grid" style="grid-template-columns:1fr 1fr;gap:1rem">
-    <div class="card">
-      <h3>Dr. Victor A. Pinto Abarzúa</h3>
-      <p><strong>Profesor Asistente</strong> · Departamento de Física, USACH</p>
-      <p>Ph.D. en Ciencias Atmosféricas y Oceánicas (Física Espacial), UCLA 2019 (co-directores: L. Lyons, J. Bortnik). Postdoctorado en UNH (2020-2022). Investigador en cinturones de radiación, ondas ULF, acoplamiento viento solar-magnetosfera, machine learning para clima espacial y corrientes inducidas geomagnéticamente (GIC). Editor asociado de <em>Space Weather</em> (AGU/Wiley).</p>
-      <div style="margin-top:0.75rem">
-        <a href="https://victorapinto.com" target="_blank" rel="noopener">Sitio personal</a> ·
-        <a href="https://scholar.google.com/citations?user=nEqGWqoAAAAJ" target="_blank">Google Scholar</a> ·
-        <a href="https://orcid.org/0000-0003-1210-167X" target="_blank">ORCID</a>
-      </div>
-    </div>
-    <div class="card">
-      <h3>Dra. Marina Stepanova</h3>
-      <p><strong>Profesora Titular</strong> · Departamento de Física, USACH · Jefa de la carrera de Astrofísica</p>
-      <p>Ph.D. en Astrofísica, Instituto Skobeltsyn de Física Nuclear, Universidad Estatal Lomonósov de Moscú. En USACH desde 1995. Investigadora en plasmas espaciales, dinámica de la magnetosfera terrestre, turbulencia en plasmas, tormentas y subtormentas geomagnéticas, estabilidad de configuraciones de plasma y sistemas complejos. Colaboraciones activas con grupos de investigación en EE. UU. y Rusia. Ha supervisado más de 8 estudiantes de postgrado.</p>
-      <div style="margin-top:0.75rem">
-        <a href="https://scholar.google.com/citations?user=Rb-PfE4AAAAJ" target="_blank">Google Scholar</a> ·
-        <a href="https://investigadores.anid.cl/es/public_search/researcher?id=8491" target="_blank">ANID PDI</a>
-      </div>
-    </div>
+  <span class="section-title">Investigadores</span>
+  <div class="grid-2">
+    {pis.map((p) => <TeamCard data={p.data} lang={lang} />)}
   </div>
 </section>
 
 <section class="section">
-  <span class="section-title">Estudiantes actuales</span>
+  <span class="section-title">Postdoctorados</span>
   <div class="grid">
-    <div class="card">
-      <h3>Ana María Inostroza</h3>
-      <p>Magíster en Ciencias Físicas, USACH</p>
-      <p class="meta">Dinámica del cinturón de radiación externo y fenómenos aurorales</p>
-    </div>
-    <div class="card">
-      <h3>Bea Zenteno-Quinteros</h3>
-      <p>Magíster en Ciencias Físicas, USACH</p>
-      <p class="meta">Procesos de pérdida de electrones relativistas por ondas electromagnéticas</p>
-    </div>
-    <div class="card">
-      <h3>Dafhne Muñoz Reyes</h3>
-      <p>Ingeniería en Astrofísica, USACH</p>
-      <p class="meta">Modelo ML para ubicación de la plasmapausa (Van Allen Probes)</p>
-    </div>
-    <div class="card">
-      <h3>Camila Peña Cifuentes</h3>
-      <p>Ingeniería Física, USACH</p>
-      <p class="meta">Predicción de flujo de electrones relativistas con Deep Learning</p>
-    </div>
+    {postdocs.map((p) => <TeamCard data={p.data} lang={lang} />)}
   </div>
 </section>
 
 <section class="section">
-  <span class="section-title">Graduados recientes</span>
+  <span class="section-title">Estudiantes</span>
   <div class="grid">
-    <div class="card">
-      <h3>Yulissa Espitia</h3>
-      <p>Magíster en Ciencias Físicas, USACH (2025)</p>
-      <p class="meta">Evolución radial de electrones ultrarelativistas durante eventos de aumento</p>
-    </div>
-    <div class="card">
-      <h3>Carlos Castillo</h3>
-      <p>Magíster en Ciencias Físicas, USACH (2025)</p>
-      <p class="meta">Caracterización del contenido total de electrones a altas latitudes</p>
-    </div>
-    <div class="card">
-      <h3>Christopher Lara</h3>
-      <p>Magíster en Ciencias Físicas, UdeChile (2024)</p>
-      <p class="meta">Relación entre la aparición de ondas ULF y cambios en flujos de electrones relativistas</p>
-    </div>
-    <div class="card">
-      <h3>Yerko Jelcic Iturra</h3>
-      <p>Ingeniería en Astrofísica, USACH (2024)</p>
-      <p class="meta">Modelos de predicción de índices aurorales usando Deep Learning</p>
-    </div>
-    <div class="card">
-      <h3>Paula Reyes</h3>
-      <p>Magíster en Ciencias Físicas, UdeChile (en curso)</p>
-      <p class="meta">Tormentas geomagnéticas y su relación con las fases del ciclo solar</p>
-    </div>
+    {students.map((s) => <TeamCard data={s.data} lang={lang} />)}
   </div>
 </section>
 
 <section class="section">
-  <span class="section-title">Colaboradores internacionales</span>
+  <span class="section-title">Colaboradores</span>
   <div class="grid">
-    <div class="card">
-      <h3>Dr. Aaron Keesee</h3>
-      <p>University of New Hampshire, EE. UU.</p>
-      <p class="meta">Perturbaciones magnéticas en tierra, ML para clima espacial, NASA LWS</p>
-    </div>
-    <div class="card">
-      <h3>Dr. José Paulo Marchezi</h3>
-      <p>INPE, Brasil</p>
-      <p class="meta">GICs, precipitación de partículas, CNPq Conhecimento Brasil</p>
-    </div>
-    <div class="card">
-      <h3>Dra. Elena E. Antonova</h3>
-      <p>Rusia</p>
-      <p class="meta">Fenómenos aurorales, cinturón de radiación externo</p>
-    </div>
-    <div class="card">
-      <h3>Dr. Pablo S. Moya</h3>
-      <p>USACH</p>
-      <p class="meta">Física de sistemas de plasma en expansión, viento solar y estelar</p>
-    </div>
-    <div class="card">
-      <h3>Dr. Daniel Mourenas</h3>
-      <p>IPGP, Francia</p>
-      <p class="meta">Cinturones remanentes ultrarelativistas, dispersión por hiss</p>
-    </div>
+    {collaborators.map((c) => <TeamCard data={c.data} lang={lang} />)}
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-title">Ex-Miembros</span>
+  <div class="grid">
+    {formerMembers.map((m) => <TeamCard data={m.data} lang={lang} />)}
   </div>
 </section>
 
 <section class="section">
   <span class="section-title">Convocatoria abierta</span>
-  <div class="card" style="border-color:var(--border-accent)">
+  <div class="card card-accent">
     <p>Buscamos estudiantes de magíster y pregrado para proyectos de investigación:</p>
-    <ul style="margin:1rem 0 0 1.5rem">
+    <ul class="card-list">
       <li>Dinámica de electrones relativistas en el cinturón externo</li>
       <li>Predicción de tormentas geomagnéticas con Deep Learning</li>
       <li>Corrientes inducidas geomagnéticamente (GIC)</li>
@@ -135,7 +67,7 @@ import Layout from '../layouts/Layout.astro';
       <li>Turbulencia y balance de presión en la magnetosfera</li>
       <li>Acoplamiento viento solar — magnetosfera</li>
     </ul>
-    <p style="margin-top:1rem">Si eres estudiante de ingeniería física, astrofísica o carreras afines, escríbenos a <a href="mailto:victor.pinto@usach.cl">victor.pinto@usach.cl</a></p>
+    <p class="card-note">Si eres estudiante de ingeniería física, astrofísica o carreras afines, escríbenos a <a href="mailto:victor.pinto@usach.cl">victor.pinto@usach.cl</a></p>
   </div>
 </section>
 

@@ -1,35 +1,44 @@
 ---
-import css from '../styles/global.css?inline';
+import '../styles/global.css';
 const lang = Astro.currentLocale === 'en' ? 'en' : 'es';
-const { title, description, variant, alternateUrl } = Astro.props;
+const { title, description, variant } = Astro.props;
+// ES <-> EN page pairs (Spanish is the default locale, served without prefix).
+const pagePairs = [
+  ['/', '/en/'],
+  ['/investigacion/', '/en/research/'],
+  ['/equipo/', '/en/team/'],
+  ['/laboratorio/', '/en/lab/'],
+];
+const site = 'https://heliousach.github.io';
+const here = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const pair = pagePairs.find(([es, en]) => es === here || en === here) ?? ['/', '/en/'];
 const p = (path_route) => lang === 'es' ? path_route : `/en${path_route}`;
 // Nav links: on home page use in-page anchors; on sub-pages link to home page sections
 const navLink = (hash) => variant === 'home' ? `#${hash}` : `${p('/')}#${hash}`;
-// Open Graph image (hero — local NASA image)
-const ogImage = 'https://heliousach.github.io/images/earth-hero.jpg';
+// Open Graph image: 2019 La Silla eclipse (ESA/CESAR), also the homepage hero.
+const ogImage = `${site}/images/eso1912u-la-silla-eclipse.jpg`;
 const t = lang === 'en' ? {
-  home: 'Home', research: 'Research', team: 'Team', lab: 'Labs', contact: 'Contact',
-  footer: '© 2026 HelioFísica USACH. All rights reserved.',
+  home: 'Home', research: 'Research', team: 'Team', lab: 'Infrastructure', contact: 'Contact',
+  footer: `© ${new Date().getFullYear()} HelioFísica USACH.`,
   nav: 'Navigation',
   themeToggle: 'Toggle day/night theme',
   footerHeadline: 'Space weather research at USACH.',
   footerBody: 'We welcome collaborations, thesis projects, and press inquiries about heliophysics and space weather.',
-  footerRole: 'Co-Principal Investigator',
+  footerRole: 'Group co-lead',
   footerDept: 'Department of Physics',
   footerUniv: 'Universidad de Santiago de Chile',
 } : {
-  home: 'Inicio', research: 'Investigación', team: 'Equipo', lab: 'Laboratorios', contact: 'Contacto',
-  footer: '© 2026 HelioFísica USACH. Todos los derechos reservados.',
+  home: 'Inicio', research: 'Investigación', team: 'Equipo', lab: 'Infraestructura', contact: 'Contacto',
+  footer: `© ${new Date().getFullYear()} HelioFísica USACH.`,
   nav: 'Navegación',
   themeToggle: 'Cambiar tema día/noche',
   footerHeadline: 'Investigación en clima espacial en USACH.',
   footerBody: 'Estamos abiertos a colaboraciones, memorias, tesis y consultas de prensa sobre heliofísica y clima espacial.',
-  footerRole: 'Co-Investigador Principal',
+  footerRole: 'Co-director del grupo',
   footerDept: 'Departamento de Física',
   footerUniv: 'Universidad de Santiago de Chile',
 };
-const canonicalPath = lang === 'en' ? '/en/' : '/';
-const canonicalUrl = `https://heliousach.github.io${canonicalPath}`;
+const canonicalUrl = `${site}${here}`;
 const pageTitle = `${title} | Heliofísica USACH`;
 
 const orgSchema = {
@@ -57,8 +66,10 @@ const orgSchema = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script is:inline>
       (function () {
-        var saved = localStorage.getItem('theme') || 'day';
+        var saved = 'day';
+        try { saved = localStorage.getItem('theme') || 'day'; } catch (e) {}
         document.documentElement.setAttribute('data-theme', saved);
+        document.documentElement.classList.add('js');
       })();
     </script>
     <title>{pageTitle}</title>
@@ -67,7 +78,7 @@ const orgSchema = {
     <link rel="canonical" href={canonicalUrl} />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400&family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400&family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
     <!-- Open Graph / Twitter Card -->
     <meta property="og:type" content="website" />
@@ -83,9 +94,9 @@ const orgSchema = {
     <meta name="twitter:image" content={ogImage} />
 
     <!-- Bilingual hreflang -->
-    <link rel="alternate" hreflang="es" href="https://heliousach.github.io/" />
-    <link rel="alternate" hreflang="en" href="https://heliousach.github.io/en/" />
-    <link rel="alternate" hreflang="x-default" href="https://heliousach.github.io/" />
+    <link rel="alternate" hreflang="es" href={`${site}${pair[0]}`} />
+    <link rel="alternate" hreflang="en" href={`${site}${pair[1]}`} />
+    <link rel="alternate" hreflang="x-default" href={`${site}${pair[0]}`} />
 
     <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
   </head>
@@ -95,18 +106,16 @@ const orgSchema = {
         <a class="brand" href={p('/')} >
           <span>Heliof&#237;sica USACH</span>
         </a>
-        <div style="display:flex;gap:1.3rem;align-items:center;flex-wrap:wrap">
+        <div class="nav-links">
           <a href={navLink('inicio')}>{t.home}</a>
           <a href={navLink('investigacion')}>{t.research}</a>
           <a href={navLink('equipo')}>{t.team}</a>
           <a href={navLink('laboratorio')}>{t.lab}</a>
           <a href={navLink('contacto')}>{t.contact}</a>
-          <span style="margin-left:0.5rem">
-            {lang === 'es'
-              ? <a href="/en/" style="color:var(--aurora-green);font-weight:600">EN</a>
-              : <a href="/" style="color:var(--aurora-green);font-weight:600">ES</a>
-            }
-          </span>
+          {lang === 'es'
+            ? <a class="lang-switch" href={pair[1]} hreflang="en" lang="en">EN</a>
+            : <a class="lang-switch" href={pair[0]} hreflang="es" lang="es">ES</a>
+          }
           <button
             id="theme-toggle"
             class="theme-toggle"
@@ -154,12 +163,16 @@ const orgSchema = {
         btn.addEventListener('click', function () {
           var next = document.documentElement.getAttribute('data-theme') === 'night' ? 'day' : 'night';
           document.documentElement.setAttribute('data-theme', next);
-          localStorage.setItem('theme', next);
+          try { localStorage.setItem('theme', next); } catch (e) {}
           btn.setAttribute('aria-pressed', next === 'night' ? 'true' : 'false');
         });
       })();
       // Scroll reveal (IntersectionObserver)
       (function () {
+        if (!('IntersectionObserver' in window)) {
+          document.querySelectorAll('.hp-reveal').forEach(function (el) { el.classList.add('in'); });
+          return;
+        }
         var io = new IntersectionObserver(function (entries) {
           entries.forEach(function (e) {
             if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }

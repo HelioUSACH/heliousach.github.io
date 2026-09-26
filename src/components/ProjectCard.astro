@@ -1,0 +1,46 @@
+---
+// Renders one project/grant, in one of two shapes:
+//   variant="full" (default) — the card used in the /investigacion and
+//                              /en/research "active projects" grid (all projects)
+//   variant="mini"           — the featured project card used on the homepage
+//                              (only projects with a `featured` order)
+//
+// `data` is a projects collection entry's `.data` (see src/content.config.ts /
+// src/data/projects.yaml). `lang` is 'es' | 'en'.
+
+interface Props {
+  data: Record<string, any>;
+  lang: 'es' | 'en';
+  variant?: 'full' | 'mini';
+}
+
+const { data: d, lang, variant = 'full' } = Astro.props as Props;
+const pick = (field?: { es: string; en: string }) => field?.[lang];
+
+// attribution is plain text with **name** for bolding the role label (PI:,
+// Co-I:, etc.) — same convention as publications' authors field.
+const boldAttributionHtml = pick(d.attribution)?.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+---
+
+{variant === 'mini' ? (
+  <article class="hp-project-card">
+    <div class="hp-project-media">
+      <img src={d.homeImage} alt={pick(d.homeImageAlt)} />
+    </div>
+    <div class="hp-project-body">
+      <p class="hp-project-kicker">{pick(d.homeKicker)}</p>
+      <h3>{pick(d.homeTitle ?? d.title)}</h3>
+      <p>{pick(d.homeDescription ?? d.description)}</p>
+      <div class="hp-project-tags">
+        {(d.homeTags ?? []).map((t: { es: string; en: string }) => <span>{pick(t)}</span>)}
+      </div>
+    </div>
+  </article>
+) : (
+  <div class="card">
+    <h3>{pick(d.title)}</h3>
+    <p set:html={boldAttributionHtml} />
+    <p>{pick(d.description)}</p>
+    <p class="meta">{d.meta}</p>
+  </div>
+)}

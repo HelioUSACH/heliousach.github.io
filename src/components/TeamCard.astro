@@ -1,0 +1,66 @@
+---
+// Renders one team member, in one of two shapes:
+//   variant="full" (default) — the card used on /equipo and /en/team
+//   variant="mini"           — the compact hover-reveal card used on the homepage
+//
+// `data` is a team collection entry's `.data` (see src/content.config.ts /
+// src/data/team.yaml). `lang` is 'es' | 'en'.
+
+interface Props {
+  data: Record<string, any>;
+  lang: 'es' | 'en';
+  variant?: 'full' | 'mini';
+}
+
+const { data: d, lang, variant = 'full' } = Astro.props as Props;
+const pick = (field?: { es: string; en: string }) => field?.[lang];
+
+const linkItems = d.links
+  ? ([
+      d.links.site && { href: d.links.site, label: lang === 'es' ? 'Sitio personal' : 'Personal site' },
+      d.links.scholar && { href: d.links.scholar, label: 'Google Scholar' },
+      d.links.orcid && { href: d.links.orcid, label: 'ORCID' },
+      d.links.anid && { href: d.links.anid, label: 'ANID PDI' },
+    ].filter(Boolean) as { href: string; label: string }[])
+  : [];
+
+const teamPageHref = lang === 'es' ? '/equipo' : '/en/team';
+---
+
+{variant === 'mini' ? (
+  <a
+    class="hp-team-card"
+    href={d.homeCardLink ?? teamPageHref}
+    target={d.homeCardLink ? '_blank' : undefined}
+    rel={d.homeCardLink ? 'noopener' : undefined}
+  >
+    <span class="initials">{d.initials}</span>
+    <span class="overlay">
+      <span class="name">{pick(d.name)}</span>
+      <span class="role">{pick(d.miniRole ?? d.role)}</span>
+      <span class="bio">{pick(d.miniBio ?? d.topic ?? d.bio)}</span>
+    </span>
+  </a>
+) : d.status === 'pi' ? (
+  <div class="card">
+    <h3>{pick(d.name)}</h3>
+    <p><strong>{pick(d.role)}</strong> · {pick(d.department)}</p>
+    <p>{pick(d.bio)}</p>
+    {linkItems.length > 0 && (
+      <div style="margin-top:0.75rem">
+        {linkItems.map((l, i) => (
+          <Fragment>
+            {i > 0 && ' · '}
+            <a href={l.href} target="_blank" rel="noopener">{l.label}</a>
+          </Fragment>
+        ))}
+      </div>
+    )}
+  </div>
+) : (
+  <div class="card">
+    <h3>{pick(d.name)}</h3>
+    <p>{pick(d.role)}{d.year ? ` (${d.year})` : ''}</p>
+    <p class="meta">{pick(d.topic)}</p>
+  </div>
+)}

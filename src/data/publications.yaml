@@ -1,0 +1,111 @@
+# HelioFísica USACH — publications.
+#
+# Group publications since the group started at USACH (2022-). Paper titles,
+# author names, journals and DOIs aren't translated, so this one file feeds
+# both research pages and the homepage teaser (5 most recent).
+# Sorted by year, newest first; ties keep the order they're listed here.
+#
+# To add a publication: copy an entry, give it a unique `id`, fill in the
+# fields. Wrap a name in **double asterisks** to bold it (group members; the
+# homepage teaser ignores it). Accepted papers without a DOI: omit `doi` and
+# set `inPress: true`.
+#
+# Last checked against the tenure-dossier publication table: 2026-09-25.
+
+- id: pub-2026-coello-aa
+  year: 2026
+  authors: "**Coello-Guzmán, M.**, **Pinto, V.A.**, Navarro, R., Moya, P.S."
+  title: "The effect of expansion and instabilities in the thermodynamic regulation of the young solar wind"
+  journal: "Astronomy & Astrophysics"
+  inPress: true
+
+- id: pub-2026-marchezi-jgr
+  year: 2026
+  authors: "Marchezi, J.P., ..., **Pinto, V.A.**, et al."
+  title: "On the effects of the solar wind structure in the global distribution of dBH/dt spikes"
+  journal: "JGR: Space Physics"
+  doi: "https://doi.org/10.1029/2025JA034994"
+
+- id: pub-2026-caro-sensors
+  year: 2026
+  authors: "**Caro, G.**, ..., **Pinto, V.A.**, et al."
+  title: "Comparative performance analysis of five magnetometers for geomagnetic monitoring"
+  journal: "Sensors"
+  doi: "https://doi.org/10.3390/s26154700"
+
+- id: pub-2026-inostroza-jgr
+  year: 2026
+  authors: "**Inostroza, A.M.**, ..., **Pinto, V.A.**, et al."
+  title: "The role of auroral phenomena in the dynamics of the outer radiation belt"
+  journal: "JGR: Space Physics"
+  doi: "https://doi.org/10.1029/2026JA035123"
+
+- id: pub-2026-stepanova-physica-scripta
+  year: 2026
+  authors: "**Stepanova, M.V.**, **Pinto, V.A.**, et al."
+  title: "Role of the solar wind dynamic pressure in the development of magnetospheric turbulence"
+  journal: "Physica Scripta"
+  doi: "https://doi.org/10.1088/1402-4896/ae48b2"
+
+- id: pub-2025-pinto-physica-scripta
+  year: 2025
+  authors: "**Pinto, V.A.**, **Espitia, Y.**, **Zenteno-Quinteros, B.**, **Stepanova, M.V.**, Moya, P.S."
+  title: "Radial evolution of ultrarelativistic electrons during enhancement events"
+  journal: "Physica Scripta"
+  doi: "https://doi.org/10.1088/1402-4896/ae1332"
+
+- id: pub-2025-coughlan-space-weather
+  year: 2025
+  authors: "Coughlan, M., Keesee, A., **Pinto, V.**, et al."
+  title: "Using machine learning explainability techniques to examine drivers of ground magnetic field localization"
+  journal: "Space Weather"
+  doi: "https://doi.org/10.1029/2025SW004391"
+
+- id: pub-2025-mukundan-frontiers
+  year: 2025
+  authors: "Mukundan, R., Keesee, A.M., Marchezi, J.P., **Pinto, V.A.**, Coughlan, M., Hampton, D."
+  title: "Localized geomagnetic disturbances: a statistical analysis of spatial scale"
+  journal: "Front. Astron. Space Sci."
+  doi: "https://doi.org/10.3389/fspas.2025.1610276"
+
+- id: pub-2025-lara-universe
+  year: 2025
+  authors: "**Lara, C.**, **Pinto, V.A.**, Silva, J., **Zenteno-Quinteros, B.**, Moya, P.S."
+  title: "On the relationship between ULF wave power and changes of relativistic electron fluxes in the outer radiation belt"
+  journal: "Universe"
+  doi: "https://doi.org/10.3390/universe11050151"
+
+- id: pub-2024-gallardo-lacourt-grl
+  year: 2024
+  authors: "Gallardo-Lacourt, B., ..., **Pinto, V.A.**, et al."
+  title: "Unexpected STEVE observations at high latitude during quiet geomagnetic conditions"
+  journal: "GRL"
+  doi: "https://doi.org/10.1029/2024GL110568"
+
+- id: pub-2024-stepanova-rmpp
+  year: 2024
+  authors: "**Stepanova, M.**, **Pinto, V.**, Antonova, E."
+  title: "Regarding the relativistic electron dynamics in the outer radiation belt: a historical view"
+  journal: "Reviews of Modern Plasma Physics"
+  doi: "https://doi.org/10.1007/s41614-024-00165-4"
+
+- id: pub-2023-coughlan-space-weather
+  year: 2023
+  authors: "Coughlan, M., Keesee, A.M., **Pinto, V.A.**, et al."
+  title: "Probabilistic forecasting of ground magnetic perturbation spikes at mid-latitude stations"
+  journal: "Space Weather"
+  doi: "https://doi.org/10.1029/2023SW003446"
+
+- id: pub-2022-moya-apj
+  year: 2022
+  authors: "Moya, P.S., **Zenteno-Quinteros, B.**, Gallo-Méndez, I., **Pinto, V.A.**"
+  title: "The role of O+ and He+ in the propagation of kinetic Alfvén waves in the Earth's inner magnetosphere"
+  journal: "ApJ"
+  doi: "https://doi.org/10.3847/1538-4357/ac713b"
+
+- id: pub-2022-pinto-front-astron
+  year: 2022
+  authors: "**Pinto, V.A.**, Keesee, A.M., et al."
+  title: "Revisiting the ground magnetic field perturbations challenge: a machine learning perspective"
+  journal: "Front. Astron. Space Sci."
+  doi: "https://doi.org/10.3389/fspas.2022.869740"
