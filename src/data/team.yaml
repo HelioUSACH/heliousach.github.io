@@ -18,14 +18,14 @@
     es: "Profesor Asistente"
     en: "Assistant Professor"
   department:
-    es: "Departamento de Física, USACH"
-    en: "Department of Physics, USACH"
+    es: "Departamento de Física, USACH · Subdirector de Docencia"
+    en: "Department of Physics, USACH · Associate Chair for Teaching"
   bio:
     es: "Ph.D. en Ciencias Atmosféricas y Oceánicas (Física Espacial), UCLA 2019 (co-directores: L. Lyons, J. Bortnik). Postdoctorado en UNH (2020-2022). Investigador en cinturones de radiación, ondas ULF, acoplamiento viento solar-magnetosfera, machine learning para clima espacial y corrientes inducidas geomagnéticamente (GIC). Editor asociado de Space Weather (AGU/Wiley)."
     en: "Ph.D. in Atmospheric and Oceanic Sciences (Space Physics), UCLA 2019 (co-advisors: L. Lyons, J. Bortnik). Postdoctoral research at UNH (2020-2022). Researcher in radiation belts, ULF waves, solar wind—magnetosphere coupling, machine learning for space weather, and geomagnetically induced currents (GIC). Associate Editor of Space Weather (AGU/Wiley)."
   miniRole:
-    es: "Co-PI, Profesor Asistente"
-    en: "Co-PI, Assistant Professor"
+    es: "Co-director, Profesor Asistente"
+    en: "Co-lead, Assistant Professor"
   miniBio:
     es: "Ph.D. UCLA 2019. Cinturones de radiación, ondas ULF y machine learning para clima espacial."
     en: "Ph.D. UCLA 2019. Radiation belts, ULF waves, and machine learning for space weather."
@@ -52,8 +52,8 @@
     es: "Ph.D. en Astrofísica, Instituto Skobeltsyn de Física Nuclear, Universidad Estatal Lomonósov de Moscú. En USACH desde 1995. Investigadora en plasmas espaciales, dinámica de la magnetosfera terrestre, turbulencia en plasmas, tormentas y subtormentas geomagnéticas, estabilidad de configuraciones de plasma y sistemas complejos. Colaboraciones activas con grupos de investigación en EE. UU. y Rusia. Ha supervisado más de 8 estudiantes de postgrado."
     en: "Ph.D. in Astrophysics, Skobeltsyn Institute of Nuclear Physics, Lomonosov Moscow State University. At USACH since 1995. Researcher in space plasmas, Earth's magnetospheric dynamics, turbulence in space plasmas, geomagnetic storms and substorms, plasma configuration stability, and complex systems. Active collaborations with research groups in the US and Russia. Has supervised 8+ graduate students."
   miniRole:
-    es: "Co-PI, Profesora"
-    en: "Co-PI, Professor"
+    es: "Co-directora, Profesora Titular"
+    en: "Co-lead, Professor"
   miniBio:
     es: "Ph.D. Universidad Estatal de Moscú. Dinámica magnetosférica, turbulencia y tormentas geomagnéticas. En USACH desde 1995."
     en: "Ph.D. Moscow State University. Magnetospheric dynamics, turbulence, and geomagnetic storms. At USACH since 1995."
@@ -62,33 +62,33 @@
     scholar: "https://scholar.google.com/citations?user=Rb-PfE4AAAAJ"
     anid: "https://investigadores.anid.cl/es/public_search/researcher?id=8491"
 
-- id: ana-maria-inostroza
-  status: current-student
-  order: 10
-  name:
-    es: "Ana María Inostroza"
-    en: "Ana María Inostroza"
-  role:
-    es: "Magíster en Ciencias Físicas, USACH"
-    en: "Master of Science in Physics, USACH"
-  topic:
-    es: "Dinámica del cinturón de radiación externo y fenómenos aurorales"
-    en: "Outer radiation belt dynamics and auroral phenomena"
-  initials: "AI"
-
 - id: bea-zenteno-quinteros
-  status: current-student
-  order: 20
+  status: postdoc
+  order: 5
   name:
-    es: "Bea Zenteno-Quinteros"
-    en: "Bea Zenteno-Quinteros"
+    es: "Dra. Bea Zenteno-Quinteros"
+    en: "Dr. Bea Zenteno-Quinteros"
   role:
-    es: "Magíster en Ciencias Físicas, USACH"
-    en: "Master of Science in Physics, USACH"
+    es: "Investigadora postdoctoral (FONDECYT de Postdoctorado), USACH"
+    en: "Postdoctoral researcher (FONDECYT Postdoctoral grant), USACH"
   topic:
-    es: "Procesos de pérdida de electrones relativistas por ondas electromagnéticas"
-    en: "Relativistic electron loss processes by electromagnetic waves"
+    es: "Física de plasmas espaciales: ondas, inestabilidades y pérdida de electrones relativistas"
+    en: "Space plasma physics: waves, instabilities, and relativistic electron losses"
   initials: "BZ"
+
+- id: coello-guzman
+  status: postdoc
+  order: 6
+  name:
+    es: "Dr. M. Coello-Guzmán"
+    en: "Dr. M. Coello-Guzmán"
+  role:
+    es: "Investigador postdoctoral (DICYT Postdoctorado), USACH"
+    en: "Postdoctoral researcher (DICYT Postdoctoral grant), USACH"
+  topic:
+    es: "Expansión, inestabilidades y termodinámica del viento solar joven"
+    en: "Expansion, instabilities, and thermodynamics of the young solar wind"
+  initials: "MC"
 
 - id: dafhne-munoz-reyes
   status: current-student
@@ -118,10 +118,6 @@
     en: "Deep Learning prediction of relativistic electron flux"
   initials: "CP"
 
-# Fix (2026-08-25): Paula Reyes is an active Master's student, not a graduate —
-# CONTENT_AUDIT.md flagged this on 2026-08-14. Moved into current-student here;
-# previously she was hardcoded under "Graduados recientes" with a contradictory
-# "(en curso)" / "(current)" label in both equipo.astro and en/team.astro.
 - id: paula-reyes
   status: current-student
   order: 50
@@ -129,8 +125,8 @@
     es: "Paula Reyes"
     en: "Paula Reyes"
   role:
-    es: "Magíster en Ciencias Físicas, UdeChile"
-    en: "Master of Science in Physics, UdeChile"
+    es: "Magíster en Ciencias, mención Física, U. de Chile (co-guía)"
+    en: "M.Sc. in Physics, Universidad de Chile (co-advised)"
   topic:
     es: "Tormentas geomagnéticas y su relación con las fases del ciclo solar"
     en: "Geomagnetic storms and their relation with solar cycle phases"
@@ -158,8 +154,8 @@
     es: "Carlos Castillo"
     en: "Carlos Castillo"
   role:
-    es: "Magíster en Ciencias Físicas, USACH"
-    en: "Master of Science in Physics, USACH"
+    es: "Magíster en Ciencias Físicas, USACH (co-guía)"
+    en: "M.Sc. in Physics, USACH (co-advised)"
   topic:
     es: "Caracterización del contenido total de electrones a altas latitudes"
     en: "Total Electron Content characterization at high latitudes"
@@ -172,8 +168,8 @@
     es: "Christopher Lara"
     en: "Christopher Lara"
   role:
-    es: "Magíster en Ciencias Físicas, UdeChile"
-    en: "Master of Science in Physics, UdeChile"
+    es: "Magíster en Ciencias, mención Física, U. de Chile (co-tutor)"
+    en: "M.Sc. in Physics, Universidad de Chile (co-advised)"
   topic:
     es: "Relación entre la aparición de ondas ULF y cambios en flujos de electrones relativistas"
     en: "Relationship between ULF Wave Power and changes in relativistic electron fluxes"
@@ -186,11 +182,52 @@
     es: "Yerko Jelcic Iturra"
     en: "Yerko Jelcic Iturra"
   role:
-    es: "Ingeniería en Astrofísica, USACH"
-    en: "Astrophysics Engineering, USACH"
+    es: "Ingeniería Física, USACH"
+    en: "Physics Engineering, USACH"
   topic:
     es: "Modelos de predicción de índices aurorales usando Deep Learning"
     en: "Deep Learning models for auroral index prediction"
+
+- id: guillermo-caro-lillo
+  status: former-member
+  order: 92
+  year: 2025
+  name:
+    es: "Guillermo Caro Lillo"
+    en: "Guillermo Caro Lillo"
+  role:
+    es: "Ingeniería Física, USACH"
+    en: "Physics Engineering, USACH"
+  topic:
+    es: "Evaluación comparativa de magnetómetros para monitoreo geomagnético"
+    en: "Comparative evaluation of magnetometers for geomagnetic monitoring"
+
+- id: javier-ruiz-pineda
+  status: former-member
+  order: 94
+  year: 2024
+  name:
+    es: "Javier Ruiz Pineda"
+    en: "Javier Ruiz Pineda"
+  role:
+    es: "Ingeniería Física, USACH (co-director)"
+    en: "Physics Engineering, USACH (co-advised)"
+  topic:
+    es: "Evaluación de criticidad de contenedores de combustible nuclear gastado"
+    en: "Criticality assessment of spent nuclear fuel containers"
+
+- id: ana-maria-inostroza
+  status: former-member
+  order: 96
+  name:
+    es: "Ana María Inostroza"
+    en: "Ana María Inostroza"
+  role:
+    es: "USACH"
+    en: "USACH"
+  topic:
+    es: "Dinámica del cinturón de radiación externo y fenómenos aurorales"
+    en: "Outer radiation belt dynamics and auroral phenomena"
 
 - id: aaron-keesee
   status: collaborator
@@ -202,8 +239,8 @@
     es: "University of New Hampshire, EE. UU."
     en: "University of New Hampshire, USA"
   topic:
-    es: "Perturbaciones magnéticas en tierra, ML para clima espacial, NASA LWS"
-    en: "Ground magnetic perturbations, ML for space weather, NASA LWS"
+    es: "Perturbaciones magnéticas en tierra y machine learning para clima espacial"
+    en: "Ground magnetic perturbations and machine learning for space weather"
 
 - id: jose-paulo-marchezi
   status: collaborator
@@ -225,8 +262,8 @@
     es: "Dra. Elena E. Antonova"
     en: "Prof. Elena E. Antonova"
   role:
-    es: "Rusia"
-    en: "Russia"
+    es: "Instituto Skobeltsyn de Física Nuclear, Universidad Estatal de Moscú, Rusia"
+    en: "Skobeltsyn Institute of Nuclear Physics, Moscow State University, Russia"
   topic:
     es: "Fenómenos aurorales, cinturón de radiación externo"
     en: "Auroral phenomena, outer radiation belt dynamics"
@@ -238,8 +275,8 @@
     es: "Dr. Pablo S. Moya"
     en: "Dr. Pablo S. Moya"
   role:
-    es: "USACH"
-    en: "USACH"
+    es: "Universidad de Chile"
+    en: "Universidad de Chile"
   topic:
     es: "Física de sistemas de plasma en expansión, viento solar y estelar"
     en: "Expanding plasma systems, solar and stellar winds"

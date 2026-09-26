@@ -6,6 +6,7 @@ import TeamCard from '../components/TeamCard.astro';
 const lang = 'es';
 const team = (await getCollection('team')).sort((a, b) => a.data.order - b.data.order);
 const pis = team.filter((t) => t.data.status === 'pi');
+const postdocs = team.filter((t) => t.data.status === 'postdoc');
 const students = team.filter((t) => t.data.status === 'current-student');
 const formerMembers = team.filter((t) => t.data.status === 'former-member');
 const collaborators = team.filter((t) => t.data.status === 'collaborator');
@@ -21,8 +22,15 @@ const collaborators = team.filter((t) => t.data.status === 'collaborator');
 
 <section class="section">
   <span class="section-title">Investigadores</span>
-  <div class="grid" style="grid-template-columns:1fr 1fr;gap:1rem">
+  <div class="grid-2">
     {pis.map((p) => <TeamCard data={p.data} lang={lang} />)}
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-title">Postdoctorados</span>
+  <div class="grid">
+    {postdocs.map((p) => <TeamCard data={p.data} lang={lang} />)}
   </div>
 </section>
 
@@ -49,9 +57,9 @@ const collaborators = team.filter((t) => t.data.status === 'collaborator');
 
 <section class="section">
   <span class="section-title">Convocatoria abierta</span>
-  <div class="card" style="border-color:var(--border-accent)">
+  <div class="card card-accent">
     <p>Buscamos estudiantes de magíster y pregrado para proyectos de investigación:</p>
-    <ul style="margin:1rem 0 0 1.5rem">
+    <ul class="card-list">
       <li>Dinámica de electrones relativistas en el cinturón externo</li>
       <li>Predicción de tormentas geomagnéticas con Deep Learning</li>
       <li>Corrientes inducidas geomagnéticamente (GIC)</li>
@@ -59,7 +67,7 @@ const collaborators = team.filter((t) => t.data.status === 'collaborator');
       <li>Turbulencia y balance de presión en la magnetosfera</li>
       <li>Acoplamiento viento solar — magnetosfera</li>
     </ul>
-    <p style="margin-top:1rem">Si eres estudiante de ingeniería física, astrofísica o carreras afines, escríbenos a <a href="mailto:victor.pinto@usach.cl">victor.pinto@usach.cl</a></p>
+    <p class="card-note">Si eres estudiante de ingeniería física, astrofísica o carreras afines, escríbenos a <a href="mailto:victor.pinto@usach.cl">victor.pinto@usach.cl</a></p>
   </div>
 </section>
 

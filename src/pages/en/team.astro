@@ -6,6 +6,7 @@ import TeamCard from '../../components/TeamCard.astro';
 const lang = 'en';
 const team = (await getCollection('team')).sort((a, b) => a.data.order - b.data.order);
 const pis = team.filter((t) => t.data.status === 'pi');
+const postdocs = team.filter((t) => t.data.status === 'postdoc');
 const students = team.filter((t) => t.data.status === 'current-student');
 const formerMembers = team.filter((t) => t.data.status === 'former-member');
 const collaborators = team.filter((t) => t.data.status === 'collaborator');
@@ -21,8 +22,15 @@ const collaborators = team.filter((t) => t.data.status === 'collaborator');
 
 <section class="section">
   <span class="section-title">Researchers</span>
-  <div class="grid" style="grid-template-columns:1fr 1fr;gap:1rem">
+  <div class="grid-2">
     {pis.map((p) => <TeamCard data={p.data} lang={lang} />)}
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-title">Postdoctoral researchers</span>
+  <div class="grid">
+    {postdocs.map((p) => <TeamCard data={p.data} lang={lang} />)}
   </div>
 </section>
 
@@ -49,9 +57,9 @@ const collaborators = team.filter((t) => t.data.status === 'collaborator');
 
 <section class="section">
   <span class="section-title">Open positions</span>
-  <div class="card" style="border-color:var(--border-accent)">
+  <div class="card card-accent">
     <p>We are looking for master's and undergraduate students for research projects:</p>
-    <ul style="margin:1rem 0 0 1.5rem">
+    <ul class="card-list">
       <li>Relativistic electron dynamics in the outer radiation belt</li>
       <li>Geomagnetic storm prediction with Deep Learning</li>
       <li>Geomagnetically induced currents (GIC)</li>
@@ -59,7 +67,7 @@ const collaborators = team.filter((t) => t.data.status === 'collaborator');
       <li>Turbulence and pressure balance in the magnetosphere</li>
       <li>Solar wind — magnetosphere coupling</li>
     </ul>
-    <p style="margin-top:1rem">If you are a physics, astrophysics, or related science student, email us at <a href="mailto:victor.pinto@usach.cl">victor.pinto@usach.cl</a></p>
+    <p class="card-note">If you are a physics, astrophysics, or related science student, email us at <a href="mailto:victor.pinto@usach.cl">victor.pinto@usach.cl</a></p>
   </div>
 </section>
 

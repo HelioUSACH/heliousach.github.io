@@ -12,12 +12,14 @@ interface Props {
     authors: string;
     title: string;
     journal: string;
-    doi: string;
+    doi?: string;
+    inPress?: boolean;
   };
   variant?: 'full' | 'mini';
 }
 
 const { data: p, variant = 'full' } = Astro.props as Props;
+const lang = Astro.currentLocale === 'en' ? 'en' : 'es';
 
 // authors is plain text with **name** for bolding. The full-page card renders
 // that as <strong>; the homepage teaser strips the markers (plain text).
@@ -31,7 +33,7 @@ const plainAuthors = p.authors.replace(/\*\*/g, '');
     <div>
       <p class="hp-pub-title">{p.title}</p>
       <p class="hp-pub-meta">
-        {plainAuthors} — {p.journal} · <a href={p.doi} target="_blank" rel="noopener">DOI</a>
+        {plainAuthors} — {p.journal}{p.inPress && (lang === 'en' ? ' (in press)' : ' (en prensa)')}{p.doi && <> · <a href={p.doi} target="_blank" rel="noopener">DOI</a></>}
       </p>
     </div>
   </li>
@@ -41,6 +43,6 @@ const plainAuthors = p.authors.replace(/\*\*/g, '');
       <div style="flex:1;min-width:200px" set:html={`${boldAuthorsHtml} ${p.title}.`} />
       <span class="badge badge-green">{p.year}</span>
     </div>
-    <p class="meta">{p.journal} · <a href={p.doi}>DOI</a></p>
+    <p class="meta">{p.journal}{p.inPress && (lang === 'en' ? ' (in press)' : ' (en prensa)')}{p.doi && <> · <a href={p.doi} target="_blank" rel="noopener">DOI</a></>}</p>
   </div>
 )}

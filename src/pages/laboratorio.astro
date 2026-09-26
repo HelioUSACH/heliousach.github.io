@@ -2,56 +2,46 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Laboratorios" description="Laboratorios de investigación: Instrumentación Espacial y Clima Espacial del grupo HelioUSACH.">
+<Layout title="Infraestructura" description="Infraestructura de investigación y fuentes de datos del grupo Heliofísica y Clima Espacial USACH: clúster HPC, plataforma piloto de clima espacial y magnetometría.">
 
 <section>
-  <span class="section-title">Laboratorios</span>
-  <h1>Nuestros laboratorios</h1>
-  <p class="lead">Dos laboratorios de investigación dedicados a la observación, instrumentación y predicción en heliofísica y clima espacial.</p>
+  <span class="section-title">Infraestructura</span>
+  <h1>Infraestructura y datos</h1>
+  <p class="lead">Cómputo, instrumentación y datos que sostienen nuestra investigación en heliofísica y clima espacial.</p>
 </section>
 
 <section class="section">
-  <div class="card" style="margin-bottom:1.5rem">
-    <h3>Laboratorio de Instrumentación Espacial</h3>
-    <p>Red de magnetómetros en tierra, campañas de campo y adquisición de datos geomagnéticos en tiempo real.</p>
-    <ul style="margin:0.75rem 0 0 1.5rem">
-      <li>Red de magnetómetros SAMBA (red meridional de Arica a Magallanes)</li>
-      <li>Despliegue y calibración de magnetómetros en campañas de campo</li>
-      <li>Campañas en bases antárticas chilenas (Expedición Científica Antártica Chilena 47, 2011)</li>
-      <li>Análisis comparativo de rendimiento de magnetómetros (Universidad Adventista de Chile, 2025)</li>
-      <li>Adquisición y procesamiento de datos en tiempo real</li>
-      <li>Colaboración con redes MACCS, THEMIS GBO y CARISMA</li>
-    </ul>
+  <div class="card stack-card">
+    <h3>Clúster de cómputo de alto rendimiento (HPC)</h3>
+    <p>Plataforma de cómputo del Departamento de Física financiada por FONDEQUIP (2023), dirigida por el Dr. Victor Pinto. Se usa para entrenar modelos de machine learning, procesar grandes volúmenes de datos satelitales y ejecutar simulaciones numéricas.</p>
+    <p class="meta"><a href="https://fisica.usach.cl/es/plataforma-de-investigacion-hpc" target="_blank" rel="noopener">Plataforma HPC, Departamento de Física USACH</a></p>
   </div>
 
-  <div class="card" style="margin-bottom:1.5rem">
-    <h3>Laboratorio de Clima Espacial</h3>
-    <p>Monitoreo en tiempo real, predicción basada en machine learning y análisis de datos satelitales para clima espacial.</p>
-    <ul style="margin:0.75rem 0 0 1.5rem">
-      <li>Plataforma Nacional de Clima Espacial (FONDEF IDEA I+D 2025)</li>
-      <li>Monitoreo en tiempo real de datos de viento solar (OMNI)</li>
-      <li>Modelos predictivos con deep learning (RNN, CNN, LSTM) para perturbaciones magnéticas y GIC</li>
-      <li>Predicción de flujo de electrones relativistas en el cinturón de radiación</li>
-      <li>Ubicación de la plasmapausa con machine learning</li>
-      <li>Procesamiento de datos satelitales: Van Allen Probes, THEMIS, GOES, MMS</li>
-    </ul>
+  <div class="card stack-card">
+    <h3>Plataforma piloto de clima espacial (FONDEF IDEA)</h3>
+    <p>Proyecto liderado por la Universidad Adventista de Chile (UnACh), con USACH como institución asociada (2025-2027). Desarrolla un sistema piloto de monitoreo en tiempo real y alertas tempranas de clima espacial para Chile, con modelos de pronóstico basados en deep learning.</p>
+  </div>
+
+  <div class="card stack-card">
+    <h3>Magnetometría</h3>
+    <p>Evaluación del desempeño de magnetómetros para monitoreo geomagnético, en colaboración con UnACh (<a href="https://doi.org/10.3390/s26154700" target="_blank" rel="noopener">Caro et al., 2026, <em>Sensors</em></a>), y análisis de datos de redes de magnetómetros en tierra para estudiar perturbaciones geomagnéticas y corrientes inducidas (GIC).</p>
   </div>
 </section>
 
 <section class="section">
-  <span class="section-title">Fuentes de datos</span>
+  <span class="section-title">Datos que utilizamos</span>
   <div class="grid">
     <div class="card">
       <h3>Satélites</h3>
-      <p>Van Allen Probes (MagEIS, REPT, EMFISIS, EFW) · THEMIS (SPEDAS) · GOES · MMS · OMNI</p>
+      <p>Van Allen Probes (MagEIS, REPT, EMFISIS, EFW) · THEMIS (SPEDAS) · GOES · OMNI</p>
     </div>
     <div class="card">
-      <h3>Magnetómetros en tierra</h3>
-      <p>SAMBA · MACCS · THEMIS GBO · CARISMA · SuperDARN</p>
+      <h3>Redes en tierra</h3>
+      <p>Magnetómetros: SAMBA · MACCS · THEMIS GBO · CARISMA. Radares SuperDARN</p>
     </div>
     <div class="card">
       <h3>Herramientas</h3>
-      <p>Python (SciPy, Pandas, Numpy, Matplotlib, SpacePy) · TensorFlow-Keras · PyTorch · Scikit-learn</p>
+      <p>Python (NumPy, SciPy, pandas, Matplotlib, SpacePy) · TensorFlow/Keras · PyTorch · scikit-learn</p>
     </div>
   </div>
 </section>

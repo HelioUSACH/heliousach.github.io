@@ -8,7 +8,7 @@ import ProjectCard from '../components/ProjectCard.astro';
 
 const lang = 'es';
 const team = (await getCollection('team')).sort((a, b) => a.data.order - b.data.order);
-const homeTeam = team.filter((t) => t.data.status === 'pi' || t.data.status === 'current-student');
+const homeTeam = team.filter((t) => ['pi', 'postdoc', 'current-student'].includes(t.data.status));
 const publications = (await getCollection('publications')).sort((a, b) => b.data.year - a.data.year);
 const homePubs = publications.slice(0, 5);
 const researchLines = (await getCollection('researchLines')).sort((a, b) => a.data.order - b.data.order);
@@ -20,14 +20,14 @@ const featuredProjects = (await getCollection('projects'))
 <Layout title="Inicio" description="Grupo de investigación en Heliofísica y Clima Espacial de la Universidad de Santiago de Chile. Cinturones de radiación, ondas ULF, turbulencia magnetosférica y predicción de clima espacial." variant="home">
 
 <section class="hp-hero" id="inicio">
-  <img src="/images/earth-hero.jpg" alt="Vista del sistema solar desde la misión Parker Solar Probe" loading="eager" />
+  <img src="/images/eso1912u-la-silla-eclipse.jpg" alt="Corona solar durante el eclipse total del 2 de julio de 2019, observado desde La Silla, Chile" loading="eager" />
   <div class="hp-hero-scrim"></div>
   <div class="hp-hero-content">
     <p class="hp-eyebrow">Universidad de Santiago de Chile — Departamento de Física</p>
     <h1>Heliofísica y Clima Espacial</h1>
-    <p class="hp-hero-sub">Estudiamos la magnetosfera terrestre, los cinturones de radiación y el acoplamiento viento solar-magnetosfera utilizando datos satelitales y observaciones desde tierra. Nuestro grupo desarrolla herramientas de machine learning para la predicción de clima espacial y colabora en la primera plataforma nacional chilena de monitoreo de clima espacial.</p>
+    <p class="hp-hero-sub">Estudiamos la magnetosfera terrestre, los cinturones de radiación y el acoplamiento viento solar-magnetosfera utilizando datos satelitales y observaciones desde tierra. Nuestro grupo desarrolla herramientas de machine learning para la predicción de clima espacial y participa en el desarrollo de una plataforma piloto de monitoreo de clima espacial para Chile.</p>
   </div>
-  <p class="hp-hero-credit">Crédito: NASA/PSPL/PIA23789</p>
+  <p class="hp-hero-credit">Crédito: ESA/CESAR</p>
 </section>
 
 <section id="investigacion">
@@ -89,15 +89,15 @@ const featuredProjects = (await getCollection('projects'))
 <section id="laboratorio">
   <div class="hp-wrap">
     <div class="hp-section-head hp-reveal">
-      <p class="hp-eyebrow">Laboratorios</p>
-      <h2>Nuestros laboratorios</h2>
+      <p class="hp-eyebrow">Infraestructura</p>
+      <h2>Infraestructura y datos</h2>
     </div>
     <div class="hp-reveal">
       <p class="hp-hero-sub" style="color:var(--ink-soft);max-width:65ch">
-        El grupo opera dos laboratorios de investigación. El <strong>Laboratorio de Instrumentación Espacial</strong> mantiene redes de magnetómetros en tierra (cadena SAMBA) y apoya campañas de campo. El <strong>Laboratorio de Clima Espacial</strong> desarrolla sistemas de monitoreo en tiempo real y predicción basada en machine learning para perturbaciones geomagnéticas y dinámica de electrones relativistas.
+        El grupo cuenta con un <strong>clúster de cómputo de alto rendimiento</strong> (FONDEQUIP) para ciencia de datos y modelamiento, participa en el desarrollo de la <strong>plataforma piloto de clima espacial</strong> FONDEF junto a la Universidad Adventista de Chile, y evalúa <strong>magnetómetros</strong> para monitoreo geomagnético. Trabajamos con datos satelitales (Van Allen Probes, THEMIS, GOES, OMNI) y de redes de magnetómetros en tierra.
       </p>
     </div>
-    <a class="hp-more" href="/laboratorio">Ver laboratorios y fuentes de datos →</a>
+    <a class="hp-more" href="/laboratorio">Ver infraestructura y fuentes de datos →</a>
   </div>
 </section>
 

@@ -8,7 +8,7 @@ import ProjectCard from '../../components/ProjectCard.astro';
 
 const lang = 'en';
 const team = (await getCollection('team')).sort((a, b) => a.data.order - b.data.order);
-const homeTeam = team.filter((t) => t.data.status === 'pi' || t.data.status === 'current-student');
+const homeTeam = team.filter((t) => ['pi', 'postdoc', 'current-student'].includes(t.data.status));
 const publications = (await getCollection('publications')).sort((a, b) => b.data.year - a.data.year);
 const homePubs = publications.slice(0, 5);
 const researchLines = (await getCollection('researchLines')).sort((a, b) => a.data.order - b.data.order);
@@ -20,14 +20,14 @@ const featuredProjects = (await getCollection('projects'))
 <Layout title="Home" description="Heliophysics and Space Weather research group at Universidad de Santiago de Chile. Radiation belts, ULF waves, magnetospheric turbulence, and space weather prediction." variant="home">
 
 <section class="hp-hero" id="inicio">
-  <img src="/images/earth-hero.jpg" alt="View of the solar system from the Parker Solar Probe mission" loading="eager" />
+  <img src="/images/eso1912u-la-silla-eclipse.jpg" alt="Solar corona during the 2 July 2019 total solar eclipse, observed from La Silla, Chile" loading="eager" />
   <div class="hp-hero-scrim"></div>
   <div class="hp-hero-content">
     <p class="hp-eyebrow">Universidad de Santiago de Chile — Department of Physics</p>
     <h1>Heliophysics and Space Weather</h1>
-    <p class="hp-hero-sub">We study the Earth's magnetosphere, radiation belts, and solar wind coupling using satellite data and ground-based observations. Our group develops machine learning tools for space weather prediction and contributes to Chile's first national space weather monitoring platform.</p>
+    <p class="hp-hero-sub">We study the Earth's magnetosphere, radiation belts, and solar wind coupling using satellite data and ground-based observations. Our group develops machine learning tools for space weather prediction and contributes to developing a pilot space weather monitoring platform for Chile.</p>
   </div>
-  <p class="hp-hero-credit">Credit: NASA/PSPL/PIA23789</p>
+  <p class="hp-hero-credit">Credit: ESA/CESAR</p>
 </section>
 
 <section id="investigacion">
@@ -89,15 +89,15 @@ const featuredProjects = (await getCollection('projects'))
 <section id="laboratorio">
   <div class="hp-wrap">
     <div class="hp-section-head hp-reveal">
-      <p class="hp-eyebrow">Labs</p>
-      <h2>Our laboratories</h2>
+      <p class="hp-eyebrow">Infrastructure</p>
+      <h2>Infrastructure and data</h2>
     </div>
     <div class="hp-reveal">
       <p class="hp-hero-sub" style="color:var(--ink-soft);max-width:65ch">
-        The group operates two research labs. The <strong>Space Instrumentation Lab</strong> maintains ground-based magnetometer networks (SAMBA chain) and supports field campaigns. The <strong>Space Weather Lab</strong> develops real-time monitoring and ML-based prediction systems for geomagnetic disturbances and relativistic electron dynamics.
+        The group runs a <strong>high-performance computing cluster</strong> (FONDEQUIP) for data science and modeling, contributes to the FONDEF <strong>pilot space weather platform</strong> led by Universidad Adventista de Chile, and evaluates <strong>magnetometers</strong> for geomagnetic monitoring. We work with satellite data (Van Allen Probes, THEMIS, GOES, OMNI) and ground magnetometer networks.
       </p>
     </div>
-    <a class="hp-more" href="/en/lab">See our labs and data sources →</a>
+    <a class="hp-more" href="/en/lab">See infrastructure and data sources →</a>
   </div>
 </section>
 

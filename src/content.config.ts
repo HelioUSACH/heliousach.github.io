@@ -9,7 +9,7 @@ const team = defineCollection({
   schema: z.object({
     id: z.string(),
     name: bilingual,
-    status: z.enum(['pi', 'current-student', 'former-member', 'collaborator']),
+    status: z.enum(['pi', 'postdoc', 'current-student', 'former-member', 'collaborator']),
     order: z.number().default(0),
 
     // Subtitle line shown on the full team page (title/degree/affiliation).
@@ -52,7 +52,9 @@ const publications = defineCollection({
     authors: z.string(),
     title: z.string(),
     journal: z.string(),
-    doi: z.string().url(),
+    // Omit for accepted papers that don't have a DOI yet (set inPress: true).
+    doi: z.string().url().optional(),
+    inPress: z.boolean().default(false),
   }),
 });
 
