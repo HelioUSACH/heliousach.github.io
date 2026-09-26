@@ -1,61 +1,40 @@
 ---
+// Page shell: <head>, header with navigation, footer. Every page uses it.
 import '../styles/global.css';
-const lang = Astro.currentLocale === 'en' ? 'en' : 'es';
-const { title, description, variant } = Astro.props;
-// ES <-> EN page pairs (Spanish is the default locale, served without prefix).
-const pagePairs = [
-  ['/', '/en/'],
-  ['/investigacion/', '/en/research/'],
-  ['/equipo/', '/en/team/'],
-  ['/laboratorio/', '/en/lab/'],
-];
-const site = 'https://heliousach.github.io';
+import { ui, routes, pick, type Lang, type RouteKey } from '../lib/i18n';
+import { site } from '../lib/site';
+
+interface Props {
+  lang: Lang;
+  title: string;
+  description?: string;
+  /** Which nav item is active; also used for the ES/EN switch. */
+  route?: RouteKey;
+  /** Explicit ES/EN counterpart paths (for pages outside `routes`, e.g. a news item). */
+  alternates?: { es: string; en: string };
+  image?: string;
+}
+
+const { lang, title, description, route, alternates, image } = Astro.props;
+const t = ui[lang];
+const base = 'https://heliousach.github.io';
+const alt = alternates ?? (route ? { es: routes[route].es, en: routes[route].en } : { es: '/', en: '/en/' });
+const otherLang: Lang = lang === 'es' ? 'en' : 'es';
 const here = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
-const pair = pagePairs.find(([es, en]) => es === here || en === here) ?? ['/', '/en/'];
-const p = (path_route) => lang === 'es' ? path_route : `/en${path_route}`;
-// Nav links: on home page use in-page anchors; on sub-pages link to home page sections
-const navLink = (hash) => variant === 'home' ? `#${hash}` : `${p('/')}#${hash}`;
-// Open Graph image: 2019 La Silla eclipse (ESA/CESAR), also the homepage hero.
-const ogImage = `${site}/images/eso1912u-la-silla-eclipse.jpg`;
-const t = lang === 'en' ? {
-  home: 'Home', research: 'Research', team: 'Team', lab: 'Infrastructure', contact: 'Contact',
-  footer: `© ${new Date().getFullYear()} HelioFísica USACH.`,
-  nav: 'Navigation',
-  themeToggle: 'Toggle day/night theme',
-  footerHeadline: 'Space weather research at USACH.',
-  footerBody: 'We welcome collaborations, thesis projects, and press inquiries about heliophysics and space weather.',
-  footerRole: 'Group co-lead',
-  footerDept: 'Department of Physics',
-  footerUniv: 'Universidad de Santiago de Chile',
-} : {
-  home: 'Inicio', research: 'Investigación', team: 'Equipo', lab: 'Infraestructura', contact: 'Contacto',
-  footer: `© ${new Date().getFullYear()} HelioFísica USACH.`,
-  nav: 'Navegación',
-  themeToggle: 'Cambiar tema día/noche',
-  footerHeadline: 'Investigación en clima espacial en USACH.',
-  footerBody: 'Estamos abiertos a colaboraciones, memorias, tesis y consultas de prensa sobre heliofísica y clima espacial.',
-  footerRole: 'Co-director del grupo',
-  footerDept: 'Departamento de Física',
-  footerUniv: 'Universidad de Santiago de Chile',
-};
-const canonicalUrl = `${site}${here}`;
-const pageTitle = `${title} | Heliofísica USACH`;
+const pageTitle = route === 'home' ? `${site.name} — ${pick(site, 'tagline', lang)}` : `${title} | ${site.name}`;
+const desc = description ?? pick(site, 'description', lang);
+const ogImage = `${base}${image ?? site.hero.image}`;
+const navItems: RouteKey[] = ['home', 'research', 'team', 'news', 'infrastructure'];
 
 const orgSchema = {
   '@context': 'https://schema.org',
   '@type': 'ResearchOrganization',
   name: 'Heliofísica y Clima Espacial USACH',
-  url: 'https://heliousach.github.io',
-  parentOrganization: {
-    '@type': 'CollegeOrUniversity',
-    name: 'Universidad de Santiago de Chile (USACH)',
-  },
-  email: 'mailto:victor.pinto@usach.cl',
-  sameAs: [
-    'https://instagram.com/helio.usach',
-    'https://twitter.com/vpintoa',
-    'https://github.com/vpinto-space',
-  ],
+  url: base,
+  logo: `${base}/images/brand/emblem.png`,
+  parentOrganization: { '@type': 'CollegeOrUniversity', name: 'Universidad de Santiago de Chile (USACH)' },
+  email: `mailto:${site.contact.email}`,
+  sameAs: site.social.map((s) => s.url),
 };
 ---
 
@@ -66,119 +45,129 @@ const orgSchema = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script is:inline>
       (function () {
-        var saved = 'day';
-        try { saved = localStorage.getItem('theme') || 'day'; } catch (e) {}
-        document.documentElement.setAttribute('data-theme', saved);
+        var theme = 'day';
+        try { theme = localStorage.getItem('theme') || 'day'; } catch (e) {}
+        document.documentElement.setAttribute('data-theme', theme);
         document.documentElement.classList.add('js');
       })();
     </script>
     <title>{pageTitle}</title>
-    <meta name="description" content={description} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="canonical" href={canonicalUrl} />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400&family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-
-    <!-- Open Graph / Twitter Card -->
+    <meta name="description" content={desc} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="canonical" href={`${base}${here}`} />
+    <link rel="alternate" hreflang="es" href={`${base}${alt.es}`} />
+    <link rel="alternate" hreflang="en" href={`${base}${alt.en}`} />
+    <link rel="alternate" hreflang="x-default" href={`${base}${alt.es}`} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />
-    <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:url" content={`${base}${here}`} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:site_name" content="Heliofísica USACH" />
-    <meta property="og:locale" content={lang === 'en' ? 'en' : 'es_CL'} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:locale" content={lang === 'en' ? 'en_US' : 'es_CL'} />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={pageTitle} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
-
-    <!-- Bilingual hreflang -->
-    <link rel="alternate" hreflang="es" href={`${site}${pair[0]}`} />
-    <link rel="alternate" hreflang="en" href={`${site}${pair[1]}`} />
-    <link rel="alternate" hreflang="x-default" href={`${site}${pair[0]}`} />
-
     <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
   </head>
   <body>
-    <header>
-      <nav>
-        <a class="brand" href={p('/')} >
-          <span>Heliof&#237;sica USACH</span>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href={routes.home[lang]}>
+          <img class="emblem-day" src="/images/brand/emblem.png" alt="" width="40" height="40" />
+          <img class="emblem-night" src="/images/brand/emblem-white.png" alt="" width="40" height="40" />
+          <span class="brand-text">
+            <small>{lang === 'es' ? 'Grupo de investigación' : 'Research group'}</small>
+            <span>Heliofísica USACH</span>
+          </span>
         </a>
-        <div class="nav-links">
-          <a href={navLink('inicio')}>{t.home}</a>
-          <a href={navLink('investigacion')}>{t.research}</a>
-          <a href={navLink('equipo')}>{t.team}</a>
-          <a href={navLink('laboratorio')}>{t.lab}</a>
-          <a href={navLink('contacto')}>{t.contact}</a>
-          {lang === 'es'
-            ? <a class="lang-switch" href={pair[1]} hreflang="en" lang="en">EN</a>
-            : <a class="lang-switch" href={pair[0]} hreflang="es" lang="es">ES</a>
-          }
-          <button
-            id="theme-toggle"
-            class="theme-toggle"
-            type="button"
-            aria-label={t.themeToggle}
-          >
-            <svg class="icon-day" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-            <svg class="icon-night" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
-          </button>
-        </div>
-      </nav>
-    </header>
-    <main><slot /></main>
-    <footer>
-      <div class="hp-wrap">
-        <div class="hp-footer-grid">
-          <div>
-            <h2>{t.footerHeadline}</h2>
-            <p>{t.footerBody}</p>
+        <nav class="nav" aria-label={t.navLabel}>
+          <ul class="nav-links" id="nav-links">
+            {navItems.map((k) => (
+              <li><a href={routes[k][lang]} aria-current={route === k ? 'page' : undefined}>{t.nav[k]}</a></li>
+            ))}
+            <li><a href="#contacto">{t.nav.contact}</a></li>
+          </ul>
+          <div class="nav-tools">
+            <a class="lang-switch" href={alt[otherLang]} hreflang={otherLang} lang={otherLang} title={t.otherLangName}>{t.otherLang}</a>
+            <button id="theme-toggle" class="icon-btn theme-toggle" type="button" aria-label={t.themeToggle}>
+              <svg class="icon-day" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+              <svg class="icon-night" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+            </button>
+            <button id="menu-toggle" class="icon-btn menu-toggle" type="button" aria-label={t.menu} aria-controls="nav-links" aria-expanded="false">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            </button>
           </div>
-          <div class="hp-contact-card">
-            <p class="name">Dr. Victor A. Pinto</p>
-            <p class="role">{t.footerRole}</p>
-            <p class="dept">{t.footerDept}<br/>{t.footerUniv}</p>
-            <a class="email" href="mailto:victor.pinto@usach.cl">victor.pinto@usach.cl</a>
-            <div class="hp-social-row">
-              <a href="https://instagram.com/helio.usach" target="_blank" rel="noopener">Instagram</a>
-              <a href="https://twitter.com/vpintoa" target="_blank" rel="noopener">X / Twitter</a>
-              <a href="https://github.com/vpinto-space" target="_blank" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+
+    <main><slot /></main>
+
+    <footer class="site-footer" id="contacto">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div>
+            <p class="eyebrow">{t.nav.contact}</p>
+            <h2 class="display">{t.footer.headline}</h2>
+            <p>{t.footer.body}</p>
+          </div>
+          <div class="contact-card">
+            <p class="name">{site.contact.name}</p>
+            <p class="role">{pick(site.contact, 'role', lang)}</p>
+            <p class="muted small">{pick(site.contact, 'address', lang)}</p>
+            <a class="email" href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
+            <div class="social">
+              {site.social.map((s) => <a href={s.url} target="_blank" rel="noopener">{s.label}</a>)}
             </div>
           </div>
         </div>
-        <div class="hp-footer-bottom">
-          <span class="fine">{t.footer}</span>
+        <div class="footer-meta">
+          <div>
+            <h3>{t.footer.affiliations}</h3>
+            <ul>
+              {site.affiliations.map((a) => <li><a href={a.url} target="_blank" rel="noopener">{pick(a, 'name', lang)}</a></li>)}
+            </ul>
+          </div>
+          <div>
+            <h3>{t.footer.funding}</h3>
+            <ul>{site.funders.map((f) => <li>{f}</li>)}</ul>
+          </div>
         </div>
+        <p class="fine">© {new Date().getFullYear()} {site.name}</p>
       </div>
     </footer>
+
     <script is:inline>
-      // Theme toggle
       (function () {
-        var btn = document.getElementById('theme-toggle');
-        if (!btn) return;
-        var theme = document.documentElement.getAttribute('data-theme') || 'day';
-        btn.setAttribute('aria-pressed', theme === 'night' ? 'true' : 'false');
-        btn.addEventListener('click', function () {
-          var next = document.documentElement.getAttribute('data-theme') === 'night' ? 'day' : 'night';
-          document.documentElement.setAttribute('data-theme', next);
-          try { localStorage.setItem('theme', next); } catch (e) {}
-          btn.setAttribute('aria-pressed', next === 'night' ? 'true' : 'false');
-        });
-      })();
-      // Scroll reveal (IntersectionObserver)
-      (function () {
-        if (!('IntersectionObserver' in window)) {
-          document.querySelectorAll('.hp-reveal').forEach(function (el) { el.classList.add('in'); });
-          return;
-        }
-        var io = new IntersectionObserver(function (entries) {
-          entries.forEach(function (e) {
-            if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        var root = document.documentElement;
+        var theme = document.getElementById('theme-toggle');
+        if (theme) {
+          theme.setAttribute('aria-pressed', root.getAttribute('data-theme') === 'night' ? 'true' : 'false');
+          theme.addEventListener('click', function () {
+            var next = root.getAttribute('data-theme') === 'night' ? 'day' : 'night';
+            root.setAttribute('data-theme', next);
+            try { localStorage.setItem('theme', next); } catch (e) {}
+            theme.setAttribute('aria-pressed', next === 'night' ? 'true' : 'false');
           });
-        }, { threshold: 0.12 });
-        document.querySelectorAll('.hp-reveal').forEach(function (el) { io.observe(el); });
+        }
+        var menu = document.getElementById('menu-toggle');
+        var header = document.querySelector('.site-header');
+        if (menu && header) {
+          menu.addEventListener('click', function () {
+            var open = header.getAttribute('data-open') === 'true';
+            header.setAttribute('data-open', open ? 'false' : 'true');
+            menu.setAttribute('aria-expanded', open ? 'false' : 'true');
+          });
+        }
+        var els = document.querySelectorAll('.reveal');
+        if (!('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('in'); }); return; }
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+        }, { threshold: 0.1 });
+        els.forEach(function (el) { io.observe(el); });
       })();
     </script>
   </body>

@@ -1,0 +1,18 @@
+---
+// One page per Spanish news item: /noticias/<file-name>/
+import NewsArticle from '../../views/NewsArticle.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const all = await getCollection('news', (n) => !n.data.draft || import.meta.env.DEV);
+  const en = new Set(all.filter((n) => n.id.startsWith('en/')).map((n) => n.id.slice(3)));
+  return all
+    .filter((n) => n.id.startsWith('es/'))
+    .map((entry) => {
+      const slug = entry.id.slice(3);
+      return { params: { slug }, props: { entry, slug, hasEn: en.has(slug) } };
+    });
+}
+const { entry, slug, hasEn } = Astro.props;
+---
+<NewsArticle lang="es" entry={entry} slug={slug} hasEs={true} hasEn={hasEn} />

@@ -10,41 +10,42 @@
 # homepage teaser ignores it). Accepted papers without a DOI: omit `doi` and
 # set `inPress: true`.
 #
-# Last checked against the tenure-dossier publication table: 2026-09-25.
+# Last checked against the tenure-dossier publication table and the published
+# PDFs (Research/published): 2026-09-26.
 
 - id: pub-2026-coello-aa
   year: 2026
-  authors: "**Coello-Guzmán, M.**, **Pinto, V.A.**, Navarro, R., Moya, P.S."
-  title: "The effect of expansion and instabilities in the thermodynamic regulation of the young solar wind"
+  authors: "**Coello-Guzmán, M.**, **Pinto, V.A.**, Navarro, R.E., Moya, P.S."
+  title: "The effect of expansion and instabilities in the thermodynamic regulation of the young solar wind plasma"
   journal: "Astronomy & Astrophysics"
   inPress: true
 
 - id: pub-2026-marchezi-jgr
   year: 2026
-  authors: "Marchezi, J.P., ..., **Pinto, V.A.**, et al."
-  title: "On the effects of the solar wind structure in the global distribution of dBH/dt spikes"
+  authors: "Marchezi, J.P., Keesee, A., Coughlan, M., Mukundan, R., **Pinto, V.**, Da Silva, L.A., Alves, L.R., Connor, H., Hampton, D."
+  title: "On the effects of the solar wind structure in the global distribution of dBH/dt spikes during geomagnetic storms"
   journal: "JGR: Space Physics"
   doi: "https://doi.org/10.1029/2025JA034994"
 
 - id: pub-2026-caro-sensors
   year: 2026
-  authors: "**Caro, G.**, ..., **Pinto, V.A.**, et al."
+  authors: "**Caro, G.**, Carrasco, E., Diaz Peña, J., Urra, B., Rojo, E., Castro, L., Bravo, M., **Pinto, V.**, **Stepanova, M.**, Godoy, A., Ovalle, E., Denardini, C.M., Su Chen, S."
   title: "Comparative performance analysis of five magnetometers for geomagnetic monitoring"
-  journal: "Sensors"
+  journal: "Sensors, 26, 4700"
   doi: "https://doi.org/10.3390/s26154700"
 
 - id: pub-2026-inostroza-jgr
   year: 2026
-  authors: "**Inostroza, A.M.**, ..., **Pinto, V.A.**, et al."
-  title: "The role of auroral phenomena in the dynamics of the outer radiation belt"
+  authors: "**Inostroza, A.M.**, Díaz Peña, J., **Coello-Guzmán, M.**, **Stepanova, M.**, **Pinto, V.A.**, Navarro, R.E., Espinoza, J.M., Kolomiytseva, E.A., Antonova, E.E."
+  title: "The role of auroral phenomena in the dynamics of the outer radiation belt during the 1 June 2013 geomagnetic storm"
   journal: "JGR: Space Physics"
   doi: "https://doi.org/10.1029/2026JA035123"
 
 - id: pub-2026-stepanova-physica-scripta
   year: 2026
-  authors: "**Stepanova, M.V.**, **Pinto, V.A.**, et al."
+  authors: "**Stepanova, M.**, **Pinto, V.A.**, Espinoza, C.M., Ovchinnikov, I.L., Antonova, E.E."
   title: "Role of the solar wind dynamic pressure in the development of magnetospheric turbulence"
-  journal: "Physica Scripta"
+  journal: "Physica Scripta, 101, 095603"
   doi: "https://doi.org/10.1088/1402-4896/ae48b2"
 
 - id: pub-2025-pinto-physica-scripta

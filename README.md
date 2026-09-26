@@ -1,52 +1,57 @@
-# HelioFísica USACH — group website
+# Heliofísica USACH — group website
 
-Source for the [HelioFísica y Clima Espacial USACH](https://heliousach.github.io) research group site, built with [Astro](https://astro.build). Bilingual (es/en), static output.
+Source for <https://heliousach.github.io>, built with [Astro](https://astro.build). Bilingual (Spanish default, English under `/en/`), static output, deployed by GitHub Actions.
 
-## Structure
+**Editing content (news, people, publications)?** Read [`CONTENIDO.md`](CONTENIDO.md). No code needed.
+
+## Layout of the repo
 
 ```
 src/
-├── layouts/Layout.astro     # shared shell: nav, footer, meta tags, scripts
-├── pages/                    # Spanish routes (default locale)
-│   ├── index.astro
-│   ├── investigacion.astro
-│   ├── equipo.astro
-│   ├── laboratorio.astro
-│   └── en/                   # English routes
-└── styles/global.css         # design tokens + shared styles
-scripts/inline-css.py         # postbuild: inlines CSS into HTML (see below)
+  content/
+    news/es/*.md, news/en/*.md   # one Markdown file per news item (EN optional, same file name)
+    team/*.md                    # one file per person (front matter only)
+  data/
+    site.yaml                    # contact, social, affiliations, funders, hero, open call
+    publications.yaml            # group publications
+    projects.yaml                # active projects (featured ones go on the home page)
+    research-lines.yaml          # research lines
+  content.config.ts              # schemas for all of the above (build fails on bad data / missing images)
+  lib/
+    i18n.ts                      # all UI strings, routes, helpers (pick(), inlineMd(), initials())
+    site.ts                      # loads + validates site.yaml
+    content.ts                   # sorted getters (getTeam, getNews, ...)
+  components/                    # PageHeader, SectionHead, ResearchCard, ProjectCard, Person, PubList, NewsCard
+  views/                         # one template per page, takes `lang` (Home, Research, Team, NewsList, NewsArticle, Infrastructure)
+  pages/                         # thin route files: each renders a view with lang="es" or "en"
+  layouts/Layout.astro           # <head>, header/nav, footer
+  styles/global.css              # the whole design system (tokens + components)
+public/images/
+  brand/          # emblem (day/white), horizontal logo
+  illustrations/  # schematic SVGs (scripts/gen-illustrations.py)
+  news/, team/    # uploaded photos
+.pages.yml        # Pages CMS config (form editor for News and Team)
 ```
 
-## Development
+Bilingual fields use a suffix: `title` (Spanish) and `title_en` (English, optional, falls back to Spanish).
 
+## Design system (`src/styles/global.css`)
+- Fonts: Bebas Neue (`.display` headings), Poppins (UI, card titles), Roboto (body).
+- Tokens at the top: colors per theme (day default, night toggle), type scale (`--fs-*`), spacing, one card radius (`--radius`).
+- Image frames: `.frame` is 16:9 for every card; `.frame-portrait` is 3:4 for people. Only the home hero is full-bleed.
+- Every subpage = `PageHeader` band + `.band` sections (alternate with `.band-alt`) + the same cards as the home page.
+- Don't add inline `style=` attributes; add a class here instead.
+
+## Commands
 ```sh
 npm install
-npm run dev       # http://localhost:4321
-npm run build     # outputs to ./dist
-npm run preview   # preview the production build
+npm run dev      # http://localhost:4321
+npm run build    # validates content, builds to dist/
+npm run preview
 ```
 
-## Why the CSS is inlined
+## Deploy
+Push to `main` → `.github/workflows/deploy.yml` builds and publishes to GitHub Pages. Pull requests only build (a check that content and code are valid). Repo Settings → Pages → Source must be "GitHub Actions".
 
-GitHub Pages runs a Jekyll processing pass by default, which ignores files and
-folders that start with an underscore — including Astro's `_astro/` asset
-directory. Since we're not enabling Jekyll's bypass file consistently across
-deploys, `npm run build` runs `astro build` and then
-`scripts/inline-css.py`, which inlines `src/styles/global.css` directly into
-every built HTML file and strips the now-unnecessary `<link>` tags. A
-`public/.nojekyll` file is also included as a second safeguard.
-
-## Deployment
-
-Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds the
-site and deploys the `dist/` output directly to GitHub Pages via
-`actions/deploy-pages` (no build branch, no committing built HTML). Repo
-Settings → Pages → Source must be set to **"GitHub Actions"** for this to
-work.
-
-## Content
-
-Bio, project, and publication data live directly in the `.astro` page files
-(no CMS/content collections) — edit the relevant page under `src/pages/`,
-and its `en/` counterpart to keep translations in sync.
-
+## History
+Design/code audits and plans live outside the repo, in the `Web/docs/` folder.

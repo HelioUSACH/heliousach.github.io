@@ -1,162 +1,128 @@
-# HelioFísica USACH — active projects/grants.
-#
-# All projects appear on /investigacion and /en/research. Only the ones with a
-# `featured` number also appear on the homepage, with their own image, tags,
-# and (usually) rewritten marketing copy — that's what the home* fields are
-# for. To add a project without featuring it on the homepage, just omit every
-# home*/featured field.
+# Proyectos activos del grupo.
+# Todos aparecen en /investigacion. Los que tienen `featured` (1, 2, 3...) también
+# aparecen en la página de inicio, en ese orden, con su imagen.
+# Campos terminados en _en = versión en inglés.
+# `people`: usar **negrita** para el rol (ej. "**PI:** Nombre").
+# Proyectos en evaluación NUNCA se publican aquí.
 
 - id: fondecyt-iniciacion-2025
   order: 1
-  title:
-    es: "FONDECYT Iniciación 2025"
-    en: "FONDECYT Initiation 2025"
-  attribution:
-    es: "**PI:** Dr. Victor Pinto"
-    en: "**PI:** Dr. Victor Pinto"
-  description:
-    es: "El rol de ondas ULF electromagnéticas en la dinámica de partículas cargadas atrapadas"
-    en: "The role of electromagnetic ULF waves on the dynamics of trapped charged particles"
-  meta: "2025-2028 · ANID"
+  grant: FONDECYT Iniciación 2025
+  grant_en: FONDECYT Initiation 2025
+  title: Ondas ULF y partículas atrapadas
+  title_en: ULF waves and trapped particles
+  summary: El rol de ondas ULF electromagnéticas en la dinámica de partículas cargadas atrapadas en los cinturones de radiación de la Tierra.
+  summary_en: The role of electromagnetic ULF waves in the dynamics of charged particles trapped in Earth's radiation belts.
+  people: '**PI:** Dr. Victor Pinto'
+  people_en: '**PI:** Dr. Victor Pinto'
+  years: 2025-2028
+  funder: ANID
   featured: 2
-  homeKicker:
-    es: "FONDECYT Iniciación 2025 — ANID"
-    en: "FONDECYT Initiation 2025 — ANID"
-  homeTitle:
-    es: "Ondas ULF y partículas atrapadas"
-    en: "ULF waves and trapped particles"
-  homeDescription:
-    es: "El rol de ondas ULF electromagnéticas en la dinámica de partículas cargadas atrapadas en los cinturones de radiación de la Tierra."
-    en: "The role of electromagnetic ULF waves in the dynamics of charged particles trapped in Earth's radiation belts."
-  homeImage: /images/illustrations/ulf-waves.svg
-  homeImageAlt:
-    es: "Ilustración esquemática de una onda ULF en la magnetosfera"
-    en: "Schematic illustration of a ULF wave in the magnetosphere"
-  homeTags:
-    - es: "Van Allen Probes"
-      en: "Van Allen Probes"
-    - es: "THEMIS"
-      en: "THEMIS"
-    - es: "GOES"
-      en: "GOES"
+  image: /images/illustrations/ulf-waves.svg
+  imageAlt: Ilustración esquemática de una onda ULF en la magnetosfera
+  imageAlt_en: Schematic illustration of a ULF wave in the magnetosphere
+  tags:
+  - Van Allen Probes
+  - THEMIS
+  - GOES
+  tags_en:
+  - Van Allen Probes
+  - THEMIS
+  - GOES
 
 - id: fondecyt-regular-2025
   order: 2
-  title:
-    es: "FONDECYT Regular 2025"
-    en: "FONDECYT Regular 2025"
-  attribution:
-    es: "**PI:** Dra. Marina Stepanova · **Co-I:** Dr. Victor Pinto"
-    en: "**PI:** Prof. Marina Stepanova · **Co-I:** Dr. Victor Pinto"
-  description:
-    es: "Turbulencia y balance de presión total en la magnetosfera interconectada dinámica"
-    en: "Turbulence and total pressure balance in the interconnected dynamic magnetosphere"
-  meta: "2025-2029 · ANID"
+  grant: FONDECYT Regular 2025
+  title: Turbulencia y balance de presión en la magnetosfera
+  title_en: Turbulence and pressure balance in the magnetosphere
+  summary: Turbulencia y balance de presión total en la magnetosfera dinámica interconectada durante tormentas y subtormentas.
+  summary_en: Turbulence and total pressure balance in the interconnected dynamic magnetosphere during storms and substorms.
+  people: '**PI:** Dra. Marina Stepanova · **Co-I:** Dr. Victor Pinto'
+  people_en: '**PI:** Prof. Marina Stepanova · **Co-I:** Dr. Victor Pinto'
+  years: 2025-2029
+  funder: ANID
   featured: 3
-  homeKicker:
-    es: "FONDECYT Regular 2025 — ANID (PI: M. Stepanova)"
-    en: "FONDECYT Regular 2025 — ANID (PI: M. Stepanova)"
-  homeTitle:
-    es: "Turbulencia y balance de presión en la magnetosfera"
-    en: "Turbulence and pressure balance in the magnetosphere"
-  homeDescription:
-    es: "Turbulencia y balance de presión total en la magnetosfera dinámica interconectada durante tormentas y subtormentas."
-    en: "Turbulence and total pressure balance in the interconnected dynamic magnetosphere during storms and substorms."
-  homeImage: /images/illustrations/solar-wind-magnetosphere.svg
-  homeImageAlt:
-    es: "Ilustración esquemática del viento solar interactuando con la magnetosfera"
-    en: "Schematic illustration of the solar wind interacting with the magnetosphere"
-  homeTags:
-    - es: "Turbulencia magnetosférica"
-      en: "Magnetospheric turbulence"
-    - es: "Balance de presión"
-      en: "Pressure balance"
-    - es: "Dinámica de tormentas"
-      en: "Storm dynamics"
+  image: /images/illustrations/solar-wind-magnetosphere.svg
+  imageAlt: Ilustración esquemática del viento solar interactuando con la magnetosfera
+  imageAlt_en: Schematic illustration of the solar wind interacting with the magnetosphere
+  tags:
+  - Turbulencia magnetosférica
+  - Balance de presión
+  - Dinámica de tormentas
+  tags_en:
+  - Magnetospheric turbulence
+  - Pressure balance
+  - Storm dynamics
 
 - id: fondecyt-regular-2024
   order: 3
-  title:
-    es: "FONDECYT Regular 2024"
-    en: "FONDECYT Regular 2024"
-  attribution:
-    es: "**PI:** P.S. Moya · **Co-I:** Dr. Victor Pinto"
-    en: "**PI:** P.S. Moya · **Co-I:** Dr. Victor Pinto"
-  description:
-    es: "Micro y macro física de sistemas de plasma en expansión: viento solar y estelar"
-    en: "Macro and micro physics of expanding plasma systems: solar and stellar winds"
-  meta: "2024-2028 · ANID"
+  grant: FONDECYT Regular 2024
+  title: 'Micro y macro física de sistemas de plasma en expansión: viento solar y estelar'
+  title_en: 'Macro and micro physics of expanding plasma systems: solar and stellar winds'
+  summary: 'Micro y macro física de sistemas de plasma en expansión: viento solar y estelar'
+  summary_en: 'Macro and micro physics of expanding plasma systems: solar and stellar winds'
+  people: '**PI:** P.S. Moya · **Co-I:** Dr. Victor Pinto'
+  people_en: '**PI:** P.S. Moya · **Co-I:** Dr. Victor Pinto'
+  years: 2024-2028
+  funder: ANID
 
 - id: fondef-idea-id-2025
   order: 4
-  title:
-    es: "FONDEF IDEA I+D 2025"
-    en: "FONDEF IDEA I+D 2025"
-  attribution:
-    es: "**Director:** M. Bravo (Universidad Adventista de Chile) · **Investigador principal (USACH):** Dr. Victor Pinto"
-    en: "**Director:** M. Bravo (Universidad Adventista de Chile) · **Principal investigator (USACH):** Dr. Victor Pinto"
-  description:
-    es: "Plataforma Chilena de Clima Espacial"
-    en: "Chilean Space Weather Platform"
-  meta: "2025-2027 · FONDEF/ANID"
+  grant: FONDEF IDEA I+D 2025
+  title: Plataforma Chilena de Clima Espacial
+  title_en: Chilean Space Weather Platform
+  summary: Plataforma piloto para el monitoreo en tiempo real del clima espacial y alertas tempranas en Chile, con modelos predictivos basados en deep learning. Proyecto liderado por la Universidad Adventista
+    de Chile, con USACH como institución asociada.
+  summary_en: Pilot platform for real-time space weather monitoring and early warnings in Chile, with deep-learning forecasting models. Led by Universidad Adventista de Chile, with USACH as partner institution.
+  people: '**Director:** M. Bravo (Universidad Adventista de Chile) · **Investigador principal (USACH):** Dr. Victor Pinto'
+  people_en: '**Director:** M. Bravo (Universidad Adventista de Chile) · **Principal investigator (USACH):** Dr. Victor Pinto'
+  years: 2025-2027
+  funder: FONDEF/ANID
   featured: 1
-  homeKicker:
-    es: "FONDEF IDEA I+D — ANID"
-    en: "FONDEF IDEA I+D — ANID"
-  homeTitle:
-    es: "Plataforma Chilena de Clima Espacial"
-    en: "Chilean Space Weather Platform"
-  homeDescription:
-    es: "Plataforma piloto para el monitoreo en tiempo real del clima espacial y alertas tempranas en Chile, con modelos predictivos basados en deep learning. Proyecto liderado por la Universidad Adventista de Chile, con USACH como institución asociada."
-    en: "Pilot platform for real-time space weather monitoring and early warnings in Chile, with deep-learning forecasting models. Led by Universidad Adventista de Chile, with USACH as partner institution."
-  homeImage: /images/illustrations/ml-space-weather.svg
-  homeImageAlt:
-    es: "Ilustración esquemática de un pronóstico con red neuronal"
-    en: "Schematic illustration of a neural-network forecast"
-  homeTags:
-    - es: "Monitoreo en tiempo real"
-      en: "Real-time monitoring"
-    - es: "Predicción DL"
-      en: "DL forecasting"
-    - es: "Riesgo GIC"
-      en: "GIC prediction"
+  image: /images/illustrations/ml-space-weather.svg
+  imageAlt: Ilustración esquemática de un pronóstico con red neuronal
+  imageAlt_en: Schematic illustration of a neural-network forecast
+  tags:
+  - Monitoreo en tiempo real
+  - Predicción DL
+  - Riesgo GIC
+  tags_en:
+  - Real-time monitoring
+  - DL forecasting
+  - GIC prediction
 
 - id: nasa-lws
   order: 5
-  title:
-    es: "NASA LWS"
-    en: "NASA LWS"
-  attribution:
-    es: "**PI:** J. Liu (UCLA) · **Colaborador internacional:** Dr. Victor Pinto"
-    en: "**PI:** J. Liu (UCLA) · **International collaborator:** Dr. Victor Pinto"
-  description:
-    es: "Impacto de transientes del foreshock en perturbaciones magnetosféricas"
-    en: "Foreshock Transients Impact on Magnetospheric Perturbations"
-  meta: "2023-2027 · NASA"
+  grant: NASA LWS
+  title: Impacto de transientes del foreshock en perturbaciones magnetosféricas
+  title_en: Foreshock Transients Impact on Magnetospheric Perturbations
+  summary: Impacto de transientes del foreshock en perturbaciones magnetosféricas
+  summary_en: Foreshock Transients Impact on Magnetospheric Perturbations
+  people: '**PI:** J. Liu (UCLA) · **Colaborador internacional:** Dr. Victor Pinto'
+  people_en: '**PI:** J. Liu (UCLA) · **International collaborator:** Dr. Victor Pinto'
+  years: 2023-2027
+  funder: NASA
 
 - id: cnpq-conhecimento-brasil
   order: 6
-  title:
-    es: "CNPq Conhecimento Brasil"
-    en: "CNPq Conhecimento Brasil"
-  attribution:
-    es: "**PI:** J.P. Marchezi (INPE) · **Co-I:** Dr. Victor Pinto"
-    en: "**PI:** J.P. Marchezi (INPE) · **Co-I:** Dr. Victor Pinto"
-  description:
-    es: "GICs en Brasil y precipitación de partículas en la Anomalía del Atlántico Sur"
-    en: "GICs in Brazil and particle precipitation in the South Atlantic Anomaly"
-  meta: "2025-2029 · CNPq"
+  grant: CNPq Conhecimento Brasil
+  title: GICs en Brasil y precipitación de partículas en la Anomalía del Atlántico Sur
+  title_en: GICs in Brazil and particle precipitation in the South Atlantic Anomaly
+  summary: GICs en Brasil y precipitación de partículas en la Anomalía del Atlántico Sur
+  summary_en: GICs in Brazil and particle precipitation in the South Atlantic Anomaly
+  people: '**PI:** J.P. Marchezi (INPE) · **Co-I:** Dr. Victor Pinto'
+  people_en: '**PI:** J.P. Marchezi (INPE) · **Co-I:** Dr. Victor Pinto'
+  years: 2025-2029
+  funder: CNPq
 
 - id: fondequip-hpc
   order: 7
-  title:
-    es: "FONDEQUIP 2023"
-    en: "FONDEQUIP 2023"
-  attribution:
-    es: "**Director:** Dr. Victor Pinto"
-    en: "**Director:** Dr. Victor Pinto"
-  description:
-    es: "Plataforma de cómputo de alto rendimiento (clúster HPC) para ciencia de datos, simulación y modelamiento numérico en el Departamento de Física"
-    en: "High-performance computing platform (HPC cluster) for data science, simulation, and numerical modeling at the Department of Physics"
-  meta: "2023- · ANID"
-
+  grant: FONDEQUIP 2023
+  title: Clúster de cómputo de alto rendimiento (HPC) para ciencia de datos y simulación
+  title_en: High-performance computing (HPC) cluster for data science and simulation
+  summary: Plataforma de cómputo de alto rendimiento (clúster HPC) para ciencia de datos, simulación y modelamiento numérico en el Departamento de Física
+  summary_en: High-performance computing platform (HPC cluster) for data science, simulation, and numerical modeling at the Department of Physics
+  people: '**Director:** Dr. Victor Pinto'
+  people_en: '**Director:** Dr. Victor Pinto'
+  years: 2023-
+  funder: ANID

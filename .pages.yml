@@ -1,0 +1,80 @@
+# Pages CMS (https://pagescms.org) — form-based editor for this repo.
+# Editors log in at https://app.pagescms.org with GitHub. Each save is a commit
+# to main, which triggers the normal build + deploy. The build validates every
+# field (see src/content.config.ts), so a bad entry never replaces the live site.
+
+media:
+  input: public/images
+  output: /images
+
+content:
+  - name: news-es
+    label: Noticias (español)
+    type: collection
+    path: src/content/news/es
+    filename: "{year}-{month}-{day}-{primary}.md"
+    format: yaml-frontmatter
+    view:
+      fields: [title, date]
+      primary: title
+      sort: [date]
+      default: { sort: date, order: desc }
+    fields: &newsFields
+      - { name: title, label: Título, type: string, required: true }
+      - { name: date, label: Fecha, type: date, required: true }
+      - { name: summary, label: Resumen (1-2 oraciones), type: text, required: true }
+      - { name: image, label: Imagen (horizontal), type: image }
+      - { name: imageAlt, label: Descripción de la imagen, type: string }
+      - { name: link, label: Enlace externo (prensa, artículo), type: string }
+      - { name: draft, label: Borrador (no publicar), type: boolean, default: false }
+      - { name: body, label: Texto, type: rich-text, options: { format: markdown } }
+
+  - name: news-en
+    label: News (English, optional — same file name as the Spanish item)
+    type: collection
+    path: src/content/news/en
+    format: yaml-frontmatter
+    view:
+      fields: [title, date]
+      primary: title
+      default: { sort: date, order: desc }
+    fields: *newsFields
+
+  - name: team
+    label: Equipo
+    type: collection
+    path: src/content/team
+    filename: "{primary}.md"
+    format: yaml-frontmatter
+    view:
+      fields: [name, group, order]
+      primary: name
+      default: { sort: order, order: asc }
+    fields:
+      - { name: name, label: Nombre, type: string, required: true }
+      - name: group
+        label: Grupo
+        type: select
+        required: true
+        options:
+          values: [investigadores, postdoc, estudiantes, colaboradores, ex-miembros]
+      - { name: order, label: Orden (menor = primero), type: number, default: 100 }
+      - { name: role, label: Rol / programa, type: string, required: true }
+      - { name: role_en, label: Role (English), type: string }
+      - { name: topic, label: Tema, type: string }
+      - { name: topic_en, label: Topic (English), type: string }
+      - { name: affiliation, label: Afiliación (investigadores), type: string }
+      - { name: affiliation_en, label: Affiliation (English), type: string }
+      - { name: year, label: Año de titulación (ex-miembros), type: number }
+      - { name: bio, label: Bio (investigadores), type: text }
+      - { name: bio_en, label: Bio (English), type: text }
+      - { name: photo, label: Foto (vertical 3:4), type: image }
+      - { name: initials, label: Iniciales (si las automáticas salen mal), type: string }
+      - name: links
+        label: Enlaces
+        type: object
+        fields:
+          - { name: site, label: Sitio personal, type: string }
+          - { name: scholar, label: Google Scholar, type: string }
+          - { name: orcid, label: ORCID, type: string }
+          - { name: github, label: GitHub, type: string }

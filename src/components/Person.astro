@@ -1,0 +1,40 @@
+---
+// One person. "tile" = 3:4 portrait + text below; "wide" = portrait + bio
+// (researchers on the team page); "row" = small avatar row (collaborators, alumni).
+// Without a photo, the frame shows the person's initials.
+import { pick, initials, ui, type Lang } from '../lib/i18n';
+interface Props { person: Record<string, any>; lang: Lang; variant?: 'tile' | 'wide' | 'row' }
+const { person: d, lang, variant = 'tile' } = Astro.props;
+const name = pick(d, 'name', lang);
+const role = [pick(d, 'role', lang), d.year].filter(Boolean).join(' · ');
+const t = ui[lang];
+const links = Object.entries(d.links ?? {}).filter(([, v]) => v) as [keyof typeof t.links, string][];
+---
+{variant === 'row' ? (
+  <article class="card person-row">
+    <div class="avatar" aria-hidden="true">
+      {d.photo ? <img src={d.photo} alt="" loading="lazy" /> : (d.initials ?? initials(d.name))}
+    </div>
+    <div>
+      <h3>{name}</h3>
+      <p class="role">{role}</p>
+      {d.topic && <p>{pick(d, 'topic', lang)}</p>}
+    </div>
+  </article>
+) : (
+  <article class:list={['person', variant === 'wide' && 'person-wide']}>
+    <div class="frame frame-portrait">
+      {d.photo ? <img src={d.photo} alt={name} loading="lazy" /> : <span class="initials" aria-hidden="true">{(d.initials ?? initials(d.name))}</span>}
+    </div>
+    <div class="person-text">
+      <h3>{name}</h3>
+      <p class="role">{role}{d.affiliation && <><br />{pick(d, 'affiliation', lang)}</>}</p>
+      {variant === 'wide' && d.bio ? <p>{pick(d, 'bio', lang)}</p> : d.topic && <p>{pick(d, 'topic', lang)}</p>}
+      {variant === 'wide' && links.length > 0 && (
+        <div class="person-links">
+          {links.map(([k, href]) => <a href={href} target="_blank" rel="noopener">{t.links[k] ?? k}</a>)}
+        </div>
+      )}
+    </div>
+  </article>
+)}

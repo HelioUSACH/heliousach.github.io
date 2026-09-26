@@ -1,0 +1,22 @@
+---
+import { formatDate, ui, type Lang } from '../lib/i18n';
+interface Props { item: { entry: any; slug: string; fallback: boolean }; lang: Lang }
+const { item, lang } = Astro.props;
+const d = item.entry.data;
+const href = `${lang === 'es' || item.fallback ? '/noticias/' : '/en/news/'}${item.slug}/`;
+---
+<a class="card" href={href}>
+  <div class="frame">
+    {d.image
+      ? <img src={d.image} alt={d.imageAlt ?? ''} loading="lazy" />
+      : <span class="news-noimage" aria-hidden="true"><img src="/images/brand/emblem.png" alt="" /></span>}
+  </div>
+  <div class="card-body">
+    <p class="news-date">
+      <time datetime={d.date.toISOString().slice(0, 10)}>{formatDate(d.date, lang)}</time>
+      {item.fallback && <span class="news-flag">{ui[lang].news.otherLangNote}</span>}
+    </p>
+    <h3>{d.title}</h3>
+    <p>{d.summary}</p>
+  </div>
+</a>

@@ -1,0 +1,14 @@
+---
+// Top band of every subpage: eyebrow, big display title, optional lead text.
+interface Props { eyebrow?: string; title: string; lead?: string; back?: { href: string; label: string } }
+const { eyebrow, title, lead, back } = Astro.props;
+---
+<header class="page-header">
+  <div class="wrap">
+    {back && <a class="crumb" href={back.href}>{back.label}</a>}
+    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+    <h1 class="display">{title}</h1>
+    {lead && <p class="lead">{lead}</p>}
+    <slot />
+  </div>
+</header>

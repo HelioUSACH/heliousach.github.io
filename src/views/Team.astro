@@ -1,0 +1,62 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Person from '../components/Person.astro';
+import { ui, pick, type Lang } from '../lib/i18n';
+import { site } from '../lib/site';
+import { getTeam } from '../lib/content';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+const team = await getTeam();
+const by = (g: string) => team.filter((p) => p.data.group === g).map((p) => p.data);
+const lead = lang === 'es'
+  ? 'El grupo es co-dirigido por el Dr. Victor A. Pinto y la Dra. Marina Stepanova, Departamento de Física, Universidad de Santiago de Chile.'
+  : 'The group is co-led by Dr. Victor A. Pinto and Prof. Marina Stepanova, Department of Physics, Universidad de Santiago de Chile.';
+---
+<Layout lang={lang} title={t.nav.team} route="team" description={lead}>
+  <PageHeader eyebrow={t.team.eyebrow} title={t.team.title} lead={lead} />
+
+  <section class="band">
+    <div class="wrap">
+      <div class="group">
+        <h2 class="group-title">{t.groups.investigadores}</h2>
+        <div class="grid grid-2">{by('investigadores').map((p) => <Person person={p} lang={lang} variant="wide" />)}</div>
+      </div>
+      {by('postdoc').length > 0 && (
+        <div class="group">
+          <h2 class="group-title">{t.groups.postdoc}</h2>
+          <div class="grid grid-4">{by('postdoc').map((p) => <Person person={p} lang={lang} />)}</div>
+        </div>
+      )}
+      <div class="group">
+        <h2 class="group-title">{t.groups.estudiantes}</h2>
+        <div class="grid grid-4">{by('estudiantes').map((p) => <Person person={p} lang={lang} />)}</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band-alt">
+    <div class="wrap">
+      <div class="group">
+        <h2 class="group-title">{t.groups.colaboradores}</h2>
+        <div class="grid grid-3">{by('colaboradores').map((p) => <Person person={p} lang={lang} variant="row" />)}</div>
+      </div>
+      <div class="group">
+        <h2 class="group-title">{t.groups['ex-miembros']}</h2>
+        <div class="grid grid-3">{by('ex-miembros').map((p) => <Person person={p} lang={lang} variant="row" />)}</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="callout">
+        <p class="eyebrow">{t.contact.eyebrow}</p>
+        <h2 class="display">{t.contact.title}</h2>
+        <p>{pick(site.openCall, 'text', lang)} <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a></p>
+      </div>
+    </div>
+  </section>
+</Layout>
