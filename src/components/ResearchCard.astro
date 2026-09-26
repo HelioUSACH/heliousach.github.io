@@ -1,0 +1,16 @@
+---
+// A research line. variant "summary" (home) or "full" (research page).
+import { pick, type Lang } from '../lib/i18n';
+interface Props { line: Record<string, any>; lang: Lang; variant?: 'summary' | 'full' }
+const { line, lang, variant = 'summary' } = Astro.props;
+const title = variant === 'summary' ? (pick(line, 'shortTitle', lang) ?? pick(line, 'title', lang)) : pick(line, 'title', lang);
+---
+<article class="card" id={line.id}>
+  <div class="frame"><img src={line.image} alt={pick(line, 'imageAlt', lang)} loading="lazy" /></div>
+  <div class="card-body">
+    <p class="eyebrow">{pick(line, 'tag', lang)}</p>
+    <h3>{title}</h3>
+    <p>{variant === 'summary' ? pick(line, 'summary', lang) : pick(line, 'description', lang)}</p>
+    {variant === 'full' && line.data && <p class="meta">{pick(line, 'data', lang)}</p>}
+  </div>
+</article>

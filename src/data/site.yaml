@@ -1,0 +1,51 @@
+# Configuración general del sitio (contacto, redes, afiliaciones, portada).
+# Campos terminados en _en = versión en inglés.
+
+name: Heliofísica USACH
+tagline: Heliofísica y Clima Espacial
+tagline_en: Heliophysics and Space Weather
+description: Grupo de investigación en Heliofísica y Clima Espacial de la Universidad de Santiago de Chile. Cinturones de radiación, ondas ULF, turbulencia magnetosférica y predicción de clima espacial.
+description_en: Heliophysics and Space Weather research group at Universidad de Santiago de Chile. Radiation belts, ULF waves, magnetospheric turbulence, and space weather prediction.
+
+contact:
+  name: Dr. Victor A. Pinto
+  role: Co-director del grupo
+  role_en: Group co-lead
+  email: victor.pinto@usach.cl
+  address: Departamento de Física, Universidad de Santiago de Chile
+  address_en: Department of Physics, Universidad de Santiago de Chile
+
+social:
+  - label: Instagram
+    url: https://instagram.com/helio.usach
+  - label: GitHub
+    url: https://github.com/HelioUSACH
+  - label: X / Twitter
+    url: https://twitter.com/vpintoa
+
+# Instituciones a las que pertenece el grupo (pie de página).
+affiliations:
+  - name: Universidad de Santiago de Chile
+    url: https://www.usach.cl
+  - name: Departamento de Física
+    name_en: Department of Physics
+    url: https://fisica.usach.cl
+  - name: CIRAS — Center for Interdisciplinary Research in Astrophysics and Space Sciences
+    url: https://www.ciras.cl/
+
+# Fuentes de financiamiento (pie de página).
+funders: [ANID, USACH-DICYT, NASA, CNPq]
+
+# Imagen de portada (página de inicio). La ruta debe existir en public/.
+hero:
+  image: /images/eso1912u-la-silla-eclipse.jpg
+  alt: Corona solar durante el eclipse total del 2 de julio de 2019, observado desde La Silla, Chile
+  alt_en: Solar corona during the 2 July 2019 total solar eclipse, observed from La Silla, Chile
+  credit: ESA/CESAR
+  text: Estudiamos la magnetosfera terrestre, los cinturones de radiación y el acoplamiento viento solar-magnetosfera utilizando datos satelitales y observaciones desde tierra. Nuestro grupo desarrolla herramientas de machine learning para la predicción de clima espacial y participa en el desarrollo de una plataforma piloto de monitoreo de clima espacial para Chile.
+  text_en: We study the Earth's magnetosphere, radiation belts, and solar wind coupling using satellite data and ground-based observations. Our group develops machine learning tools for space weather prediction and contributes to developing a pilot space weather monitoring platform for Chile.
+
+# Convocatoria para estudiantes (inicio y página de equipo).
+openCall:
+  text: Buscamos estudiantes de pregrado y magíster para trabajar en dinámica de electrones relativistas, predicción de tormentas geomagnéticas con deep learning, corrientes inducidas geomagnéticamente (GIC), procesamiento de datos satelitales y turbulencia magnetosférica. Si estudias física, astrofísica o carreras afines, escríbenos.
+  text_en: We are looking for undergraduate and master's students to work on relativistic electron dynamics, geomagnetic storm prediction with deep learning, geomagnetically induced currents (GIC), satellite data processing, and magnetospheric turbulence. If you study physics, astrophysics, or a related field, write to us.

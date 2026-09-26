@@ -1,0 +1,106 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionHead from '../components/SectionHead.astro';
+import ResearchCard from '../components/ResearchCard.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import Person from '../components/Person.astro';
+import PubList from '../components/PubList.astro';
+import NewsCard from '../components/NewsCard.astro';
+import { ui, routes, pick, type Lang } from '../lib/i18n';
+import { site } from '../lib/site';
+import { getTeam, getPublications, getResearchLines, getProjects, getNews } from '../lib/content';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+
+const lines = await getResearchLines();
+const featured = (await getProjects()).filter((p) => p.featured != null).sort((a, b) => a.featured! - b.featured!);
+const news = (await getNews(lang)).slice(0, 3);
+const people = (await getTeam()).filter((p) => ['investigadores', 'postdoc', 'estudiantes'].includes(p.data.group));
+const pubs = (await getPublications()).slice(0, 5);
+---
+<Layout lang={lang} title={t.nav.home} route="home">
+  <section class="hero">
+    <img src={site.hero.image} alt={pick(site.hero, 'alt', lang)} fetchpriority="high" />
+    <div class="wrap">
+      <p class="eyebrow">Universidad de Santiago de Chile — {lang === 'es' ? 'Departamento de Física' : 'Department of Physics'}</p>
+      <h1 class="display">{pick(site, 'tagline', lang)}</h1>
+      <p>{pick(site.hero, 'text', lang)}</p>
+      <p class="credit">{t.credit}: {site.hero.credit}</p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <SectionHead eyebrow={t.research.eyebrow} title={t.research.title} />
+      <div class="grid grid-2 reveal">
+        {lines.map((l) => <ResearchCard line={l} lang={lang} />)}
+      </div>
+      <p class="section-foot"><a class="more" href={routes.research[lang]}>{t.research.more}</a></p>
+    </div>
+  </section>
+
+  <section class="band band-alt">
+    <div class="wrap">
+      <SectionHead eyebrow={t.projects.eyebrow} title={t.projects.title} />
+      <div class="stack reveal">
+        {featured.map((p) => <ProjectCard project={p} lang={lang} variant="feature" />)}
+      </div>
+      <p class="section-foot"><a class="more" href={`${routes.research[lang]}#proyectos`}>{t.projects.more}</a></p>
+    </div>
+  </section>
+
+  {news.length > 0 && (
+    <section class="band">
+      <div class="wrap">
+        <SectionHead eyebrow={t.news.eyebrow} title={t.news.latest} />
+        <div class="grid grid-3 reveal">
+          {news.map((n) => <NewsCard item={n} lang={lang} />)}
+        </div>
+        <p class="section-foot"><a class="more" href={routes.news[lang]}>{t.news.more}</a></p>
+      </div>
+    </section>
+  )}
+
+  <section class="band band-alt">
+    <div class="wrap">
+      <SectionHead eyebrow={t.team.eyebrow} title={t.team.title} />
+      <div class="grid grid-4 reveal">
+        {people.map((p) => <Person person={p.data} lang={lang} />)}
+      </div>
+      <p class="section-foot"><a class="more" href={routes.team[lang]}>{t.team.more}</a></p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <SectionHead eyebrow={t.pubs.eyebrow} title={t.pubs.title} />
+      <div class="reveal"><PubList pubs={pubs} lang={lang} /></div>
+      <p class="section-foot"><a class="more" href={`${routes.research[lang]}#publicaciones`}>{t.pubs.more}</a></p>
+    </div>
+  </section>
+
+  <section class="band band-alt">
+    <div class="wrap">
+      <SectionHead
+        eyebrow={t.infra.eyebrow}
+        title={t.infra.title}
+        text={lang === 'es'
+          ? 'Un clúster de cómputo de alto rendimiento (FONDEQUIP), la plataforma piloto de clima espacial FONDEF junto a la Universidad Adventista de Chile, evaluación de magnetómetros, y datos satelitales y de redes de magnetómetros en tierra.'
+          : 'A high-performance computing cluster (FONDEQUIP), the FONDEF pilot space weather platform with Universidad Adventista de Chile, magnetometer evaluation, and satellite and ground magnetometer network data.'}
+      />
+      <p><a class="more" href={routes.infrastructure[lang]}>{t.infra.more}</a></p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="callout reveal">
+        <p class="eyebrow">{t.contact.eyebrow}</p>
+        <h2 class="display">{t.contact.title}</h2>
+        <p>{pick(site.openCall, 'text', lang)} <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a></p>
+      </div>
+    </div>
+  </section>
+</Layout>

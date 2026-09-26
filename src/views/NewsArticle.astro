@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { render } from 'astro:content';
+import { ui, routes, formatDate, type Lang } from '../lib/i18n';
+
+interface Props { lang: Lang; entry: any; slug: string; hasEs: boolean; hasEn: boolean }
+const { lang, entry, slug, hasEs, hasEn } = Astro.props;
+const t = ui[lang];
+const d = entry.data;
+const { Content } = await render(entry);
+const alternates = {
+  es: hasEs ? `/noticias/${slug}/` : routes.news.es,
+  en: hasEn ? `/en/news/${slug}/` : routes.news.en,
+};
+---
+<Layout lang={lang} title={d.title} route="news" alternates={alternates} description={d.summary} image={d.image || undefined}>
+  <PageHeader title={d.title} back={{ href: routes.news[lang], label: t.news.back }}>
+    <p class="news-date"><time datetime={d.date.toISOString().slice(0, 10)}>{formatDate(d.date, lang)}</time></p>
+  </PageHeader>
+  <section class="band">
+    <div class="wrap">
+      {d.image && <img class="article-hero" src={d.image} alt={d.imageAlt ?? ''} />}
+      <div class="prose">
+        <p class="lead">{d.summary}</p>
+        <Content />
+        {d.link && <p><a class="more" href={d.link} target="_blank" rel="noopener">{t.news.external}</a></p>}
+      </div>
+    </div>
+  </section>
+</Layout>

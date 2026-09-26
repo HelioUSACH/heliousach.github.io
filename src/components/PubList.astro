@@ -1,0 +1,19 @@
+---
+// Publication list — same style on the home page and the research page.
+import { inlineMd, ui, type Lang } from '../lib/i18n';
+interface Props { pubs: Record<string, any>[]; lang: Lang }
+const { pubs, lang } = Astro.props;
+const t = ui[lang];
+---
+<ol class="pubs">
+  {pubs.map((p) => (
+    <li class="pub">
+      <span class="pub-year">{p.year}</span>
+      <div>
+        <p class="pub-title">{p.doi ? <a href={p.doi} target="_blank" rel="noopener" class="card-link">{p.title}</a> : p.title}</p>
+        <p class="pub-authors" set:html={inlineMd(p.authors)} />
+        <p class="pub-meta"><em>{p.journal}</em>{p.inPress && ` · ${t.pubs.inPress}`}{p.doi && <> · <a href={p.doi} target="_blank" rel="noopener">DOI</a></>}</p>
+      </div>
+    </li>
+  ))}
+</ol>

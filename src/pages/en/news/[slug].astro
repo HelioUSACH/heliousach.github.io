@@ -1,0 +1,19 @@
+---
+// One page per English news item: /en/news/<file-name>/
+// (Spanish-only items link to their Spanish page from the English list.)
+import NewsArticle from '../../../views/NewsArticle.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const all = await getCollection('news', (n) => !n.data.draft || import.meta.env.DEV);
+  const es = new Set(all.filter((n) => n.id.startsWith('es/')).map((n) => n.id.slice(3)));
+  return all
+    .filter((n) => n.id.startsWith('en/'))
+    .map((entry) => {
+      const slug = entry.id.slice(3);
+      return { params: { slug }, props: { entry, slug, hasEs: es.has(slug) } };
+    });
+}
+const { entry, slug, hasEs } = Astro.props;
+---
+<NewsArticle lang="en" entry={entry} slug={slug} hasEs={hasEs} hasEn={true} />

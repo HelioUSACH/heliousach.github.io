@@ -1,22 +1,12 @@
-## Development
+# Notes for AI coding agents
 
-When starting the dev server, use background mode:
+- Read `README.md` (architecture) and `CONTENIDO.md` (content model) first.
+- Content lives in `src/content/` and `src/data/`, validated by `src/content.config.ts`. Never hardcode facts (people, projects, publications, dates) in `.astro` files.
+- One view per page in `src/views/` with a `lang` prop; `src/pages/*` only wrap views. Don't duplicate templates per language. UI strings go in `src/lib/i18n.ts`.
+- Styling: only `src/styles/global.css` tokens and classes. No inline `style=`. Reuse components (`Person`, `ProjectCard`, `ResearchCard`, `PubList`, `NewsCard`, `PageHeader`, `SectionHead`) rather than new one-off markup.
+- Content rules: facts must be verifiable (tenure dossier is the source of truth); never publish projects under evaluation or internal grant IDs; prefer actions over unverified counts.
+- Put audits/plans/reports in `Web/docs/` (outside this repo), not in the repo root.
+- Verify with `npm run build` (content validation) before committing.
 
-```
-astro dev --background
-```
-
-Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
-
-## Documentation
-
-Full documentation: https://docs.astro.build
-
-Consult these guides before working on related tasks:
-
-- [Adding pages, dynamic routes, or middleware](https://docs.astro.build/en/guides/routing/)
-- [Working with Astro components](https://docs.astro.build/en/basics/astro-components/)
-- [Using React, Vue, Svelte, or other framework components](https://docs.astro.build/en/guides/framework-components/)
-- [Adding or managing content](https://docs.astro.build/en/guides/content-collections/)
-- [Adding styles or using Tailwind](https://docs.astro.build/en/guides/styling/)
-- [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/)
+## Dev server
+Use background mode: `astro dev --background`; manage with `astro dev stop|status|logs`.

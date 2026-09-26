@@ -1,111 +1,131 @@
+// Content schemas. Every file under src/content/ and src/data/ is validated
+// here at build time: a missing field, a bad date or an image path that
+// doesn't exist in public/ stops the build with a clear error message.
 import { defineCollection, z } from 'astro:content';
-import { file } from 'astro/loaders';
+import { file, glob } from 'astro/loaders';
+import { existsSync } from 'node:fs';
 
-// Bilingual text field: { es: '...', en: '...' }
-const bilingual = z.object({ es: z.string(), en: z.string() });
+const imageExists = (p: string, ctx: z.RefinementCtx) => {
+  if (!p.startsWith('/')) {
+    ctx.addIssue({ code: 'custom', message: `"${p}": image paths start with "/" (e.g. /images/news/foto.jpg)` });
+  } else if (!existsSync(`public${decodeURI(p)}`)) {
+    ctx.addIssue({ code: 'custom', message: `Image not found: public${p} — check the file name and folder` });
+  }
+};
 
-const team = defineCollection({
-  loader: file('src/data/team.yaml'),
+/** Path of a file inside public/, e.g. "/images/news/foto.jpg". Must exist. */
+export const publicImage = () => z.string().superRefine(imageExists);
+
+/** Empty string or missing = no photo; otherwise the file must exist. */
+const optionalImage = () =>
+  z.string().superRefine((p, ctx) => { if (p !== '') imageExists(p, ctx); }).optional();
+
+// ---------- News: src/content/news/es/*.md and src/content/news/en/*.md ----------
+const news = defineCollection({
+  loader: glob({ pattern: '{es,en}/**/*.md', base: './src/content/news' }),
   schema: z.object({
-    id: z.string(),
-    name: bilingual,
-    status: z.enum(['pi', 'postdoc', 'current-student', 'former-member', 'collaborator']),
-    order: z.number().default(0),
+    title: z.string(),
+    date: z.coerce.date(),
+    summary: z.string(),
+    image: optionalImage(),
+    imageAlt: z.string().optional(),
+    link: z.string().url().optional(), // external link (press article, paper)
+    draft: z.boolean().default(false),
+  }),
+});
 
-    // Subtitle line shown on the full team page (title/degree/affiliation).
-    role: bilingual,
-    // PI-only: extra department/title text appended after role, e.g. "Departamento de Física, USACH".
-    department: bilingual.optional(),
-    // Former members: year shown in parentheses after role (e.g. graduation year).
-    year: z.number().optional(),
-    // Students/former members/collaborators: one-line research topic (the "meta" line).
-    topic: bilingual.optional(),
-    // PIs only: full bio paragraph.
-    bio: bilingual.optional(),
-
-    // Optional overrides for the compact homepage teaser card.
-    // Falls back to role/topic/bio if omitted.
-    miniRole: bilingual.optional(),
-    miniBio: bilingual.optional(),
-    // Overrides the homepage card's link target (defaults to the team page).
-    homeCardLink: z.string().url().optional(),
-
-    initials: z.string().optional(),
+// ---------- People: src/content/team/*.md (one file per person) ----------
+const team = defineCollection({
+  loader: glob({ pattern: '*.md', base: './src/content/team' }),
+  schema: z.object({
+    name: z.string(),
+    name_en: z.string().optional(),
+    group: z.enum(['investigadores', 'postdoc', 'estudiantes', 'colaboradores', 'ex-miembros']),
+    order: z.number().default(100),
+    role: z.string(),
+    role_en: z.string().optional(),
+    affiliation: z.string().optional(),
+    affiliation_en: z.string().optional(),
+    topic: z.string().optional(),
+    topic_en: z.string().optional(),
+    year: z.number().optional(), // graduation year (ex-miembros)
+    bio: z.string().optional(),
+    bio_en: z.string().optional(),
+    photo: optionalImage(),
+    initials: z.string().max(3).optional(), // override the automatic initials (shown when there is no photo)
     links: z
       .object({
         site: z.string().url().optional(),
         scholar: z.string().url().optional(),
         orcid: z.string().url().optional(),
         anid: z.string().url().optional(),
+        github: z.string().url().optional(),
       })
       .optional(),
   }),
 });
 
+// ---------- Publications: src/data/publications.yaml ----------
 const publications = defineCollection({
   loader: file('src/data/publications.yaml'),
   schema: z.object({
     id: z.string(),
     year: z.number(),
-    // Author list as plain text. Wrap a name in **double asterisks** to bold
-    // it (e.g. group members) — rendered as <strong> on the research pages.
-    authors: z.string(),
+    authors: z.string(), // **negrita** = miembros del grupo
     title: z.string(),
     journal: z.string(),
-    // Omit for accepted papers that don't have a DOI yet (set inPress: true).
     doi: z.string().url().optional(),
     inPress: z.boolean().default(false),
   }),
 });
 
+// ---------- Research lines: src/data/research-lines.yaml ----------
 const researchLines = defineCollection({
   loader: file('src/data/research-lines.yaml'),
   schema: z.object({
     id: z.string(),
     order: z.number().default(0),
-    badgeColor: z.enum(['green', 'orange']),
-    tag: bilingual,
-    title: bilingual,
-    // Full paragraph shown on /investigacion and /en/research.
-    description: bilingual,
-    // "Datos: ..." / "Data: ..." (or "Herramientas:" / "Tools:") line on the full page.
-    meta: bilingual,
-
-    // Homepage teaser card: image + (usually) rewritten shorter copy.
-    image: z.string(),
-    imageAlt: bilingual,
-    // Falls back to title/description if omitted (most lines reuse the same
-    // title; one currently has a shortened homepage title).
-    homeTitle: bilingual.optional(),
-    homeDescription: bilingual.optional(),
+    tag: z.string(),
+    tag_en: z.string().optional(),
+    title: z.string(),
+    title_en: z.string().optional(),
+    shortTitle: z.string().optional(),
+    shortTitle_en: z.string().optional(),
+    summary: z.string(),
+    summary_en: z.string().optional(),
+    description: z.string(),
+    description_en: z.string().optional(),
+    data: z.string().optional(),
+    data_en: z.string().optional(),
+    image: publicImage(),
+    imageAlt: z.string(),
+    imageAlt_en: z.string().optional(),
   }),
 });
 
+// ---------- Projects: src/data/projects.yaml ----------
 const projects = defineCollection({
   loader: file('src/data/projects.yaml'),
   schema: z.object({
     id: z.string(),
-    // Display order in the full /investigacion grid (all projects appear there).
     order: z.number().default(0),
-    title: bilingual,
-    // e.g. "**PI:** Dr. Victor Pinto · **Co-I:** ..." — **bold** marks the
-    // role label, same convention as publications' authors field.
-    attribution: bilingual,
-    description: bilingual,
-    // "2025-2028 · ANID" — years and funder aren't translated.
-    meta: z.string(),
-
-    // Only ~3 of the projects are "featured" on the homepage, with their own
-    // image, tags, and rewritten marketing copy. `featured` is that card's
-    // display order there; omit it entirely to keep a project off the homepage.
+    grant: z.string(),
+    grant_en: z.string().optional(),
+    title: z.string(),
+    title_en: z.string().optional(),
+    summary: z.string(),
+    summary_en: z.string().optional(),
+    people: z.string(),
+    people_en: z.string().optional(),
+    years: z.string(),
+    funder: z.string(),
     featured: z.number().optional(),
-    homeKicker: bilingual.optional(),
-    homeTitle: bilingual.optional(),
-    homeDescription: bilingual.optional(),
-    homeImage: z.string().optional(),
-    homeImageAlt: bilingual.optional(),
-    homeTags: z.array(bilingual).optional(),
+    image: publicImage().optional(),
+    imageAlt: z.string().optional(),
+    imageAlt_en: z.string().optional(),
+    tags: z.array(z.string()).optional(),
+    tags_en: z.array(z.string()).optional(),
   }),
 });
 
-export const collections = { team, publications, researchLines, projects };
+export const collections = { news, team, publications, researchLines, projects };
