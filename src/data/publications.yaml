@@ -1,0 +1,59 @@
+# HelioFísica USACH — publications.
+#
+# Same content appears on both the Spanish and English research pages (paper
+# titles, author names, journals, and DOIs aren't translated), plus the top 5
+# most recent show up on the homepage teaser — so this one file feeds all of
+# them. Sorted by year, newest first; ties keep the order they're listed here.
+#
+# To add a publication: copy an entry, give it a unique `id`, fill in the
+# fields. Wrap a name in **double asterisks** to bold it (used for group
+# members on the full research pages — the homepage teaser ignores it).
+
+- id: pub-2026-inostroza-jgr
+  year: 2026
+  authors: "**Inostroza, A.M.**, ..., **Pinto, V.A.**, et al."
+  title: "The Role of auroral phenomena in the dynamics of the outer radiation belt"
+  journal: "JGR: Space Physics"
+  doi: "https://doi.org/10.1029/2026JA035123"
+
+- id: pub-2026-stepanova-physica-scripta
+  year: 2026
+  authors: "**Stepanova, M.V.**, **Pinto, V.A.**, et al."
+  title: "Role of the solar wind dynamic pressure in magnetospheric turbulence"
+  journal: "Physica Scripta"
+  doi: "https://doi.org/10.1088/1402-4896/ae48b2"
+
+- id: pub-2025-pinto-physica-scripta
+  year: 2025
+  authors: "**Pinto, V.A.**, Espitia, Y., et al."
+  title: "Radial evolution of ultrarelativistic electrons during enhancement events"
+  journal: "Physica Scripta"
+  doi: "https://doi.org/10.1088/1402-4896/ae1332"
+
+- id: pub-2025-coughlan-space-weather
+  year: 2025
+  authors: "Coughlan, M., ..., **Pinto, V.**, et al."
+  title: "Using ML explainability to examine drivers of ground magnetic field localization"
+  journal: "Space Weather"
+  doi: "https://doi.org/10.1029/2025SW004391"
+
+- id: pub-2025-lara-universe
+  year: 2025
+  authors: "**Lara, C.**, **Pinto, V.A.**, et al."
+  title: "On ULF Wave Power and Changes of Relativistic Electron Fluxes"
+  journal: "Universe"
+  doi: "https://doi.org/10.3390/universe11050151"
+
+- id: pub-2024-gallardo-lacourt-grl
+  year: 2024
+  authors: "Gallardo-Lacourt, B., ..., **Pinto, V.A.**, et al."
+  title: "Unexpected STEVE observations at high latitude during quiet conditions"
+  journal: "GRL"
+  doi: "https://doi.org/10.1029/2024GL110568"
+
+- id: pub-2022-pinto-front-astron
+  year: 2022
+  authors: "**Pinto, V.A.**, Keesee, A.M., et al."
+  title: "Revisiting the Ground Magnetic Field Perturbations Challenge: A ML Perspective"
+  journal: "Front. Astron. Space Sci."
+  doi: "https://doi.org/10.3389/fspas.2022.869740"

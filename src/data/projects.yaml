@@ -1,0 +1,161 @@
+# HelioFísica USACH — active projects/grants.
+#
+# All 7 appear on /investigacion and /en/research. Only the ones with a
+# `featured` number also appear on the homepage, with their own image, tags,
+# and (usually) rewritten marketing copy — that's what the home* fields are
+# for. To add a project without featuring it on the homepage, just omit every
+# home*/featured field.
+
+- id: fondecyt-iniciacion-2025
+  order: 1
+  title:
+    es: "FONDECYT Iniciación 2025"
+    en: "FONDECYT Initiation 2025"
+  attribution:
+    es: "**PI:** Dr. Victor Pinto"
+    en: "**PI:** Dr. Victor Pinto"
+  description:
+    es: "El rol de ondas ULF electromagnéticas en la dinámica de partículas cargadas atrapadas"
+    en: "The role of electromagnetic ULF waves on the dynamics of trapped charged particles"
+  meta: "2025-2028 · ANID"
+  featured: 2
+  homeKicker:
+    es: "FONDECYT Iniciación 2025 — ANID"
+    en: "FONDECYT Initiation 2025 — ANID"
+  homeTitle:
+    es: "Ondas ULF y partículas atrapadas"
+    en: "ULF waves and trapped particles"
+  homeDescription:
+    es: "El rol de ondas ULF electromagnéticas en la dinámica de partículas cargadas atrapadas en los cinturones de radiación de la Tierra."
+    en: "The role of electromagnetic ULF waves in the dynamics of charged particles trapped in Earth's radiation belts."
+  homeImage: /images/ulf-waves.jpg
+  homeImageAlt:
+    es: "Datos satelitales de Van Allen Probes"
+    en: "Van Allen Probes satellite data"
+  homeTags:
+    - es: "Van Allen Probes"
+      en: "Van Allen Probes"
+    - es: "THEMIS"
+      en: "THEMIS"
+    - es: "GOES"
+      en: "GOES"
+
+- id: fondecyt-regular-2025
+  order: 2
+  title:
+    es: "FONDECYT Regular 2025"
+    en: "FONDECYT Regular 2025"
+  attribution:
+    es: "**PI:** Dra. Marina Stepanova · **Co-I:** Dr. Victor Pinto"
+    en: "**PI:** Prof. Marina Stepanova · **Co-I:** Dr. Victor Pinto"
+  description:
+    es: "Turbulencia y balance de presión total en la magnetosfera interconectada dinámica"
+    en: "Turbulence and total pressure balance in the interconnected dynamic magnetosphere"
+  meta: "2025-2029 · ANID"
+  featured: 3
+  homeKicker:
+    es: "FONDECYT Regular 2025 — ANID (PI: M. Stepanova)"
+    en: "FONDECYT Regular 2025 — ANID (PI: M. Stepanova)"
+  homeTitle:
+    es: "Turbulencia y balance de presión en la magnetosfera"
+    en: "Turbulence and pressure balance in the magnetosphere"
+  homeDescription:
+    es: "Turbulencia y balance de presión total en la magnetosfera dinámica interconectada durante tormentas y subtormentas."
+    en: "Turbulence and total pressure balance in the interconnected dynamic magnetosphere during storms and substorms."
+  homeImage: /images/radiation-belts.jpg
+  homeImageAlt:
+    es: "Turbulencia en la magnetosfera"
+    en: "Turbulence in the magnetosphere"
+  homeTags:
+    - es: "Turbulencia magnetosférica"
+      en: "Magnetospheric turbulence"
+    - es: "Balance de presión"
+      en: "Pressure balance"
+    - es: "Dinámica de tormentas"
+      en: "Storm dynamics"
+
+- id: fondecyt-regular-2024
+  order: 3
+  title:
+    es: "FONDECYT Regular 2024"
+    en: "FONDECYT Regular 2024"
+  attribution:
+    es: "**PI:** P.S. Moya · **Co-I:** Dr. Victor Pinto"
+    en: "**PI:** P.S. Moya · **Co-I:** Dr. Victor Pinto"
+  description:
+    es: "Micro y macro física de sistemas de plasma en expansión: viento solar y estelar"
+    en: "Macro and micro physics of expanding plasma systems: solar and stellar winds"
+  meta: "2024-2028 · ANID"
+
+- id: fondef-idea-id-2025
+  order: 4
+  title:
+    es: "FONDEF IDEA I+D 2025"
+    en: "FONDEF IDEA I+D 2025"
+  attribution:
+    es: "**PI:** Dr. Victor Pinto · **Co-Directora:** Dra. Marina Stepanova"
+    en: "**PI:** Dr. Victor Pinto · **Co-Director:** Prof. Marina Stepanova"
+  description:
+    es: "Plataforma Chilena de Clima Espacial"
+    en: "Chilean Space Weather Platform"
+  meta: "2025-2027 · FONDEF/ANID"
+  featured: 1
+  homeKicker:
+    es: "FONDEF IDEA I+D — ANID"
+    en: "FONDEF IDEA I+D — ANID"
+  homeTitle:
+    es: "Plataforma Chilena de Clima Espacial"
+    en: "Chilean Space Weather Platform"
+  homeDescription:
+    es: "Primera plataforma piloto nacional de Chile para monitoreo en tiempo real de clima espacial y alertas tempranas, con modelos predictivos basados en deep learning. En colaboración con la Universidad Adventista de Chile."
+    en: "Chile's first national pilot platform for real-time space weather monitoring and early warnings, with ML-based predictive models. In collaboration with Universidad Adventista de Chile."
+  homeImage: /images/space-weather.jpg
+  homeImageAlt:
+    es: "Plataforma de monitoreo de clima espacial"
+    en: "Space weather monitoring dashboard"
+  homeTags:
+    - es: "Monitoreo en tiempo real"
+      en: "Real-time monitoring"
+    - es: "Predicción DL"
+      en: "DL forecasting"
+    - es: "Riesgo GIC"
+      en: "GIC prediction"
+
+- id: nasa-lws
+  order: 5
+  title:
+    es: "NASA LWS"
+    en: "NASA LWS"
+  attribution:
+    es: "**PI:** A. Keesee (UNH) · **Colaborador:** Dr. Victor Pinto"
+    en: "**PI:** A. Keesee (UNH) · **Collaborator:** Dr. Victor Pinto"
+  description:
+    es: "Impacto de transientes del foreshock en perturbaciones magnetosféricas"
+    en: "Foreshock Transients Impact on Magnetospheric Perturbations"
+  meta: "2022-2027 · NASA"
+
+- id: cnpq-conhecimento-brasil
+  order: 6
+  title:
+    es: "CNPq Conhecimento Brasil"
+    en: "CNPq Conhecimento Brasil"
+  attribution:
+    es: "**PI:** J.P. Marchezi (INPE) · **Co-I:** Dr. Victor Pinto"
+    en: "**PI:** J.P. Marchezi (INPE) · **Co-I:** Dr. Victor Pinto"
+  description:
+    es: "GICs en Brasil y precipitación de partículas en la Anomalía del Atlántico Sur"
+    en: "GICs in Brazil and particle precipitation in the South Atlantic Anomaly"
+  meta: "2025-2029 · CNPq"
+
+- id: dicyt-usach
+  order: 7
+  title:
+    es: "DICYT USACH"
+    en: "DICYT USACH"
+  attribution:
+    es: "**PI:** Dr. Victor Pinto"
+    en: "**PI:** Dr. Victor Pinto"
+  description:
+    es: "Dinámica de ondas ULF, invariantes adiabáticos del viento solar, densidad del espacio de fase de electrones relativistas"
+    en: "ULF wave dynamics, solar wind adiabatic invariants, phase space density of relativistic electrons"
+  meta: "2024-2027 · USACH"

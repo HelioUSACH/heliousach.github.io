@@ -1,0 +1,101 @@
+# HelioFísica USACH — research lines.
+#
+# Shown as dense cards (with a "Data:"/"Tools:" line) on /investigacion and
+# /en/research, and as image teaser cards (shorter copy) on the homepage.
+# `homeTitle`/`homeDescription` only need to be set when the homepage wording
+# differs from the full-page one — most lines reuse `title` as-is.
+
+- id: radiation-belt-dynamics
+  order: 1
+  badgeColor: green
+  tag:
+    es: "Física espacial"
+    en: "Space physics"
+  title:
+    es: "Dinámica de los cinturones de radiación"
+    en: "Radiation belt dynamics"
+  description:
+    es: "Mecanismos de energización, transporte, y decaimiento de electrones relativistas en los cinturones de Van Allen. Eventos de aumento y dropout durante tormentas geomagnéticas. Formación, evolución, y decaimiento de cinturones remanentes ultrarelativistas. Procesos adiabáticos y no adiabáticos en el cinturón externo. Fenómenos aurorales y su influencia en la dinámica del cinturón."
+    en: "Mechanisms of energization, transport, and decay of relativistic electrons in the Van Allen belts. Enhancement and dropout events during geomagnetic storms. Formation, evolution, and decay of ultrarelativistic remnant belts. Adiabatic and non-adiabatic processes in the outer radiation belt. Auroral phenomena and their influence on radiation belt dynamics."
+  meta:
+    es: "Datos: Van Allen Probes (MagEIS, REPT, EMFISIS, EFW), GOES, THEMIS"
+    en: "Data: Van Allen Probes (MagEIS, REPT, EMFISIS, EFW), GOES, THEMIS"
+  image: /images/radiation-belts.jpg
+  imageAlt:
+    es: "Cinturones de radiación de Van Allen alrededor de la Tierra"
+    en: "Van Allen radiation belts around Earth"
+  homeDescription:
+    es: "Energización, transporte y decaimiento de electrones relativistas en los cinturones de Van Allen. Eventos de aumento y dropout durante tormentas geomagnéticas. Formación y evolución de cinturones remanentes ultrarelativistas. Procesos adiabáticos y no adiabáticos en el cinturón externo."
+    en: "Energization, transport, and decay of relativistic electrons in the Van Allen belts. Enhancement and dropout events during geomagnetic storms. Formation and evolution of ultrarelativistic remnant belts. Adiabatic and non-adiabatic processes in the outer radiation belt."
+
+- id: ulf-waves-turbulence
+  order: 2
+  badgeColor: green
+  tag:
+    es: "Física espacial"
+    en: "Space physics"
+  title:
+    es: "Ondas ULF y turbulencia magnetosférica"
+    en: "ULF waves and magnetospheric turbulence"
+  description:
+    es: "Rol de ondas electromagnéticas ULF en la dinámica de partículas cargadas atrapadas. Turbulencia magnetosférica y balance de presión total durante tormentas y subtormentas. Coeficientes de difusión turbulenta en la lámina de plasma (observaciones THEMIS). Interacción onda-partícula y procesos de pérdida de electrones relativistas."
+    en: "Role of electromagnetic ULF waves in trapped charged particle dynamics. Magnetospheric turbulence and total pressure balance during storms and substorms. Eddy diffusion coefficients in the plasma sheet (THEMIS observations). Wave-particle interactions and relativistic electron loss processes."
+  meta:
+    es: "Datos: Magnetómetros (SAMBA, MACCS, THEMIS GBO, CARISMA), SuperDARN, THEMIS"
+    en: "Data: Magnetometers (SAMBA, MACCS, THEMIS GBO, CARISMA), SuperDARN, THEMIS"
+  image: /images/ulf-waves.jpg
+  imageAlt:
+    es: "Ondas ULF en la magnetosfera terrestre"
+    en: "ULF waves in the Earth's magnetosphere"
+  homeDescription:
+    es: "Rol de ondas ULF electromagnéticas en la dinámica de partículas atrapadas. Turbulencia en la magnetosfera y balance de presión total durante tormentas y subtormentas. Coeficientes de difusión turbulenta en la lámina de plasma. Interacción onda-partícula."
+    en: "Role of electromagnetic ULF waves in trapped particle dynamics. Magnetospheric turbulence and total pressure balance during storms and substorms. Eddy diffusion in the plasma sheet. Wave-particle interactions."
+
+- id: ml-space-weather
+  order: 3
+  badgeColor: orange
+  tag:
+    es: "Ciencia de datos"
+    en: "Data science"
+  title:
+    es: "Predicción de clima espacial con Machine Learning"
+    en: "Space weather prediction with Machine Learning"
+  description:
+    es: "Predicción de perturbaciones magnéticas en tierra y corrientes inducidas geomagnéticamente (GIC). Pronóstico probabilístico usando deep learning (RNN, CNN, LSTM). Explicabilidad de modelos ML para clima espacial operacional (SHAP, LIME). Ubicación de la plasmapausa con machine learning."
+    en: "Prediction of ground magnetic perturbations and geomagnetically induced currents (GIC). Probabilistic forecasting using deep learning (RNN, CNN, LSTM). ML model explainability for operational space weather (SHAP, LIME). Plasmapause location with machine learning."
+  meta:
+    es: "Herramientas: Python, TensorFlow-Keras, PyTorch, Scikit-learn. Datos OMNI en tiempo real"
+    en: "Tools: Python, TensorFlow-Keras, PyTorch, Scikit-learn. Real-time OMNI data"
+  image: /images/space-weather.jpg
+  imageAlt:
+    es: "Modelo de predicción de clima espacial"
+    en: "Space weather prediction model"
+  homeTitle:
+    es: "Predicción de clima espacial con ML"
+    en: "Space weather prediction with ML"
+  homeDescription:
+    es: "Predicción de perturbaciones magnéticas en tierra y corrientes inducidas geomagnéticamente (GIC). Pronóstico probabilístico con deep learning (LSTM, CNN). Explicabilidad de modelos ML para operaciones de clima espacial. Ubicación de la plasmapausa con machine learning."
+    en: "Prediction of ground magnetic perturbations and geomagnetically induced currents (GIC). Probabilistic forecasting using deep learning (LSTM, CNN). ML model explainability for operational space weather. Plasmapause location with machine learning."
+
+- id: solar-wind-magnetosphere-coupling
+  order: 4
+  badgeColor: green
+  tag:
+    es: "Física espacial"
+    en: "Space physics"
+  title:
+    es: "Acoplamiento viento solar — magnetosfera"
+    en: "Solar wind — magnetosphere coupling"
+  description:
+    es: "Efectos de la presión dinámica del viento solar en la turbulencia magnetosférica. Transientes del foreshock y perturbaciones magnetosféricas (NASA LWS). Sistemas de plasma en expansión: viento solar y estelar. Invariantes adiabáticos y mecanismos no adiabáticos en la expansión del viento solar."
+    en: "Solar wind dynamic pressure effects on magnetospheric turbulence. Foreshock transients and magnetospheric perturbations (NASA LWS). Expanding plasma systems: solar and stellar winds. Adiabatic invariants and non-adiabatic mechanisms in solar wind expansion."
+  meta:
+    es: "Datos: OMNI, THEMIS, Van Allen Probes, GOES"
+    en: "Data: OMNI, THEMIS, Van Allen Probes, GOES"
+  image: /images/magnetosphere.jpg
+  imageAlt:
+    es: "Viento solar interactuando con la magnetosfera terrestre"
+    en: "Solar wind interacting with Earth's magnetosphere"
+  homeDescription:
+    es: "Efectos de la presión dinámica del viento solar en la turbulencia magnetosférica. Transientes del foreshock y perturbaciones magnetosféricas. Sistemas de plasma en expansión: viento solar y estelar. Invariantes adiabáticos y mecanismos no adiabáticos en la expansión del viento solar."
+    en: "Solar wind dynamic pressure effects on magnetospheric turbulence. Foreshock transients and magnetospheric perturbations. Expanding plasma systems: solar and stellar winds. Adiabatic invariants and non-adiabatic mechanisms in solar wind expansion."

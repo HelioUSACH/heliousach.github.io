@@ -1,0 +1,46 @@
+---
+// Renders one publication, in one of two shapes:
+//   variant="full" (default) — the card used on /investigacion and /en/research
+//   variant="mini"           — the plain list item used on the homepage
+//
+// `data` is a publications collection entry's `.data` (see
+// src/content.config.ts / src/data/publications.yaml).
+
+interface Props {
+  data: {
+    year: number;
+    authors: string;
+    title: string;
+    journal: string;
+    doi: string;
+  };
+  variant?: 'full' | 'mini';
+}
+
+const { data: p, variant = 'full' } = Astro.props as Props;
+
+// authors is plain text with **name** for bolding. The full-page card renders
+// that as <strong>; the homepage teaser strips the markers (plain text).
+const boldAuthorsHtml = p.authors.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+const plainAuthors = p.authors.replace(/\*\*/g, '');
+---
+
+{variant === 'mini' ? (
+  <li class="hp-pub-item">
+    <span class="hp-pub-year">{p.year}</span>
+    <div>
+      <p class="hp-pub-title">{p.title}</p>
+      <p class="hp-pub-meta">
+        {plainAuthors} — {p.journal} · <a href={p.doi} target="_blank" rel="noopener">DOI</a>
+      </p>
+    </div>
+  </li>
+) : (
+  <div class="card" style="margin-bottom:0.5rem">
+    <div style="display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:0.5rem">
+      <div style="flex:1;min-width:200px" set:html={`${boldAuthorsHtml} ${p.title}.`} />
+      <span class="badge badge-green">{p.year}</span>
+    </div>
+    <p class="meta">{p.journal} · <a href={p.doi}>DOI</a></p>
+  </div>
+)}

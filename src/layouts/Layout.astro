@@ -63,6 +63,7 @@ const orgSchema = {
     </script>
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
+    {import.meta.env.DEV && <style set:html={css} />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="preconnect" href="https://fonts.googleapis.com">

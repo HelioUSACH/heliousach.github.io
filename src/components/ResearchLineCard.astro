@@ -1,0 +1,35 @@
+---
+// Renders one research line, in one of two shapes:
+//   variant="full" (default) — the dense card used on /investigacion and /en/research
+//   variant="mini"           — the image teaser card used on the homepage
+//
+// `data` is a researchLines collection entry's `.data` (see
+// src/content.config.ts / src/data/research-lines.yaml). `lang` is 'es' | 'en'.
+
+interface Props {
+  data: Record<string, any>;
+  lang: 'es' | 'en';
+  variant?: 'full' | 'mini';
+}
+
+const { data: d, lang, variant = 'full' } = Astro.props as Props;
+const pick = (field?: { es: string; en: string }) => field?.[lang];
+---
+
+{variant === 'mini' ? (
+  <article class="hp-research-card">
+    <img src={d.image} alt={pick(d.imageAlt)} />
+    <div class="hp-research-body">
+      <span class="hp-research-tag">{pick(d.tag)}</span>
+      <h3>{pick(d.homeTitle ?? d.title)}</h3>
+      <p>{pick(d.homeDescription ?? d.description)}</p>
+    </div>
+  </article>
+) : (
+  <div class="card" style="margin-bottom:1rem">
+    <span class={`badge badge-${d.badgeColor}`}>{pick(d.tag)}</span>
+    <h3>{pick(d.title)}</h3>
+    <p>{pick(d.description)}</p>
+    <p class="meta">{pick(d.meta)}</p>
+  </div>
+)}
