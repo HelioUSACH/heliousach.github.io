@@ -25,9 +25,10 @@ const pageTitle = route === 'home' ? `${site.name} — ${pick(site, 'tagline', l
 const desc = description ?? pick(site, 'description', lang);
 const ogImage = `${base}${image ?? site.hero.image}`;
 const isHome = route === 'home';
-// One-page scroller: nav items are home-page sections. On detail pages they
-// point back to the home section; the section the page expands is marked active.
-const navHref = (k: NavKey) => `${isHome ? '' : routes.home[lang]}#${sections.find((s) => s.nav === k)!.id}`;
+// Home: nav items scroll to home sections. Full pages: nav items go to the
+// other full pages, 'Contact' scrolls to the footer, the brand returns home.
+const navHref = (k: NavKey) =>
+  isHome ? `#${sections.find((s) => s.nav === k)!.id}` : k === 'contact' ? '#contact' : routes[k][lang];
 const activeNav: NavKey | undefined = route && route !== 'home' ? (route as NavKey) : undefined;
 
 const orgSchema = {
@@ -90,7 +91,7 @@ const orgSchema = {
         <nav class="nav" aria-label={t.navLabel}>
           <ul class="nav-links" id="nav-links">
             {navOrder.map((k) => (
-              <li><a href={navHref(k)} data-nav={k} aria-current={activeNav === k ? 'true' : undefined}>{t.nav[k]}</a></li>
+              <li><a href={navHref(k)} data-nav={k} aria-current={activeNav === k ? 'page' : undefined}>{t.nav[k]}</a></li>
             ))}
           </ul>
           <div class="nav-tools">
@@ -109,7 +110,7 @@ const orgSchema = {
 
     <main><slot /></main>
 
-    <footer class="site-footer">
+    <footer class="site-footer" id={isHome ? undefined : 'contact'}>
       <div class="wrap">
         <div class="footer-meta">
           <div>
@@ -156,6 +157,18 @@ const orgSchema = {
             menu.setAttribute('aria-expanded', open ? 'false' : 'true');
           });
         }
+        // Smooth scrolling for same-page links (nav, 'back to top', etc.).
+        document.addEventListener('click', function (ev) {
+          var a = ev.target.closest && ev.target.closest('a[href^="#"]');
+          if (!a) return;
+          var id = decodeURIComponent(a.getAttribute('href').slice(1));
+          var target = id ? document.getElementById(id) : document.body;
+          if (!target) return;
+          ev.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (history.pushState) history.pushState(null, '', '#' + id);
+          if (header) { header.setAttribute('data-open', 'false'); if (menu) menu.setAttribute('aria-expanded', 'false'); }
+        });
         // Home page: highlight the nav item of the section in view.
         var spy = document.querySelectorAll('[data-section]');
         if (spy.length && 'IntersectionObserver' in window) {
@@ -171,9 +184,6 @@ const orgSchema = {
             });
           }, { rootMargin: '-45% 0px -50% 0px' });
           spy.forEach(function (el) { so.observe(el); });
-          if (header) header.querySelectorAll('.nav-links a').forEach(function (a) {
-            a.addEventListener('click', function () { header.setAttribute('data-open', 'false'); if (menu) menu.setAttribute('aria-expanded', 'false'); });
-          });
         }
         var els = document.querySelectorAll('.reveal');
         if (!('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('in'); }); return; }

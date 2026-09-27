@@ -4,17 +4,15 @@ import PageHeader from '../components/PageHeader.astro';
 import SectionHead from '../components/SectionHead.astro';
 import ResearchCard from '../components/ResearchCard.astro';
 import ProjectCard from '../components/ProjectCard.astro';
-import PubList from '../components/PubList.astro';
 import Pager from '../components/Pager.astro';
 import { ui, routes, type Lang } from '../lib/i18n';
-import { getPublications, getResearchLines, getProjects } from '../lib/content';
+import { getResearchLines, getProjects } from '../lib/content';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = ui[lang];
 const lines = await getResearchLines();
 const projects = await getProjects();
-const pubs = await getPublications();
 const lead = lang === 'es'
   ? 'Física de los cinturones de radiación, ondas ULF, turbulencia magnetosférica, acoplamiento viento solar-magnetosfera y predicción de clima espacial con machine learning.'
   : 'Radiation belt physics, ULF waves, magnetospheric turbulence, solar wind-magnetosphere coupling, and machine-learning space weather prediction.';
@@ -40,16 +38,5 @@ const lead = lang === 'es'
     </div>
   </section>
 
-  <section class="band" id="publications">
-    <div class="wrap">
-      <SectionHead
-        eyebrow={t.pubs.eyebrow}
-        title={t.pubs.titleAll}
-        text={lang === 'es' ? 'Artículos del grupo desde 2022. En negrita, integrantes del grupo.' : 'Group papers since 2022. Group members in bold.'}
-      />
-      <PubList pubs={pubs} lang={lang} />
-      <p class="section-foot meta">{t.pubs.profiles}: <a href="https://scholar.google.com/citations?user=nEqGWqoAAAAJ" target="_blank" rel="noopener">Google Scholar</a> · <a href="https://orcid.org/0000-0003-1210-167X" target="_blank" rel="noopener">ORCID</a></p>
-    </div>
-  </section>
   <Pager lang={lang} current="research" section="research" />
 </Layout>

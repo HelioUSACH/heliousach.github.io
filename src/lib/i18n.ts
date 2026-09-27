@@ -6,32 +6,35 @@ export const routes = {
   research: { es: '/investigacion/', en: '/en/research/' },
   team: { es: '/equipo/', en: '/en/team/' },
   news: { es: '/noticias/', en: '/en/news/' },
+  publications: { es: '/publicaciones/', en: '/en/publications/' },
   infrastructure: { es: '/infraestructura/', en: '/en/infrastructure/' },
 } as const;
 export type RouteKey = keyof typeof routes;
 
 /**
- * The site is a one-page scroller: every nav item is a section of the home
- * page (anchor id below). Sections with a detail page end in "See full page".
- * Order here = order on the home page = order of the detail-page pager.
+ * The site is a one-page scroller. On the home page every nav item scrolls to
+ * its section (anchor id below); each section ends in "See full page".
+ * On a full (detail) page the nav links go to the other full pages instead,
+ * and "Contact" scrolls to the footer.
+ * Order here = order on the home page = nav order = detail-page pager order.
  */
 export const sections = [
-  { id: 'research', nav: 'research', detail: 'research' },
-  { id: 'projects', nav: 'research', detail: 'research', hash: 'projects' },
-  { id: 'news', nav: 'news', detail: 'news' },
-  { id: 'team', nav: 'team', detail: 'team' },
-  { id: 'publications', nav: 'research', detail: 'research', hash: 'publications' },
-  { id: 'infrastructure', nav: 'infrastructure', detail: 'infrastructure' },
+  { id: 'research', nav: 'research' },
+  { id: 'projects', nav: 'research' },
+  { id: 'news', nav: 'news' },
+  { id: 'team', nav: 'team' },
+  { id: 'publications', nav: 'publications' },
+  { id: 'infrastructure', nav: 'infrastructure' },
   { id: 'contact', nav: 'contact' },
 ] as const;
-export type NavKey = 'research' | 'team' | 'news' | 'infrastructure' | 'contact';
-export const navOrder: NavKey[] = ['research', 'news', 'team', 'infrastructure', 'contact'];
+export type NavKey = 'research' | 'news' | 'team' | 'publications' | 'infrastructure' | 'contact';
+export const navOrder: NavKey[] = ['research', 'news', 'team', 'publications', 'infrastructure', 'contact'];
 /** Detail pages in reading order (for the "next" link at the bottom of each). */
-export const detailOrder: RouteKey[] = ['research', 'news', 'team', 'infrastructure'];
+export const detailOrder: RouteKey[] = ['research', 'news', 'team', 'publications', 'infrastructure'];
 
 export const ui = {
   es: {
-    nav: { home: 'Inicio', research: 'Investigación', team: 'Equipo', news: 'Noticias', infrastructure: 'Infraestructura', contact: 'Contacto' },
+    nav: { home: 'Inicio', research: 'Investigación', team: 'Equipo', news: 'Noticias', publications: 'Publicaciones', infrastructure: 'Infraestructura', contact: 'Contacto' },
     navLabel: 'Navegación principal',
     themeToggle: 'Cambiar tema día/noche',
     menu: 'Menú',
@@ -67,7 +70,7 @@ export const ui = {
     dateLocale: 'es-CL',
   },
   en: {
-    nav: { home: 'Home', research: 'Research', team: 'Team', news: 'News', infrastructure: 'Infrastructure', contact: 'Contact' },
+    nav: { home: 'Home', research: 'Research', team: 'Team', news: 'News', publications: 'Publications', infrastructure: 'Infrastructure', contact: 'Contact' },
     navLabel: 'Main navigation',
     themeToggle: 'Toggle day/night theme',
     menu: 'Menu',
