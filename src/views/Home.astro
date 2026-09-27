@@ -1,4 +1,6 @@
 ---
+// The home page is the whole site in one scroll. Each section is a summary of
+// a detail page ("See full page") and is also a nav target (id + data-section).
 import Layout from '../layouts/Layout.astro';
 import SectionHead from '../components/SectionHead.astro';
 import ResearchCard from '../components/ResearchCard.astro';
@@ -8,17 +10,19 @@ import PubList from '../components/PubList.astro';
 import NewsCard from '../components/NewsCard.astro';
 import { ui, routes, pick, type Lang } from '../lib/i18n';
 import { site } from '../lib/site';
-import { getTeam, getPublications, getResearchLines, getProjects, getNews } from '../lib/content';
+import { getTeam, getPublications, getResearchLines, getProjects, getNews, getInfrastructure } from '../lib/content';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = ui[lang];
+const full = (href: string) => ({ href, label: t.fullPage });
 
 const lines = await getResearchLines();
 const featured = (await getProjects()).filter((p) => p.featured != null).sort((a, b) => a.featured! - b.featured!);
 const news = (await getNews(lang)).slice(0, 3);
 const people = (await getTeam()).filter((p) => ['investigadores', 'postdoc', 'estudiantes'].includes(p.data.group));
 const pubs = (await getPublications()).slice(0, 5);
+const infra = await getInfrastructure();
 ---
 <Layout lang={lang} title={t.nav.home} route="home">
   <section class="hero">
@@ -31,75 +35,82 @@ const pubs = (await getPublications()).slice(0, 5);
     </div>
   </section>
 
-  <section class="band">
+  <section class="band" id="research" data-section="research">
     <div class="wrap">
-      <SectionHead eyebrow={t.research.eyebrow} title={t.research.title} />
+      <SectionHead eyebrow={t.research.eyebrow} title={t.research.title} more={full(routes.research[lang])} />
       <div class="grid grid-2 reveal">
         {lines.map((l) => <ResearchCard line={l} lang={lang} />)}
       </div>
-      <p class="section-foot"><a class="more" href={routes.research[lang]}>{t.research.more}</a></p>
     </div>
   </section>
 
-  <section class="band band-alt">
+  <section class="band band-alt" id="projects" data-section="research">
     <div class="wrap">
-      <SectionHead eyebrow={t.projects.eyebrow} title={t.projects.title} />
+      <SectionHead eyebrow={t.projects.eyebrow} title={t.projects.title} more={full(`${routes.research[lang]}#projects`)} />
       <div class="stack reveal">
         {featured.map((p) => <ProjectCard project={p} lang={lang} variant="feature" />)}
       </div>
-      <p class="section-foot"><a class="more" href={`${routes.research[lang]}#proyectos`}>{t.projects.more}</a></p>
     </div>
   </section>
 
   {news.length > 0 && (
-    <section class="band">
+    <section class="band" id="news" data-section="news">
       <div class="wrap">
-        <SectionHead eyebrow={t.news.eyebrow} title={t.news.latest} />
+        <SectionHead eyebrow={t.news.eyebrow} title={t.news.latest} more={full(routes.news[lang])} />
         <div class="grid grid-3 reveal">
           {news.map((n) => <NewsCard item={n} lang={lang} />)}
         </div>
-        <p class="section-foot"><a class="more" href={routes.news[lang]}>{t.news.more}</a></p>
       </div>
     </section>
   )}
 
-  <section class="band band-alt">
+  <section class="band band-alt" id="team" data-section="team">
     <div class="wrap">
-      <SectionHead eyebrow={t.team.eyebrow} title={t.team.title} />
+      <SectionHead eyebrow={t.team.eyebrow} title={t.team.title} more={full(routes.team[lang])} />
       <div class="grid grid-4 reveal">
         {people.map((p) => <Person person={p.data} lang={lang} />)}
       </div>
-      <p class="section-foot"><a class="more" href={routes.team[lang]}>{t.team.more}</a></p>
     </div>
   </section>
 
-  <section class="band">
+  <section class="band" id="publications" data-section="research">
     <div class="wrap">
-      <SectionHead eyebrow={t.pubs.eyebrow} title={t.pubs.title} />
+      <SectionHead eyebrow={t.pubs.eyebrow} title={t.pubs.title} more={full(`${routes.research[lang]}#publications`)} />
       <div class="reveal"><PubList pubs={pubs} lang={lang} /></div>
-      <p class="section-foot"><a class="more" href={`${routes.research[lang]}#publicaciones`}>{t.pubs.more}</a></p>
     </div>
   </section>
 
-  <section class="band band-alt">
+  <section class="band band-alt" id="infrastructure" data-section="infrastructure">
     <div class="wrap">
-      <SectionHead
-        eyebrow={t.infra.eyebrow}
-        title={t.infra.title}
-        text={lang === 'es'
-          ? 'Un clúster de cómputo de alto rendimiento (FONDEQUIP), la plataforma piloto de clima espacial FONDEF junto a la Universidad Adventista de Chile, evaluación de magnetómetros, y datos satelitales y de redes de magnetómetros en tierra.'
-          : 'A high-performance computing cluster (FONDEQUIP), the FONDEF pilot space weather platform with Universidad Adventista de Chile, magnetometer evaluation, and satellite and ground magnetometer network data.'}
-      />
-      <p><a class="more" href={routes.infrastructure[lang]}>{t.infra.more}</a></p>
+      <SectionHead eyebrow={t.infra.eyebrow} title={t.infra.title} more={full(routes.infrastructure[lang])} />
+      <div class="grid grid-3 reveal">
+        {infra.map((i) => (
+          <article class="card"><div class="card-body">
+            <h3>{pick(i, 'title', lang)}</h3>
+            <p>{pick(i, 'text', lang)}</p>
+          </div></article>
+        ))}
+      </div>
     </div>
   </section>
 
-  <section class="band">
+  <section class="band" id="contact" data-section="contact">
     <div class="wrap">
-      <div class="callout reveal">
-        <p class="eyebrow">{t.contact.eyebrow}</p>
-        <h2 class="display">{t.contact.title}</h2>
-        <p>{pick(site.openCall, 'text', lang)} <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a></p>
+      <SectionHead eyebrow={t.nav.contact} title={t.contact.title} />
+      <div class="contact-grid">
+        <div>
+          <p>{pick(site.openCall, 'text', lang)}</p>
+          <p>{t.footer.body}</p>
+        </div>
+        <div class="contact-card">
+          <p class="name">{site.contact.name}</p>
+          <p class="role">{pick(site.contact, 'role', lang)}</p>
+          <p class="muted small">{pick(site.contact, 'address', lang)}</p>
+          <a class="email" href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
+          <div class="social">
+            {site.social.map((s) => <a href={s.url} target="_blank" rel="noopener">{s.label}</a>)}
+          </div>
+        </div>
       </div>
     </div>
   </section>

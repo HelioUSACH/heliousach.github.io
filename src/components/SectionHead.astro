@@ -1,9 +1,14 @@
 ---
-interface Props { eyebrow?: string; title: string; text?: string; level?: 'h2' | 'h1' }
-const { eyebrow, title, text } = Astro.props;
+// Heading of a section. `more` puts the "See full page" link in the heading
+// row, in the same place on every home-page section.
+interface Props { eyebrow?: string; title: string; text?: string; more?: { href: string; label: string } }
+const { eyebrow, title, text, more } = Astro.props;
 ---
 <div class="section-head">
-  {eyebrow && <p class="eyebrow">{eyebrow}</p>}
-  <h2 class="display">{title}</h2>
-  {text && <p>{text}</p>}
+  <div>
+    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+    <h2 class="display">{title}</h2>
+    {text && <p>{text}</p>}
+  </div>
+  {more && <a class="more" href={more.href}>{more.label}</a>}
 </div>

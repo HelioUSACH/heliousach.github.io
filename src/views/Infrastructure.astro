@@ -2,21 +2,15 @@
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import SectionHead from '../components/SectionHead.astro';
-import { ui, type Lang } from '../lib/i18n';
+import Pager from '../components/Pager.astro';
+import { ui, routes, pick, type Lang } from '../lib/i18n';
+import { getInfrastructure } from '../lib/content';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = ui[lang];
 const es = lang === 'es';
-const items = es ? [
-  { title: 'Clúster de cómputo de alto rendimiento (HPC)', text: 'Plataforma de cómputo del Departamento de Física financiada por FONDEQUIP (2023) y dirigida por el Dr. Victor Pinto. Se usa para entrenar modelos de machine learning, procesar grandes volúmenes de datos satelitales y ejecutar simulaciones numéricas.', link: { href: 'https://fisica.usach.cl/es/plataforma-de-investigacion-hpc', label: 'Plataforma HPC, Departamento de Física' } },
-  { title: 'Plataforma piloto de clima espacial (FONDEF IDEA)', text: 'Proyecto liderado por la Universidad Adventista de Chile, con la USACH como institución asociada (2025-2027). Desarrolla un sistema piloto de monitoreo en tiempo real y alertas tempranas de clima espacial para Chile, con modelos de pronóstico basados en deep learning.' },
-  { title: 'Magnetometría', text: 'Evaluación del desempeño de magnetómetros para monitoreo geomagnético, en colaboración con la Universidad Adventista de Chile (Caro et al., 2026, Sensors), y análisis de datos de redes de magnetómetros en tierra para estudiar perturbaciones geomagnéticas y corrientes inducidas (GIC).', link: { href: 'https://doi.org/10.3390/s26154700', label: 'Caro et al. (2026)' } },
-] : [
-  { title: 'High-performance computing (HPC) cluster', text: 'Computing platform at the Department of Physics, funded by FONDEQUIP (2023) and directed by Dr. Victor Pinto. Used to train machine learning models, process large satellite datasets, and run numerical simulations.', link: { href: 'https://fisica.usach.cl/es/plataforma-de-investigacion-hpc', label: 'HPC platform, Department of Physics' } },
-  { title: 'Pilot space weather platform (FONDEF IDEA)', text: 'Project led by Universidad Adventista de Chile, with USACH as partner institution (2025-2027). It develops a pilot system for real-time space weather monitoring and early warnings in Chile, with deep-learning forecasting models.' },
-  { title: 'Magnetometry', text: 'Performance evaluation of magnetometers for geomagnetic monitoring, in collaboration with Universidad Adventista de Chile (Caro et al., 2026, Sensors), and analysis of ground magnetometer network data to study geomagnetic disturbances and geomagnetically induced currents (GIC).', link: { href: 'https://doi.org/10.3390/s26154700', label: 'Caro et al. (2026)' } },
-];
+const items = await getInfrastructure();
 const data = es ? [
   { title: 'Satélites', text: 'Van Allen Probes (MagEIS, REPT, EMFISIS, EFW) · THEMIS (SPEDAS) · GOES · OMNI · Parker Solar Probe' },
   { title: 'Redes en tierra', text: 'Magnetómetros SAMBA · MACCS · THEMIS GBO · CARISMA · radares SuperDARN' },
@@ -29,15 +23,15 @@ const data = es ? [
 const lead = es ? 'Cómputo, instrumentación y datos que sostienen nuestra investigación en heliofísica y clima espacial.' : 'The computing, instrumentation, and data behind our heliophysics and space weather research.';
 ---
 <Layout lang={lang} title={t.nav.infrastructure} route="infrastructure" description={lead}>
-  <PageHeader eyebrow={t.infra.eyebrow} title={t.infra.title} lead={lead} />
+  <PageHeader eyebrow={t.infra.eyebrow} title={t.infra.title} lead={lead} back={{ href: `${routes.home[lang]}#infrastructure`, label: t.backHome }} />
   <section class="band">
     <div class="wrap">
       <div class="grid grid-3">
         {items.map((i) => (
           <article class="card"><div class="card-body">
-            <h3>{i.title}</h3>
-            <p>{i.text}</p>
-            {i.link && <p class="meta"><a href={i.link.href} target="_blank" rel="noopener">{i.link.label}</a></p>}
+            <h3>{pick(i, 'title', lang)}</h3>
+            <p>{pick(i, 'text', lang)}</p>
+            {i.link && <p class="meta"><a href={i.link} target="_blank" rel="noopener">{pick(i, 'linkLabel', lang) ?? i.link}</a></p>}
           </div></article>
         ))}
       </div>
@@ -51,4 +45,5 @@ const lead = es ? 'Cómputo, instrumentación y datos que sostienen nuestra inve
       </div>
     </div>
   </section>
+  <Pager lang={lang} current="infrastructure" section="infrastructure" />
 </Layout>

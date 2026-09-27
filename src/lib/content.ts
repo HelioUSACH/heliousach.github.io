@@ -37,3 +37,7 @@ export async function getNews(lang: Lang) {
   }
   return items.sort((a, b) => b.entry.data.date.valueOf() - a.entry.data.date.valueOf());
 }
+
+export async function getInfrastructure() {
+  return (await getCollection('infrastructure')).map((i) => i.data).sort((a, b) => a.order - b.order);
+}

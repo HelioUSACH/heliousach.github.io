@@ -1,5 +1,6 @@
 ---
-// Top band of every subpage: eyebrow, big display title, optional lead text.
+// Top band of a detail page ("full page" of a home section). The crumb links
+// back to the section it expands, so the page reads as an extension of home.
 interface Props { eyebrow?: string; title: string; lead?: string; back?: { href: string; label: string } }
 const { eyebrow, title, lead, back } = Astro.props;
 ---

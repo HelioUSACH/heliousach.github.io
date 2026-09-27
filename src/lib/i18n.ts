@@ -10,6 +10,25 @@ export const routes = {
 } as const;
 export type RouteKey = keyof typeof routes;
 
+/**
+ * The site is a one-page scroller: every nav item is a section of the home
+ * page (anchor id below). Sections with a detail page end in "See full page".
+ * Order here = order on the home page = order of the detail-page pager.
+ */
+export const sections = [
+  { id: 'research', nav: 'research', detail: 'research' },
+  { id: 'projects', nav: 'research', detail: 'research', hash: 'projects' },
+  { id: 'news', nav: 'news', detail: 'news' },
+  { id: 'team', nav: 'team', detail: 'team' },
+  { id: 'publications', nav: 'research', detail: 'research', hash: 'publications' },
+  { id: 'infrastructure', nav: 'infrastructure', detail: 'infrastructure' },
+  { id: 'contact', nav: 'contact' },
+] as const;
+export type NavKey = 'research' | 'team' | 'news' | 'infrastructure' | 'contact';
+export const navOrder: NavKey[] = ['research', 'news', 'team', 'infrastructure', 'contact'];
+/** Detail pages in reading order (for the "next" link at the bottom of each). */
+export const detailOrder: RouteKey[] = ['research', 'news', 'team', 'infrastructure'];
+
 export const ui = {
   es: {
     nav: { home: 'Inicio', research: 'Investigación', team: 'Equipo', news: 'Noticias', infrastructure: 'Infraestructura', contact: 'Contacto' },
@@ -19,6 +38,10 @@ export const ui = {
     otherLang: 'EN',
     otherLangName: 'English',
     credit: 'Crédito',
+    fullPage: 'Ver página completa',
+    backHome: 'Inicio',
+    next: 'Siguiente',
+    backToTop: 'Volver al inicio',
     seeAll: 'Ver todo',
     research: { eyebrow: 'Investigación', title: 'Líneas de investigación', more: 'Ver líneas de investigación y proyectos' },
     projects: { eyebrow: 'Proyectos', title: 'Proyectos activos', more: 'Ver todos los proyectos', data: 'Datos' },
@@ -51,6 +74,10 @@ export const ui = {
     otherLang: 'ES',
     otherLangName: 'Español',
     credit: 'Credit',
+    fullPage: 'See full page',
+    backHome: 'Home',
+    next: 'Next',
+    backToTop: 'Back to home',
     seeAll: 'See all',
     research: { eyebrow: 'Research', title: 'Research lines', more: 'See research lines and projects' },
     projects: { eyebrow: 'Projects', title: 'Active projects', more: 'See all projects', data: 'Data' },

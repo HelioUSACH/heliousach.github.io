@@ -1,0 +1,21 @@
+---
+// Bottom of every detail page: back to the home section, and on to the next
+// detail page in home-page order.
+import { ui, routes, detailOrder, type Lang, type RouteKey } from '../lib/i18n';
+interface Props { lang: Lang; current: RouteKey; section: string }
+const { lang, current, section } = Astro.props;
+const t = ui[lang];
+const i = detailOrder.indexOf(current);
+const next = i >= 0 && i < detailOrder.length - 1 ? detailOrder[i + 1] : undefined;
+---
+<nav class="pager" aria-label={lang === 'es' ? 'Continuar' : 'Continue'}>
+  <div class="wrap">
+    <a href={`${routes.home[lang]}#${section}`} class="pager-back">{t.backToTop}</a>
+    {next && (
+      <a href={routes[next][lang]} class="pager-next">
+        <span>{t.next}</span>
+        <strong>{t.nav[next]}</strong>
+      </a>
+    )}
+  </div>
+</nav>

@@ -2,7 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import NewsCard from '../components/NewsCard.astro';
-import { ui, type Lang } from '../lib/i18n';
+import Pager from '../components/Pager.astro';
+import { ui, routes, type Lang } from '../lib/i18n';
 import { getNews } from '../lib/content';
 
 interface Props { lang: Lang }
@@ -12,7 +13,7 @@ const news = await getNews(lang);
 const lead = lang === 'es' ? 'Publicaciones, eventos, tesis y apariciones en medios del grupo.' : 'Papers, events, theses, and media appearances from the group.';
 ---
 <Layout lang={lang} title={t.news.title} route="news" description={lead}>
-  <PageHeader eyebrow={t.news.eyebrow} title={t.news.title} lead={lead} />
+  <PageHeader eyebrow={t.news.eyebrow} title={t.news.title} lead={lead} back={{ href: `${routes.home[lang]}#news`, label: t.backHome }} />
   <section class="band">
     <div class="wrap">
       {news.length === 0
@@ -20,4 +21,5 @@ const lead = lang === 'es' ? 'Publicaciones, eventos, tesis y apariciones en med
         : <div class="grid grid-3">{news.map((n) => <NewsCard item={n} lang={lang} />)}</div>}
     </div>
   </section>
+  <Pager lang={lang} current="news" section="news" />
 </Layout>
