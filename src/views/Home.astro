@@ -73,9 +73,9 @@ const infra = await getInfrastructure();
     </div>
   </section>
 
-  <section class="band" id="publications" data-section="research">
+  <section class="band" id="publications" data-section="publications">
     <div class="wrap">
-      <SectionHead eyebrow={t.pubs.eyebrow} title={t.pubs.title} more={full(`${routes.research[lang]}#publications`)} />
+      <SectionHead eyebrow={t.pubs.eyebrow} title={t.pubs.title} more={full(routes.publications[lang])} />
       <div class="reveal"><PubList pubs={pubs} lang={lang} /></div>
     </div>
   </section>

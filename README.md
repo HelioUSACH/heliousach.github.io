@@ -22,7 +22,7 @@ src/
     site.ts                      # loads + validates site.yaml
     content.ts                   # sorted getters (getTeam, getNews, ...)
   components/                    # PageHeader, SectionHead, ResearchCard, ProjectCard, Person, PubList, NewsCard
-  views/                         # one template per page, takes `lang` (Home, Research, Team, NewsList, NewsArticle, Infrastructure)
+  views/                         # one template per page, takes `lang` (Home, Research, NewsList, NewsArticle, Team, Publications, Infrastructure)
   pages/                         # thin route files: each renders a view with lang="es" or "en"
   layouts/Layout.astro           # <head>, header/nav, footer
   styles/global.css              # the whole design system (tokens + components)
@@ -34,6 +34,9 @@ public/images/
 ```
 
 Bilingual fields use a suffix: `title` (Spanish) and `title_en` (English, optional, falls back to Spanish).
+
+## Page model
+One-page scroller. The home page shows every section in order (Research + Projects, News, Team, Publications, Infrastructure, Contact); on the home page the nav scrolls smoothly to each section and highlights the one in view. Each section's "Ver página completa" link opens its full page. On full pages the nav links go to the other full pages, "Contacto" scrolls to the footer, the brand returns home, and a pager at the bottom goes back to the home section or on to the next page. Order is defined once in `src/lib/i18n.ts` (`sections`, `navOrder`, `detailOrder`).
 
 ## Design system (`src/styles/global.css`)
 - Fonts: Bebas Neue (`.display` headings), Poppins (UI, card titles), Roboto (body).

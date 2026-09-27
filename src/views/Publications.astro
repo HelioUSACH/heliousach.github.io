@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import PubList from '../components/PubList.astro';
+import Pager from '../components/Pager.astro';
+import { ui, routes, type Lang } from '../lib/i18n';
+import { getPublications } from '../lib/content';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+const pubs = await getPublications();
+const lead = lang === 'es'
+  ? 'Artículos del grupo desde 2022. En negrita, integrantes del grupo.'
+  : 'Group papers since 2022. Group members in bold.';
+---
+<Layout lang={lang} title={t.nav.publications} route="publications" description={lead}>
+  <PageHeader eyebrow={t.pubs.eyebrow} title={t.pubs.titleAll} lead={lead} back={{ href: `${routes.home[lang]}#publications`, label: t.backHome }} />
+  <section class="band">
+    <div class="wrap">
+      <PubList pubs={pubs} lang={lang} />
+      <p class="section-foot meta">{t.pubs.profiles}: <a href="https://scholar.google.com/citations?user=nEqGWqoAAAAJ" target="_blank" rel="noopener">Google Scholar</a> · <a href="https://orcid.org/0000-0003-1210-167X" target="_blank" rel="noopener">ORCID</a></p>
+    </div>
+  </section>
+  <Pager lang={lang} current="publications" section="publications" />
+</Layout>
