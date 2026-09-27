@@ -128,4 +128,20 @@ const projects = defineCollection({
   }),
 });
 
-export const collections = { news, team, publications, researchLines, projects };
+// ---------- Infrastructure: src/data/infrastructure.yaml ----------
+const infrastructure = defineCollection({
+  loader: file('src/data/infrastructure.yaml'),
+  schema: z.object({
+    id: z.string(),
+    order: z.number().default(0),
+    title: z.string(),
+    title_en: z.string().optional(),
+    text: z.string(),
+    text_en: z.string().optional(),
+    link: z.string().url().optional(),
+    linkLabel: z.string().optional(),
+    linkLabel_en: z.string().optional(),
+  }),
+});
+
+export const collections = { news, team, publications, researchLines, projects, infrastructure };

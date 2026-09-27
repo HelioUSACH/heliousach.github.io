@@ -5,7 +5,8 @@ import SectionHead from '../components/SectionHead.astro';
 import ResearchCard from '../components/ResearchCard.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import PubList from '../components/PubList.astro';
-import { ui, type Lang } from '../lib/i18n';
+import Pager from '../components/Pager.astro';
+import { ui, routes, type Lang } from '../lib/i18n';
 import { getPublications, getResearchLines, getProjects } from '../lib/content';
 
 interface Props { lang: Lang }
@@ -19,7 +20,7 @@ const lead = lang === 'es'
   : 'Radiation belt physics, ULF waves, magnetospheric turbulence, solar wind-magnetosphere coupling, and machine-learning space weather prediction.';
 ---
 <Layout lang={lang} title={t.nav.research} route="research" description={lead}>
-  <PageHeader eyebrow={t.research.eyebrow} title={t.nav.research} lead={lead} />
+  <PageHeader eyebrow={t.research.eyebrow} title={t.nav.research} lead={lead} back={{ href: `${routes.home[lang]}#research`, label: t.backHome }} />
 
   <section class="band">
     <div class="wrap">
@@ -30,7 +31,7 @@ const lead = lang === 'es'
     </div>
   </section>
 
-  <section class="band band-alt" id="proyectos">
+  <section class="band band-alt" id="projects">
     <div class="wrap">
       <SectionHead eyebrow={t.projects.eyebrow} title={t.projects.title} />
       <div class="grid grid-3">
@@ -39,7 +40,7 @@ const lead = lang === 'es'
     </div>
   </section>
 
-  <section class="band" id="publicaciones">
+  <section class="band" id="publications">
     <div class="wrap">
       <SectionHead
         eyebrow={t.pubs.eyebrow}
@@ -50,4 +51,5 @@ const lead = lang === 'es'
       <p class="section-foot meta">{t.pubs.profiles}: <a href="https://scholar.google.com/citations?user=nEqGWqoAAAAJ" target="_blank" rel="noopener">Google Scholar</a> · <a href="https://orcid.org/0000-0003-1210-167X" target="_blank" rel="noopener">ORCID</a></p>
     </div>
   </section>
+  <Pager lang={lang} current="research" section="research" />
 </Layout>

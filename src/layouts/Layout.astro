@@ -1,14 +1,14 @@
 ---
 // Page shell: <head>, header with navigation, footer. Every page uses it.
 import '../styles/global.css';
-import { ui, routes, pick, type Lang, type RouteKey } from '../lib/i18n';
+import { ui, routes, pick, navOrder, sections, type Lang, type RouteKey, type NavKey } from '../lib/i18n';
 import { site } from '../lib/site';
 
 interface Props {
   lang: Lang;
   title: string;
   description?: string;
-  /** Which nav item is active; also used for the ES/EN switch. */
+  /** Page identity: 'home' or a detail page. Drives the ES/EN switch and the active nav item. */
   route?: RouteKey;
   /** Explicit ES/EN counterpart paths (for pages outside `routes`, e.g. a news item). */
   alternates?: { es: string; en: string };
@@ -24,7 +24,11 @@ const here = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.ur
 const pageTitle = route === 'home' ? `${site.name} — ${pick(site, 'tagline', lang)}` : `${title} | ${site.name}`;
 const desc = description ?? pick(site, 'description', lang);
 const ogImage = `${base}${image ?? site.hero.image}`;
-const navItems: RouteKey[] = ['home', 'research', 'team', 'news', 'infrastructure'];
+const isHome = route === 'home';
+// One-page scroller: nav items are home-page sections. On detail pages they
+// point back to the home section; the section the page expands is marked active.
+const navHref = (k: NavKey) => `${isHome ? '' : routes.home[lang]}#${sections.find((s) => s.nav === k)!.id}`;
+const activeNav: NavKey | undefined = route && route !== 'home' ? (route as NavKey) : undefined;
 
 const orgSchema = {
   '@context': 'https://schema.org',
@@ -85,10 +89,9 @@ const orgSchema = {
         </a>
         <nav class="nav" aria-label={t.navLabel}>
           <ul class="nav-links" id="nav-links">
-            {navItems.map((k) => (
-              <li><a href={routes[k][lang]} aria-current={route === k ? 'page' : undefined}>{t.nav[k]}</a></li>
+            {navOrder.map((k) => (
+              <li><a href={navHref(k)} data-nav={k} aria-current={activeNav === k ? 'true' : undefined}>{t.nav[k]}</a></li>
             ))}
-            <li><a href="#contacto">{t.nav.contact}</a></li>
           </ul>
           <div class="nav-tools">
             <a class="lang-switch" href={alt[otherLang]} hreflang={otherLang} lang={otherLang} title={t.otherLangName}>{t.otherLang}</a>
@@ -106,24 +109,8 @@ const orgSchema = {
 
     <main><slot /></main>
 
-    <footer class="site-footer" id="contacto">
+    <footer class="site-footer">
       <div class="wrap">
-        <div class="footer-grid">
-          <div>
-            <p class="eyebrow">{t.nav.contact}</p>
-            <h2 class="display">{t.footer.headline}</h2>
-            <p>{t.footer.body}</p>
-          </div>
-          <div class="contact-card">
-            <p class="name">{site.contact.name}</p>
-            <p class="role">{pick(site.contact, 'role', lang)}</p>
-            <p class="muted small">{pick(site.contact, 'address', lang)}</p>
-            <a class="email" href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
-            <div class="social">
-              {site.social.map((s) => <a href={s.url} target="_blank" rel="noopener">{s.label}</a>)}
-            </div>
-          </div>
-        </div>
         <div class="footer-meta">
           <div>
             <h3>{t.footer.affiliations}</h3>
@@ -135,8 +122,15 @@ const orgSchema = {
             <h3>{t.footer.funding}</h3>
             <ul>{site.funders.map((f) => <li>{f}</li>)}</ul>
           </div>
+          <div>
+            <h3>{t.nav.contact}</h3>
+            <ul>
+              <li><a href={`mailto:${site.contact.email}`}>{site.contact.email}</a></li>
+              {site.social.map((s) => <li><a href={s.url} target="_blank" rel="noopener">{s.label}</a></li>)}
+            </ul>
+          </div>
         </div>
-        <p class="fine">© {new Date().getFullYear()} {site.name}</p>
+        <p class="fine">© {new Date().getFullYear()} {site.name} · {pick(site.contact, 'address', lang)}</p>
       </div>
     </footer>
 
@@ -160,6 +154,25 @@ const orgSchema = {
             var open = header.getAttribute('data-open') === 'true';
             header.setAttribute('data-open', open ? 'false' : 'true');
             menu.setAttribute('aria-expanded', open ? 'false' : 'true');
+          });
+        }
+        // Home page: highlight the nav item of the section in view.
+        var spy = document.querySelectorAll('[data-section]');
+        if (spy.length && 'IntersectionObserver' in window) {
+          var links = document.querySelectorAll('.nav-links a[data-nav]');
+          var so = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+              if (!e.isIntersecting) return;
+              var key = e.target.getAttribute('data-section');
+              links.forEach(function (a) {
+                if (a.getAttribute('data-nav') === key) a.setAttribute('aria-current', 'true');
+                else a.removeAttribute('aria-current');
+              });
+            });
+          }, { rootMargin: '-45% 0px -50% 0px' });
+          spy.forEach(function (el) { so.observe(el); });
+          if (header) header.querySelectorAll('.nav-links a').forEach(function (a) {
+            a.addEventListener('click', function () { header.setAttribute('data-open', 'false'); if (menu) menu.setAttribute('aria-expanded', 'false'); });
           });
         }
         var els = document.querySelectorAll('.reveal');

@@ -2,8 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import Person from '../components/Person.astro';
-import { ui, pick, type Lang } from '../lib/i18n';
-import { site } from '../lib/site';
+import Pager from '../components/Pager.astro';
+import { ui, routes, type Lang } from '../lib/i18n';
 import { getTeam } from '../lib/content';
 
 interface Props { lang: Lang }
@@ -16,7 +16,7 @@ const lead = lang === 'es'
   : 'The group is co-led by Dr. Victor A. Pinto and Prof. Marina Stepanova, Department of Physics, Universidad de Santiago de Chile.';
 ---
 <Layout lang={lang} title={t.nav.team} route="team" description={lead}>
-  <PageHeader eyebrow={t.team.eyebrow} title={t.team.title} lead={lead} />
+  <PageHeader eyebrow={t.team.eyebrow} title={t.team.title} lead={lead} back={{ href: `${routes.home[lang]}#team`, label: t.backHome }} />
 
   <section class="band">
     <div class="wrap">
@@ -50,13 +50,5 @@ const lead = lang === 'es'
     </div>
   </section>
 
-  <section class="band">
-    <div class="wrap">
-      <div class="callout">
-        <p class="eyebrow">{t.contact.eyebrow}</p>
-        <h2 class="display">{t.contact.title}</h2>
-        <p>{pick(site.openCall, 'text', lang)} <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a></p>
-      </div>
-    </div>
-  </section>
+  <Pager lang={lang} current="team" section="team" />
 </Layout>
