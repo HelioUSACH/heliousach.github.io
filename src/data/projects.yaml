@@ -86,6 +86,10 @@
   - Monitoreo en tiempo real
   - Predicción DL
   - Riesgo GIC
+  link: https://helio.fisica.usach.cl/clima-espacial/
+  link_en: https://helio.fisica.usach.cl/clima-espacial/en/
+  linkLabel: Ver el portal Clima Espacial USACH
+  linkLabel_en: Visit the USACH Space Weather portal
   tags_en:
   - Real-time monitoring
   - DL forecasting

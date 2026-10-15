@@ -18,6 +18,7 @@ const schema = z.object({
     address_en: z.string().optional(),
   }),
   social: z.array(z.object({ label: z.string(), url: z.string().url() })),
+  portal: z.object({ url: z.string().url(), url_en: z.string().url().optional() }),
   affiliations: z.array(z.object({ name: z.string(), name_en: z.string().optional(), url: z.string().url() })),
   funders: z.array(z.string()),
   hero: z.object({

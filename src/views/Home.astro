@@ -31,6 +31,13 @@ const infra = await getInfrastructure();
       <p class="eyebrow">Universidad de Santiago de Chile — {lang === 'es' ? 'Departamento de Física' : 'Department of Physics'}</p>
       <h1 class="display">{pick(site, 'tagline', lang)}</h1>
       <p>{pick(site.hero, 'text', lang)}</p>
+      <p class="hero-cta">
+        <a class="portal-cta" href={pick(site.portal, 'url', lang)}>
+          <span class="live-dot" aria-hidden="true"></span>
+          <span>{t.portal.hero}</span>
+          <svg class="portal-cta-arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+        </a>
+      </p>
       <p class="credit">{t.credit}: {site.hero.credit}</p>
     </div>
   </section>
@@ -88,6 +95,7 @@ const infra = await getInfrastructure();
           <article class="card"><div class="card-body">
             <h3>{pick(i, 'title', lang)}</h3>
             <p>{pick(i, 'text', lang)}</p>
+            {i.link && <p class="meta"><a href={pick(i, 'link', lang)} target="_blank" rel="noopener">{pick(i, 'linkLabel', lang) ?? i.link}</a></p>}
           </div></article>
         ))}
       </div>

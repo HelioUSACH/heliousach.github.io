@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://heliousach.github.io/sitemap-index.xml
+Sitemap: https://helio.fisica.usach.cl/sitemap-index.xml

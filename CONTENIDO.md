@@ -4,7 +4,7 @@ Esta guía es para quien actualiza el contenido del sitio (noticias, equipo, pub
 
 Hay dos formas de editar:
 
-1. **Con formularios (recomendado): Pages CMS.** Entra a <https://app.pagescms.org>, inicia sesión con GitHub y abre el repositorio `heliousach/heliousach.github.io`. Verás secciones *Noticias* y *Equipo* con formularios y subida de imágenes. Al guardar, el sitio se publica solo en unos minutos.
+1. **Con formularios (recomendado): Pages CMS.** Entra a <https://app.pagescms.org>, inicia sesión con GitHub y abre el repositorio `heliousach/heliousach.github.io`. Verás secciones *Noticias* y *Equipo* con formularios y subida de imágenes. Al guardar, el cambio aparece en unos minutos en la copia de GitHub (<https://heliousach.github.io>); en el sitio oficial (<https://helio.fisica.usach.cl>) aparece cuando Victor publica una nueva versión.
 2. **Directamente en GitHub.** En <https://github.com/heliousach/heliousach.github.io>, navega a la carpeta, usa *Add file → Create new file* (o el lápiz para editar) y confirma con *Commit changes*.
 
 Si algo está mal escrito (falta un campo, una fecha inválida, una imagen que no existe), **el sitio no se publica** y GitHub muestra el error en la pestaña *Actions*. La versión anterior sigue en línea, así que no se rompe nada.
