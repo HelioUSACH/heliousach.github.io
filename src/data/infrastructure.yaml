@@ -16,6 +16,10 @@
   title_en: Pilot space weather platform (FONDEF IDEA)
   text: Proyecto liderado por la Universidad Adventista de Chile, con la USACH como institución asociada (2025-2027). Desarrolla un sistema piloto de monitoreo en tiempo real y alertas tempranas de clima espacial para Chile, con modelos de pronóstico basados en deep learning.
   text_en: Project led by Universidad Adventista de Chile, with USACH as partner institution (2025-2027). It develops a pilot system for real-time space weather monitoring and early warnings in Chile, with deep-learning forecasting models.
+  link: https://helio.fisica.usach.cl/clima-espacial/
+  link_en: https://helio.fisica.usach.cl/clima-espacial/en/
+  linkLabel: Portal Clima Espacial USACH (datos en tiempo real)
+  linkLabel_en: USACH Space Weather portal (real-time data)
 
 - id: magnetometry
   order: 3

@@ -31,7 +31,7 @@ const lead = es ? 'Cómputo, instrumentación y datos que sostienen nuestra inve
           <article class="card"><div class="card-body">
             <h3>{pick(i, 'title', lang)}</h3>
             <p>{pick(i, 'text', lang)}</p>
-            {i.link && <p class="meta"><a href={i.link} target="_blank" rel="noopener">{pick(i, 'linkLabel', lang) ?? i.link}</a></p>}
+            {i.link && <p class="meta"><a href={pick(i, 'link', lang)} target="_blank" rel="noopener">{pick(i, 'linkLabel', lang) ?? i.link}</a></p>}
           </div></article>
         ))}
       </div>

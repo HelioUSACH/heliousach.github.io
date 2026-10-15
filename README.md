@@ -1,6 +1,6 @@
 # Heliofísica USACH — group website
 
-Source for <https://heliousach.github.io>, built with [Astro](https://astro.build). Bilingual (Spanish default, English under `/en/`), static output, deployed by GitHub Actions.
+Source for <https://helio.fisica.usach.cl/> (mirror: <https://heliousach.github.io>), built with [Astro](https://astro.build). Bilingual (Spanish default, English under `/en/`), static output, built by GitHub Actions.
 
 **Editing content (news, people, publications)?** Read [`CONTENIDO.md`](CONTENIDO.md). No code needed.
 
@@ -54,7 +54,16 @@ npm run preview
 ```
 
 ## Deploy
-Push to `main` → `.github/workflows/deploy.yml` builds and publishes to GitHub Pages. Pull requests only build (a check that content and code are valid). Repo Settings → Pages → Source must be "GitHub Actions".
+The canonical site is <https://helio.fisica.usach.cl/>: static files in `/var/www/helio` on the helio VM, in the same nginx vhost that serves the Clima Espacial portal under `/clima-espacial/`. GitHub Pages (<https://heliousach.github.io>) is a mirror whose canonical URLs point to helio.
+
+- Push/merge to `main` → `.github/workflows/deploy.yml` builds and updates the GitHub Pages mirror. Pull requests only build (content and code check).
+- Push a tag `vYYYY.MM.DD` → the same workflow attaches the built site (`site-<tag>.tar.gz` + `.sha256`) to a GitHub release.
+- On helio: `sudo publish-helio-site <tag>` (installed from `deploy/publish-site.sh`) downloads that release, backs up `/var/www/helio` to `/var/backups/helio-site/` and installs it. `--restore` rolls back; `--from <dir>` installs a `dist/` copied by hand.
+
+The server never builds (no Node there). Step-by-step instructions live with the other site docs in `Web/docs/`.
+
+## Clima Espacial portal
+The portal (repo `HelioUSACH/clima-espacial`, Django) is linked from the header (`portal-cta` pill), the home hero, the FONDEF project card and the infrastructure card. Its URLs are in `src/data/site.yaml` (`portal`), `projects.yaml` and `infrastructure.yaml`. Both sites share the theme key `localStorage['theme']` = `day|night`, so the visitor's choice carries across; don't rename it.
 
 ## History
 Design/code audits and plans live outside the repo, in the `Web/docs/` folder.

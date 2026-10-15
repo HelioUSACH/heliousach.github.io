@@ -12,6 +12,8 @@
   --accent-2: #9384ff;
   --accent-3: #a5ffc5;
   --accent-soft: #2c4a5a;
+  --on-accent: #06121a;   /* text on an accent-filled button */
+  --live: #0a7d3c;        /* 'live' dot on the Clima Espacial button */
   --surface: #0b0f14;
   --surface-raised: #131a22;
   --surface-band: #0f1a2a;
@@ -53,6 +55,8 @@
   --accent-2: #40375b;
   --accent-3: #5f8f68;
   --accent-soft: #c9dcdb;
+  --on-accent: #ffffff;
+  --live: #a5ffc5;
   --surface: #ffffff;
   --surface-raised: #ffffff;
   --surface-band: #edf1f4;
@@ -184,6 +188,32 @@ strong { font-weight: 600; }
 :root:not([data-theme='day']) .theme-toggle .icon-day { display: none; }
 :root:not([data-theme='day']) .theme-toggle .icon-night { display: inline; }
 .menu-toggle { display: none; }
+
+/* Clima Espacial portal: a call-to-action pill, deliberately unlike the text
+   links (filled accent, live dot, external arrow). In the header it is the last
+   item of .nav-links (first, full-width item of the open menu on mobile); the
+   home hero repeats it so it is visible on phones without opening the menu. */
+a.portal-cta {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.45rem 0.95rem 0.45rem 0.85rem;
+  border: 0; border-radius: 999px;
+  background: var(--accent); color: var(--on-accent);
+  font-family: var(--font-ui); font-weight: 600; font-size: 0.85rem; line-height: 1.2; white-space: nowrap;
+  box-shadow: 0 6px 18px -10px var(--accent);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+:root a.portal-cta:hover { background: var(--accent-2); color: var(--on-accent); transform: translateY(-1px); }
+:root a.portal-cta:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 999px; }
+.portal-cta-arrow { flex: none; }
+.hero-cta { margin-top: 1.6rem; }
+.hero a.portal-cta { font-size: 0.95rem; padding: 0.7rem 1.25rem 0.7rem 1.1rem; }
+:root .hero a.portal-cta:focus-visible { outline-color: #faf9f4; }
+.live-dot { position: relative; flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--live); }
+.live-dot::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: var(--live); animation: live-pulse 2s ease-out infinite; }
+@keyframes live-pulse {
+  0% { transform: scale(1); opacity: 0.75; }
+  80%, 100% { transform: scale(2.6); opacity: 0; }
+}
 
 /* ---------- hero (home) ---------- */
 .hero {
@@ -353,14 +383,18 @@ a.card:hover, .card:has(.card-link:hover) { border-color: var(--accent); transfo
 @media (prefers-reduced-motion: reduce) {
   .js .reveal { opacity: 1; transform: none; transition: none; }
   .card, a.card { transition: none; }
+  .live-dot::after { animation: none; }
+  a.portal-cta { transition: none; }
 }
 
 /* ---------- responsive ---------- */
+@media (max-width: 1240px) {
+  .nav, .nav-links { gap: 1rem; }
+}
 @media (max-width: 1040px) {
   .grid-4 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .nav-links { gap: 1rem; }
 }
-@media (max-width: 1000px) {
+@media (max-width: 1140px) {
   .menu-toggle { display: inline-flex; }
   .nav-links {
     display: none;
@@ -372,6 +406,8 @@ a.card:hover, .card:has(.card-link:hover) { border-color: var(--accent); transfo
   .nav-links a { display: block; padding: 0.75rem 0; border-bottom: 1px solid var(--line); }
   .nav-links a[aria-current] { border-bottom-color: var(--line); color: var(--accent); }
   .site-header[data-open='true'] .nav-links { display: flex; }
+  .nav-cta-item { order: -1; padding: 0.5rem 0 0.6rem; }
+  .nav-links a.portal-cta { display: flex; justify-content: center; padding: 0.8rem 1rem; font-size: 0.95rem; border-bottom: 0; }
 }
 @media (max-width: 900px) {
   :root { --gutter: 1.25rem; }

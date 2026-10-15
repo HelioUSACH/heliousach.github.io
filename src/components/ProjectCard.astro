@@ -4,6 +4,8 @@ import { pick, inlineMd, type Lang } from '../lib/i18n';
 interface Props { project: Record<string, any>; lang: Lang; variant?: 'feature' | 'compact' }
 const { project: p, lang, variant = 'compact' } = Astro.props;
 const tags: string[] = pick(p, 'tags', lang) ?? [];
+const link: string | undefined = pick(p, 'link', lang);
+const linkLabel: string = pick(p, 'linkLabel', lang) ?? link ?? '';
 ---
 {variant === 'feature' && p.image ? (
   <article class="card project-feature">
@@ -14,6 +16,7 @@ const tags: string[] = pick(p, 'tags', lang) ?? [];
       <p>{pick(p, 'summary', lang)}</p>
       {tags.length > 0 && <ul class="tags">{tags.map((t) => <li class="tag">{t}</li>)}</ul>}
       <p class="meta" set:html={`${inlineMd(pick(p, 'people', lang))} · ${p.years}`} />
+      {link && <p><a class="more" href={link}>{linkLabel}</a></p>}
     </div>
   </article>
 ) : (
@@ -23,6 +26,7 @@ const tags: string[] = pick(p, 'tags', lang) ?? [];
       <h3>{pick(p, 'title', lang)}</h3>
       <p set:html={inlineMd(pick(p, 'people', lang))} />
       <p class="meta">{p.years}</p>
+      {link && <p><a class="more" href={link}>{linkLabel}</a></p>}
     </div>
   </article>
 )}

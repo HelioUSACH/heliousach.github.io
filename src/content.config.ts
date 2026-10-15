@@ -125,6 +125,10 @@ const projects = defineCollection({
     imageAlt_en: z.string().optional(),
     tags: z.array(z.string()).optional(),
     tags_en: z.array(z.string()).optional(),
+    link: z.string().url().optional(), // e.g. the project's live portal
+    link_en: z.string().url().optional(),
+    linkLabel: z.string().optional(),
+    linkLabel_en: z.string().optional(),
   }),
 });
 
@@ -139,6 +143,7 @@ const infrastructure = defineCollection({
     text: z.string(),
     text_en: z.string().optional(),
     link: z.string().url().optional(),
+    link_en: z.string().url().optional(),
     linkLabel: z.string().optional(),
     linkLabel_en: z.string().optional(),
   }),

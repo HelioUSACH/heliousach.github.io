@@ -23,6 +23,11 @@ social:
   - label: X / Twitter
     url: https://twitter.com/vpintoa
 
+# Portal de clima espacial del grupo (botón "Clima Espacial" en el menú).
+portal:
+  url: https://helio.fisica.usach.cl/clima-espacial/
+  url_en: https://helio.fisica.usach.cl/clima-espacial/en/
+
 # Instituciones a las que pertenece el grupo (pie de página).
 affiliations:
   - name: Universidad de Santiago de Chile

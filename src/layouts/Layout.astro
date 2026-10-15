@@ -17,7 +17,10 @@ interface Props {
 
 const { lang, title, description, route, alternates, image } = Astro.props;
 const t = ui[lang];
-const base = 'https://heliousach.github.io';
+// Canonical origin from astro.config.mjs `site` (helio.fisica.usach.cl); the
+// GitHub Pages mirror reuses it, so canonical/OG URLs always point to helio.
+const base = (Astro.site?.href ?? 'https://helio.fisica.usach.cl/').replace(/\/$/, '');
+const portalHref = pick(site.portal, 'url', lang);
 const alt = alternates ?? (route ? { es: routes[route].es, en: routes[route].en } : { es: '/', en: '/en/' });
 const otherLang: Lang = lang === 'es' ? 'en' : 'es';
 const here = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
@@ -93,6 +96,13 @@ const orgSchema = {
             {navOrder.map((k) => (
               <li><a href={navHref(k)} data-nav={k} aria-current={activeNav === k ? 'page' : undefined}>{t.nav[k]}</a></li>
             ))}
+            <li class="nav-cta-item">
+              <a class="portal-cta" href={portalHref} aria-label={t.portal.aria}>
+                <span class="live-dot" aria-hidden="true"></span>
+                <span>{t.portal.label}</span>
+                <svg class="portal-cta-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </a>
+            </li>
           </ul>
           <div class="nav-tools">
             <a class="lang-switch" href={alt[otherLang]} hreflang={otherLang} lang={otherLang} title={t.otherLangName}>{t.otherLang}</a>
