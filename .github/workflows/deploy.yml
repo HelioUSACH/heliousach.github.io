@@ -1,19 +1,24 @@
-name: Deploy to GitHub Pages
+name: Deploy
+
+# main  -> build + publish the GitHub Pages mirror (heliousach.github.io)
+# v*    -> build + attach site-<tag>.tar.gz to a GitHub release, which the
+#          helio server installs with `sudo publish-helio-site <tag>`
+#          (deploy/publish-site.sh). helio.fisica.usach.cl is the canonical site.
+# PRs   -> build only (validates content and code)
 
 on:
   push:
     branches: [main]
+    tags: ['v*']
   pull_request:
     branches: [main]
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages
+  group: deploy-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -35,16 +40,35 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Stamp build info
+        run: echo "${GITHUB_REF_NAME} ${GITHUB_SHA::7} $(date -u +%Y-%m-%dT%H:%MZ)" > dist/build-info.txt
+
       - name: Upload Pages artifact
-        if: github.event_name == 'push'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
 
-  deploy:
+      - name: Package release
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          tar -czf "site-${GITHUB_REF_NAME}.tar.gz" -C dist .
+          sha256sum "site-${GITHUB_REF_NAME}.tar.gz" > "site-${GITHUB_REF_NAME}.tar.gz.sha256"
+
+      - name: Keep release files for the next job
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-release
+          path: site-*.tar.gz*
+
+  pages:
     needs: build
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -52,3 +76,21 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  release:
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: site-release
+      - name: Create GitHub release with the built site
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" site-*.tar.gz site-*.tar.gz.sha256 \
+            --repo "$GITHUB_REPOSITORY" --title "Site $GITHUB_REF_NAME" \
+            --notes "Built site for helio.fisica.usach.cl. Install on the server with: sudo publish-helio-site $GITHUB_REF_NAME"
